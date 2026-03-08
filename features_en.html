@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - GPUMD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/general-hero.css">
+    <link rel="stylesheet" href="css/features.css">
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    <style>
+        /* Font size adjustments for English */
+        .general-hero-title {
+            font-size: clamp(2rem, 4vw, 3.5rem) !important;
+        }
+        .general-hero-description {
+            font-size: clamp(1rem, 1.5vw, 1.125rem) !important;
+        }
+    </style>
+</head>
+<body class="antialiased text-slate-800 bg-white font-sans flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="glass-nav sticky top-0 z-50 border-b border-slate-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 lg:h-20">
+                <div class="flex items-center">
+                    <a href="home_en.html" class="flex items-center gap-2 lg:gap-3 group">
+                        <img src="images/logo.png" alt="GPUMD Logo" class="h-8 lg:h-12 w-auto transform transition-transform group-hover:scale-105">
+                        <span class="text-xl lg:text-3xl font-bold bg-gradient-to-r from-brand-700 to-brand-500 bg-clip-text text-transparent">
+                            GPUMD
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="hidden lg:flex items-center space-x-1">
+                    <a href="home_en.html" class="nav-link">Home</a>
+                    
+                    <div class="relative group">
+                        <button class="nav-link-dropdown active">
+                            Download <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="features_en.html" class="dropdown-item active">Features</a>
+                            <a href="download_en.html#latest" class="dropdown-item">Latest Version</a>
+                            <a href="download_en.html#history" class="dropdown-item">History</a>
+                        </div>
+                    </div>
+
+                    <a href="database_en.html" class="nav-link">NEP Database</a>
+
+                    <div class="relative group">
+                        <button class="nav-link-dropdown">
+                            Ecosystem <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="faq_en.html" class="dropdown-item">FAQ</a>
+                            <a href="ecosystem_en.html" class="dropdown-item">Tools</a>
+                            <a href="support_en.html" class="dropdown-item">Acknowledgments</a>
+                            <a href="books_en.html" class="dropdown-item">Books</a>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <button class="nav-link-dropdown">
+                            About Us <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="teams_en.html" class="dropdown-item">Team</a>
+                            <a href="units_en.html" class="dropdown-item">Acknowledgments</a>
+                            <a href="contact_en.html" class="dropdown-item">Contact</a>
+                        </div>
+                    </div>
+
+                    <button class="ml-2 flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 text-slate-600 hover:border-brand-500 hover:text-brand-600 transition-all text-sm font-bold" onclick="window.location.href='features.html'">
+                        <i data-lucide="globe" class="w-4 h-4"></i>
+                        EN / CN
+                    </button>
+                </div>
+
+                <div class="flex items-center lg:hidden">
+                    <button class="mr-2 flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 hover:border-brand-500 hover:text-brand-600 transition-all text-xs font-bold" onclick="window.location.href='features.html'">
+                        CN
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none transition-colors">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 shadow-xl absolute w-full left-0 max-h-[80vh] overflow-y-auto">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="home_en.html" class="block px-3 py-3 rounded-lg text-base font-bold text-slate-600">Home</a>
+                
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">Download</div>
+                    <a href="features_en.html" class="block px-6 py-2 text-base font-bold text-brand-600 bg-brand-50 rounded-lg">Features</a>
+                    <a href="download_en.html#latest" class="block px-6 py-2 text-base font-medium text-slate-600">Latest Version</a>
+                    <a href="download_en.html#history" class="block px-6 py-2 text-base font-medium text-slate-600">History</a>
+                </div>
+
+                <a href="database_en.html" class="block px-3 py-3 rounded-lg text-base font-bold text-slate-600 hover:text-brand-600 hover:bg-slate-50">NEP Database</a>
+
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">Ecosystem</div>
+                    <a href="faq_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">FAQ</a>
+                    <a href="ecosystem_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Tools</a>
+                    <a href="support_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Support</a>
+                    <a href="books_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Books</a>
+                </div>
+
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">About Us</div>
+                    <a href="teams_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Team</a>
+                    <a href="units_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Acknowledgments</a>
+                    <a href="contact_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Contact</a>
+                </div>
+
+                <div class="py-2 border-t border-slate-100 mt-2">
+                    <button class="w-full flex items-center justify-center gap-2 px-3 py-3 rounded-lg text-base font-bold text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all" onclick="window.location.href='features.html'">
+                        <i data-lucide="globe" class="w-5 h-5"></i>
+                        切换到中文
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    <!-- Hero Section -->
+    <div class="general-hero-section hero-bg reveal">
+        <!-- Background Decorative Orbs -->
+        <div class="hero-orb bg-brand-400 top-0 -left-20 opacity-20"></div>
+        <div class="hero-orb bg-purple-400 bottom-0 -right-20 opacity-20" style="animation-delay: -5s;"></div>
+        
+        <!-- Canvas for dynamic background -->
+        <canvas id="hero-canvas" class="opacity-40"></canvas>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            
+            <h1 class="general-hero-title !text-2xl lg:!text-4xl">
+                Key Features
+            </h1>
+
+            <p class="general-hero-description !text-sm lg:!text-lg">
+                GPUMD is dedicated to achieving <span class="text-brand-600 font-bold">high precision and high efficiency</span> in many-body interaction calculations on GPU/DCU architectures, <br class="hidden md:block">providing core power for high-performance molecular dynamics simulations of complex systems.
+            </p>
+        </div>
+    </div>
+
+    <main class="flex-grow">
+        <!-- Core Introduction -->
+        <section class="py-12 lg:py-24 bg-white relative overflow-hidden reveal">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="relative rounded-3xl overflow-hidden shadow-xl p-6 md:p-16 hover-card-smooth group">
+                    <div class="card-shine absolute inset-0 pointer-events-none z-20"></div>
+                    <div class="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10"></div>
+                    <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-brand-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    
+                    <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                        <div>
+                            <h2 class="text-xl lg:text-3xl font-bold mb-4 lg:mb-8 text-slate-900 leading-tight">
+                                Redefining <br><span class="text-brand-600">Large-scale Atomistic Simulation</span>
+                            </h2>
+                            <div class="space-y-6 text-slate-600 leading-relaxed text-sm lg:text-lg">
+                                <p>
+                                    GPUMD implements a concise and unified expression for force, virial, and heat current applicable to many-body potentials, effectively breaking through key bottlenecks in parallel efficiency and physical consistency of traditional molecular dynamics methods, providing a solid theoretical and algorithmic foundation for high-performance computing of complex many-body systems on GPUs.
+                                </p>
+                                <p>
+                                    Continuously developed the <span class="text-brand-600 font-bold underline decoration-brand-200 underline-offset-4">Neuroevolution Potential (NEP)</span> machine learning potential method, successfully fusing the high precision of first-principles calculations with the high computational efficiency of empirical potentials, achieving fast calculations for complex material systems, making high-precision molecular dynamics simulations at the <span class="text-slate-900 font-bold">billion-atom scale</span> possible.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 lg:gap-6">
+                            <div class="p-4 lg:p-8 rounded-3xl text-center hover-stat-smooth">
+                                <div class="text-2xl lg:text-4xl font-black text-brand-600 mb-2">100x</div>
+                                <div class="text-xs lg:text-sm font-bold text-slate-900 mb-1">Speedup</div>
+                                <div class="text-[10px] lg:text-xs text-slate-500 italic">vs Serial CPU</div>
+                            </div>
+                            <div class="p-4 lg:p-8 rounded-3xl text-center hover-stat-smooth">
+                                <div class="text-2xl lg:text-4xl font-black text-purple-600 mb-2">10<sup>8</sup></div>
+                                <div class="text-xs lg:text-sm font-bold text-slate-900 mb-1">Atom Scale</div>
+                                <div class="text-[10px] lg:text-xs text-slate-500 italic">Billion-Atom Sim</div>
+                            </div>
+                            <div class="p-4 lg:p-8 rounded-3xl text-center hover-stat-smooth">
+                                <div class="text-2xl lg:text-4xl font-black text-orange-600 mb-2">NEP</div>
+                                <div class="text-xs lg:text-sm font-bold text-slate-900 mb-1">ML Potential</div>
+                                <div class="text-[10px] lg:text-xs text-slate-500 italic">Quantum Accuracy</div>
+                            </div>
+                            <div class="p-4 lg:p-8 rounded-3xl text-center hover-stat-smooth">
+                                <div class="text-2xl lg:text-4xl font-black text-green-600 mb-2">CUDA/HIP</div>
+                                <div class="text-xs lg:text-sm font-bold text-slate-900 mb-1">Optimized</div>
+                                <div class="text-[10px] lg:text-xs text-slate-500 italic">GPU/DCU Support</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Supported Force Fields -->
+        <section class="py-12 lg:py-24 bg-slate-50 reveal">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-8 lg:mb-16">
+                    <h2 class="text-xl lg:text-3xl font-bold text-slate-900">Supported Force Fields</h2>
+                    <div class="h-1 w-20 bg-brand-500 rounded-full mx-auto mt-4"></div>
+                    <p class="mt-4 lg:mt-6 text-slate-500 text-sm lg:text-lg max-w-2xl mx-auto font-medium">Comprehensive support ranging from empirical potentials to machine learning potentials.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10">
+                    <!-- Machine Learned Potentials -->
+                    <div class="group relative bg-white rounded-3xl p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl transition-all duration-500">
+                        <div class="flex items-center gap-4 mb-6 lg:mb-8">
+                            <div class="w-10 h-10 lg:w-14 lg:h-14 bg-brand-50 rounded-2xl flex items-center justify-center text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition-all duration-500">
+                                <i data-lucide="brain-circuit" class="w-5 h-5 lg:w-7 lg:h-7"></i>
+                            </div>
+                            <h3 class="text-lg lg:text-2xl font-bold text-slate-900">ML Potentials</h3>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-4 p-4 lg:p-5 rounded-2xl bg-slate-50 hover:bg-white border border-slate-50 hover:border-brand-100 transition-all">
+                                <i data-lucide="target" class="w-4 h-4 lg:w-5 lg:h-5 text-red-500 mt-1 flex-shrink-0"></i>
+                                <div>
+                                    <span class="font-bold text-slate-900 text-base lg:text-lg">Neuroevolution Potential</span>
+                                    <p class="text-sm lg:text-base text-slate-500 mt-2 leading-relaxed">Machine learning potential based on neuroevolution algorithms, achieving a perfect balance of accuracy and speed.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4 p-4 lg:p-5 rounded-2xl bg-slate-50 hover:bg-white border border-slate-50 hover:border-brand-100 transition-all">
+                                <i data-lucide="zap" class="w-4 h-4 lg:w-5 lg:h-5 text-yellow-500 mt-1 flex-shrink-0"></i>
+                                <div>
+                                    <span class="font-bold text-slate-900 text-base lg:text-lg">Deep Potential</span>
+                                    <p class="text-sm lg:text-base text-slate-500 mt-2 leading-relaxed">Supports Deep Potential molecular dynamics simulations.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Empirical Potentials -->
+                    <div class="group relative bg-white rounded-3xl p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl transition-all duration-500">
+                        <div class="flex items-center gap-4 mb-6 lg:mb-8">
+                            <div class="w-10 h-10 lg:w-14 lg:h-14 bg-slate-900 text-white rounded-2xl flex items-center justify-center">
+                                <i data-lucide="flask-conical" class="w-5 h-5 lg:w-7 lg:h-7"></i>
+                            </div>
+                            <h3 class="text-lg lg:text-2xl font-bold text-slate-900">Empirical Potentials</h3>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="flex items-center gap-3 p-4 rounded-xl bg-slate-50 hover:bg-white border border-slate-50 hover:border-slate-200 transition-all">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 lg:w-5 lg:h-5 text-green-500"></i>
+                                <span class="text-sm lg:text-base font-semibold text-slate-700">Lennard-Jones</span>
+                            </div>
+                            <div class="flex items-center gap-3 p-4 rounded-xl bg-slate-50 hover:bg-white border border-slate-50 hover:border-slate-200 transition-all">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 lg:w-5 lg:h-5 text-green-500"></i>
+                                <span class="text-sm lg:text-base font-semibold text-slate-700">EAM</span>
+                            </div>
+                            <div class="flex items-center gap-3 p-4 rounded-xl bg-slate-50 hover:bg-white border border-slate-50 hover:border-slate-200 transition-all">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 lg:w-5 lg:h-5 text-green-500"></i>
+                                <span class="text-sm lg:text-base font-semibold text-slate-700">Tersoff</span>
+                            </div>
+                            <div class="flex items-center gap-3 p-4 rounded-xl bg-slate-50 hover:bg-white border border-slate-50 hover:border-slate-200 transition-all">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 lg:w-5 lg:h-5 text-green-500"></i>
+                                <span class="text-sm lg:text-base font-semibold text-slate-700">ADP</span>
+                            </div>                              
+                            <div class="flex items-center gap-3 p-4 rounded-xl bg-slate-50 hover:bg-white border border-slate-50 hover:border-slate-200 transition-all">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 lg:w-5 lg:h-5 text-green-500"></i>
+                                <span class="text-sm lg:text-base font-semibold text-slate-700">ILP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Areas -->
+        <section class="py-12 lg:py-24 bg-white reveal">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-8 lg:mb-16">
+                    <h2 class="text-xl lg:text-3xl font-bold text-slate-900">Wide Range of Applications</h2>
+                    <div class="h-1 w-20 bg-brand-500 rounded-full mx-auto mt-4"></div>
+                    <p class="mt-4 lg:mt-6 text-slate-500 text-sm lg:text-lg max-w-2xl mx-auto font-medium">From fundamental physics research to frontier engineering applications, GPUMD provides reliable computational support.</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-8">
+                    <!-- App Card Style inspired by home.html tools -->
+                    <div class="group relative bg-white rounded-3xl p-4 lg:p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 text-center">
+                        <div class="w-12 h-12 lg:w-16 lg:h-16 bg-brand-50 rounded-2xl flex items-center justify-center text-brand-600 mx-auto mb-4 lg:mb-6 group-hover:bg-brand-600 group-hover:text-white transition-all duration-500">
+                            <i data-lucide="gauge" class="w-6 h-6 lg:w-8 lg:h-8"></i>
+                        </div>
+                        <h4 class="text-base lg:text-lg font-bold text-slate-900 mb-1">Mechanical Properties</h4>
+                        <p class="text-[9px] lg:text-[10px] font-black text-slate-400 uppercase tracking-widest">Stress & Strain</p>
+                    </div>
+
+                    <div class="group relative bg-white rounded-3xl p-4 lg:p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 text-center">
+                        <div class="w-12 h-12 lg:w-16 lg:h-16 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 mx-auto mb-4 lg:mb-6 group-hover:bg-red-600 group-hover:text-white transition-all duration-500">
+                            <i data-lucide="radiation" class="w-6 h-6 lg:w-8 lg:h-8"></i>
+                        </div>
+                        <h4 class="text-base lg:text-lg font-bold text-slate-900 mb-1">Radiation Damage</h4>
+                        <p class="text-[9px] lg:text-[10px] font-black text-slate-400 uppercase tracking-widest">Defects Evolution</p>
+                    </div>
+
+                    <div class="group relative bg-white rounded-3xl p-4 lg:p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 text-center">
+                        <div class="w-12 h-12 lg:w-16 lg:h-16 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 mx-auto mb-4 lg:mb-6 group-hover:bg-purple-600 group-hover:text-white transition-all duration-500">
+                            <i data-lucide="git-compare" class="w-6 h-6 lg:w-8 lg:h-8"></i>
+                        </div>
+                        <h4 class="text-base lg:text-lg font-bold text-slate-900 mb-1">Phase Transition</h4>
+                        <p class="text-[9px] lg:text-[10px] font-black text-slate-400 uppercase tracking-widest">Structure Change</p>
+                    </div>
+
+                    <div class="group relative bg-white rounded-3xl p-4 lg:p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 text-center">
+                        <div class="w-12 h-12 lg:w-16 lg:h-16 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600 mx-auto mb-4 lg:mb-6 group-hover:bg-orange-600 group-hover:text-white transition-all duration-500">
+                            <i data-lucide="zap" class="w-6 h-6 lg:w-8 lg:h-8"></i>
+                        </div>
+                        <h4 class="text-base lg:text-lg font-bold text-slate-900 mb-1">Shock Simulation</h4>
+                        <p class="text-[9px] lg:text-[10px] font-black text-slate-400 uppercase tracking-widest">High Velocity</p>
+                    </div>
+
+                    <div class="group relative bg-white rounded-3xl p-4 lg:p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 text-center">
+                        <div class="w-12 h-12 lg:w-16 lg:h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mx-auto mb-4 lg:mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
+                            <i data-lucide="grid" class="w-6 h-6 lg:w-8 lg:h-8"></i>
+                        </div>
+                        <h4 class="text-base lg:text-lg font-bold text-slate-900 mb-1">Short-range Order</h4>
+                        <p class="text-[9px] lg:text-[10px] font-black text-slate-400 uppercase tracking-widest">Local Structure</p>
+                    </div>
+
+                    <div class="group relative bg-white rounded-3xl p-4 lg:p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 text-center">
+                        <div class="w-12 h-12 lg:w-16 lg:h-16 bg-green-50 rounded-2xl flex items-center justify-center text-green-600 mx-auto mb-4 lg:mb-6 group-hover:bg-green-600 group-hover:text-white transition-all duration-500">
+                            <i data-lucide="battery-charging" class="w-6 h-6 lg:w-8 lg:h-8"></i>
+                        </div>
+                        <h4 class="text-base lg:text-lg font-bold text-slate-900 mb-1">Ion Transport</h4>
+                        <p class="text-[9px] lg:text-[10px] font-black text-slate-400 uppercase tracking-widest">Diffusion</p>
+                    </div>
+
+                    <div class="group relative bg-white rounded-3xl p-4 lg:p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 text-center">
+                        <div class="w-12 h-12 lg:w-16 lg:h-16 bg-cyan-50 rounded-2xl flex items-center justify-center text-cyan-600 mx-auto mb-4 lg:mb-6 group-hover:bg-cyan-600 group-hover:text-white transition-all duration-500">
+                            <i data-lucide="beaker" class="w-6 h-6 lg:w-8 lg:h-8"></i>
+                        </div>
+                        <h4 class="text-base lg:text-lg font-bold text-slate-900 mb-1">Chemical Reactions</h4>
+                        <p class="text-[9px] lg:text-[10px] font-black text-slate-400 uppercase tracking-widest">Bond Breaking</p>
+                    </div>
+
+                    <div class="group relative bg-white rounded-3xl p-4 lg:p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 text-center">
+                        <div class="w-12 h-12 lg:w-16 lg:h-16 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 mx-auto mb-4 lg:mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-500">
+                            <i data-lucide="box" class="w-6 h-6 lg:w-8 lg:h-8"></i>
+                        </div>
+                        <h4 class="text-base lg:text-lg font-bold text-slate-900 mb-1">Tensorial Properties</h4>
+                        <p class="text-[9px] lg:text-[10px] font-black text-slate-400 uppercase tracking-widest">Anisotropy</p>
+                    </div>
+
+                    <div class="group relative bg-white rounded-3xl p-4 lg:p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 text-center">
+                        <div class="w-12 h-12 lg:w-16 lg:h-16 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 mx-auto mb-4 lg:mb-6 group-hover:bg-amber-600 group-hover:text-white transition-all duration-500">
+                            <i data-lucide="thermometer" class="w-6 h-6 lg:w-8 lg:h-8"></i>
+                        </div>
+                        <h4 class="text-base lg:text-lg font-bold text-slate-900 mb-1">Heat Transport</h4>
+                        <p class="text-[9px] lg:text-[10px] font-black text-slate-400 uppercase tracking-widest">Thermal Cond.</p>
+                    </div>
+
+                    <div class="group relative bg-white rounded-3xl p-4 lg:p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 text-center">
+                        <div class="w-12 h-12 lg:w-16 lg:h-16 bg-teal-50 rounded-2xl flex items-center justify-center text-teal-600 mx-auto mb-4 lg:mb-6 group-hover:bg-teal-600 group-hover:text-white transition-all duration-500">
+                            <i data-lucide="flask-conical" class="w-6 h-6 lg:w-8 lg:h-8"></i>
+                        </div>
+                        <h4 class="text-base lg:text-lg font-bold text-slate-900 mb-1">Thermodynamics</h4>
+                        <p class="text-[9px] lg:text-[10px] font-black text-slate-400 uppercase tracking-widest">Free Energy</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-8 lg:py-24 bg-slate-50 relative overflow-hidden reveal">
+            <div class="hero-orb bg-brand-400 top-0 -left-20 opacity-10"></div>
+            <div class="hero-orb bg-purple-400 bottom-0 -right-20 opacity-10"></div>
+            
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <div class="inline-flex items-center px-3 py-1 rounded-full bg-brand-50 border border-brand-100 text-brand-600 text-xs lg:text-sm font-medium mb-4 lg:mb-8">
+                    <span class="flex h-2 w-2 rounded-full bg-brand-500 mr-2 animate-ping"></span>
+                    Ready to start simulating?
+                </div>
+                <h2 class="text-2xl lg:text-5xl font-extrabold text-slate-900 mb-4 lg:mb-8 tracking-tighter">
+                    Start High-Precision Billion-Atom Simulations
+                </h2>
+                <p class="text-slate-500 text-sm lg:text-xl mb-6 lg:mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
+                    Explore the infinite possibilities of the material world with the extreme performance of GPUMD.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-3 lg:gap-6 justify-center">
+                    <a href="download_en.html" class="inline-flex items-center justify-center px-6 py-3 lg:px-10 lg:py-5 border border-transparent text-xs lg:text-lg font-bold rounded-2xl text-white bg-brand-600 hover:bg-brand-700 shadow-xl shadow-brand-500/20 transition-all duration-300 transform hover:-translate-y-1">
+                        <i data-lucide="download" class="mr-2 h-4 w-4 lg:h-6 lg:w-6"></i>
+                        Download Latest Version
+                    </a>
+                    <a href="https://gpumd.org" target="_blank" class="inline-flex items-center justify-center px-6 py-3 lg:px-10 lg:py-5 border border-slate-200 text-xs lg:text-lg font-bold rounded-2xl text-slate-700 bg-white hover:bg-slate-50 hover:border-brand-200 hover:text-brand-600 shadow-sm transition-all duration-300">
+                        <i data-lucide="book-open" class="mr-2 h-4 w-4 lg:h-6 lg:w-6"></i>
+                        Official Manual
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-8 lg:py-16 border-t border-slate-900 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-8 lg:gap-x-12 lg:gap-y-16 mb-8 lg:mb-16">
+                <!-- Column 1: Brand & Status -->
+                <div class="col-span-2 lg:col-span-2">
+                    <a href="home_en.html" class="flex items-center gap-2 mb-4 lg:mb-8 group">
+                        <img src="images/logo.png" alt="GPUMD Logo" class="h-8 lg:h-10 w-auto">
+                        <span class="text-xl lg:text-2xl font-black text-white tracking-tight">GPUMD</span>
+                    </a>
+                    <div class="space-y-4 lg:space-y-6">
+                        <p class="text-xs lg:text-sm leading-relaxed text-slate-400">
+                            High-performance heterogeneous CPU+GPU parallel molecular dynamics simulation software, dedicated to providing extreme computational efficiency and precision for complex many-body systems.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Column 2: Software -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">Software & DB</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="features_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Features</a></li>
+                        <li><a href="download_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Latest Version</a></li>
+                        <li><a href="database_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>NEP Database</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Resources -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">Resources</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="https://gpumd.org" target="_blank" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Manual</a></li>
+                        <li><a href="faq_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>FAQ</a></li>
+                        <li><a href="books_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Books</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Community -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">Community</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="ecosystem_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Ecosystem</a></li>
+                        <li><a href="support_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Support</a></li>
+                        <li><a href="https://github.com/brucefan1983/GPUMD" target="_blank" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>GitHub</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 5: Social & QR -->
+                <div class="col-span-2 lg:col-span-1 flex lg:justify-end">
+                    <div class="space-y-4 lg:space-y-8">
+                        <p class="text-white text-[10px] font-black mb-4 lg:mb-6 uppercase tracking-[0.2em] opacity-40 lg:text-right">Connect</p>
+                        <div class="flex gap-4 lg:gap-6 lg:justify-end">
+                            <div class="group relative">
+                                <div class="w-16 h-16 lg:w-20 lg:h-20 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center p-2 group-hover:border-brand-500/50 group-hover:bg-white/10 transition-all duration-500 shadow-2xl">
+                                    <img src="images/qr_qq.png" alt="QQ Group" class="w-full h-full object-contain">
+                                </div>
+                                <p class="text-[9px] mt-2 lg:mt-3 text-center font-bold opacity-40 group-hover:opacity-100 transition-opacity">QQ Group</p>
+                            </div>
+                            <div class="group relative">
+                                <div class="w-16 h-16 lg:w-20 lg:h-20 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center p-2 group-hover:border-brand-500/50 group-hover:bg-white/10 transition-all duration-500 shadow-2xl">
+                                    <img src="images/qr_wechat.png" alt="WeChat" class="w-full h-full object-contain">
+                                </div>
+                                <p class="text-[9px] mt-2 lg:mt-3 text-center font-bold opacity-40 group-hover:opacity-100 transition-opacity">WeChat</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 lg:pt-12 border-t border-slate-900 flex flex-col md:flex-row items-center justify-between gap-6 text-[11px] font-medium tracking-wider">
+                <p class="opacity-40">© 2026 GPUMD TEAM. PROUDLY DEVELOPED FOR SCIENCE.</p>
+                <a href="https://beian.miit.gov.cn/" target="_blank" class="opacity-40 hover:opacity-100 transition-opacity">苏ICP备2025218443号-1</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Hero Canvas Animation
+        const canvas = document.getElementById('hero-canvas');
+        const ctx = canvas.getContext('2d');
+        let atoms = [];
+        let mouse = { x: null, y: null };
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+            createAtoms();
+        }
+
+        class Atom {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 3 + 2;
+                this.color = Math.random() > 0.5 ? '#0ea5e9' : '#94a3b8';
+                this.originalRadius = this.radius;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = 0.3;
+                ctx.fill();
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+                // Mouse interaction
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < 150) {
+                    this.radius = this.originalRadius * (1 + (150 - distance) / 75);
+                    ctx.globalAlpha = 0.5;
+                } else {
+                    this.radius = this.originalRadius;
+                }
+            }
+        }
+
+        function createAtoms() {
+            atoms = [];
+            const count = Math.floor((canvas.width * canvas.height) / 15000);
+            for (let i = 0; i < count; i++) {
+                atoms.push(new Atom());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            atoms.forEach(atom => {
+                atom.update();
+                atom.draw();
+            });
+
+            // Draw connections
+            ctx.beginPath();
+            ctx.strokeStyle = '#0ea5e9';
+            ctx.lineWidth = 0.5;
+            for (let i = 0; i < atoms.length; i++) {
+                for (let j = i + 1; j < atoms.length; j++) {
+                    let dx = atoms[i].x - atoms[j].x;
+                    let dy = atoms[i].y - atoms[j].y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 150) {
+                        ctx.globalAlpha = (150 - distance) / 600;
+                        ctx.moveTo(atoms[i].x, atoms[i].y);
+                        ctx.lineTo(atoms[j].x, atoms[j].y);
+                    }
+                }
+            }
+            ctx.stroke();
+
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', initCanvas);
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY - canvas.getBoundingClientRect().top;
+        });
+
+        initCanvas();
+        animate();
+    </script>
+</body>
+</html>

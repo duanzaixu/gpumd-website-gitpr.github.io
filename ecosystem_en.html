@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecosystem Tools - GPUMD</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- External Resources -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/general-hero.css">
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    <style>
+        /* Font size adjustments for English */
+        .general-hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+        }
+    </style>
+</head>
+<body class="antialiased text-slate-800 bg-white font-sans flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="glass-nav sticky top-0 z-50 border-b border-slate-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 lg:h-20">
+                <div class="flex items-center">
+                    <a href="home_en.html" class="flex items-center gap-2 lg:gap-3 group">
+                        <img src="images/logo.png" alt="GPUMD Logo" class="h-8 lg:h-12 w-auto transform transition-transform group-hover:scale-105">
+                        <span class="text-xl lg:text-3xl font-bold bg-gradient-to-r from-brand-700 to-brand-500 bg-clip-text text-transparent">
+                            GPUMD
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="hidden lg:flex items-center space-x-1">
+                    <a href="home_en.html" class="nav-link">Home</a>
+                    
+                    <div class="relative group">
+                        <button class="nav-link-dropdown">
+                            Downloads <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="features_en.html" class="dropdown-item">Features</a>
+                            <a href="download_en.html#latest" class="dropdown-item">Latest Version</a>
+                            <a href="download_en.html#history" class="dropdown-item">History</a>
+                        </div>
+                    </div>
+
+                    <a href="database_en.html" class="nav-link">NEP Database</a>
+
+                    <div class="relative group">
+                        <button class="nav-link-dropdown">
+                            Ecosystem <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="faq_en.html" class="dropdown-item">FAQ</a>
+                            <a href="ecosystem_en.html" class="dropdown-item">Tools</a>
+                            <a href="support_en.html" class="dropdown-item">Support</a>
+                            <a href="books_en.html" class="dropdown-item">Books</a>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <button class="nav-link-dropdown">
+                            About Us <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="teams_en.html" class="dropdown-item">Team</a>
+                            <a href="units_en.html" class="dropdown-item">Acknowledgments</a>
+                            <a href="contact_en.html" class="dropdown-item">Contact</a>
+                        </div>
+                    </div>
+
+                    <button class="ml-2 flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 text-slate-600 hover:border-brand-500 hover:text-brand-600 transition-all text-sm font-bold" onclick="window.location.href='ecosystem.html'">
+                        <i data-lucide="globe" class="w-4 h-4"></i>
+                        EN / CN
+                    </button>
+                </div>
+
+                <div class="flex items-center lg:hidden">
+                    <button class="mr-2 flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 hover:border-brand-500 hover:text-brand-600 transition-all text-xs font-bold" onclick="window.location.href='ecosystem.html'">
+                        CN
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none transition-colors">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 shadow-xl absolute w-full left-0 max-h-[80vh] overflow-y-auto">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="home_en.html" class="block px-3 py-3 rounded-lg text-base font-bold text-slate-600">Home</a>
+                
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">Downloads</div>
+                    <a href="features_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Features</a>
+                    <a href="download_en.html#latest" class="block px-6 py-2 text-base font-medium text-slate-600">Latest Version</a>
+                    <a href="download_en.html#history" class="block px-6 py-2 text-base font-medium text-slate-600">History</a>
+                </div>
+
+                <a href="database_en.html" class="block px-3 py-3 rounded-lg text-base font-bold text-slate-600 hover:text-brand-600 hover:bg-slate-50">NEP Database</a>
+
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-brand-600 bg-brand-50 rounded-lg uppercase tracking-wider">Ecosystem</div>
+                    <a href="faq_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">FAQ</a>
+                    <a href="ecosystem_en.html" class="block px-6 py-2 text-base font-bold text-brand-600">Tools</a>
+                    <a href="support_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Support</a>
+                    <a href="books_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Books</a>
+                </div>
+
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">About Us</div>
+                    <a href="teams_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Team</a>
+                    <a href="units_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Acknowledgments</a>
+                    <a href="contact_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Contact</a>
+                </div>
+
+                <div class="py-2 border-t border-slate-100 mt-2">
+                    <button class="w-full flex items-center justify-center gap-2 px-3 py-3 rounded-lg text-base font-bold text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all" onclick="window.location.href='ecosystem.html'">
+                        <i data-lucide="globe" class="w-5 h-5"></i>
+                        切换到中文
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    <!-- Hero Section -->
+    <div class="general-hero-section hero-bg reveal">
+        <!-- Background Decorative Orbs -->
+        <div class="hero-orb bg-brand-400 top-0 -left-20 opacity-20"></div>
+        <div class="hero-orb bg-purple-400 bottom-0 -right-20 opacity-20" style="animation-delay: -5s;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            
+            <h1 class="general-hero-title">
+                Ecosystem Tools
+            </h1>
+
+            <p class="general-hero-description">
+                A powerful set of tools built around GPUMD, covering modeling, pre/post-processing, machine learning potential training, and visual analysis for efficient molecular dynamics simulations.
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow bg-white py-12 lg:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Software Grid -->
+            <div id="ecosystem-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-12">
+                
+                <!-- Card 1: NEP_CPU -->
+                <a href="https://github.com/brucefan1983/NEP_CPU" target="_blank" class="ecosystem-card group relative bg-white rounded-2xl lg:rounded-3xl p-6 lg:p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="nep_cpu">
+                    <div class="absolute inset-0 bg-gradient-to-br from-indigo-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-6 lg:mb-8 flex justify-center items-center h-24 lg:h-32 bg-white rounded-xl lg:rounded-2xl overflow-hidden border border-slate-100 group-hover:border-indigo-500 transition-all duration-500">
+                        <div class="w-16 h-16 lg:w-20 lg:h-20 bg-indigo-50 text-indigo-600 rounded-xl lg:rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-indigo-600 group-hover:text-white transition-all duration-500 group-hover:rotate-6 z-10">
+                            <i data-lucide="cpu" class="w-8 h-8 lg:w-10 lg:h-10"></i>
+                        </div>
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-indigo-100 text-indigo-600 text-[10px] font-bold rounded-lg border border-indigo-200 uppercase tracking-wider z-10">CPU</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-lg lg:text-xl font-bold text-slate-900 mb-2 lg:mb-3 flex items-center group-hover:text-indigo-600 transition-colors">NEP_CPU</h3>
+                        <p class="text-slate-500 text-xs lg:text-sm mb-4 lg:mb-6 leading-relaxed flex-grow">C++ implementation of NEP potentials, providing interfaces for many Python packages and LAMMPS.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>GitHub</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>Zheyong Fan</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 2: Calorine -->
+                <a href="https://gitlab.com/materials-modeling/calorine" target="_blank" class="ecosystem-card group relative bg-white rounded-2xl lg:rounded-3xl p-6 lg:p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="calorine">
+                    <div class="absolute inset-0 bg-gradient-to-br from-brand-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-6 lg:mb-8 flex justify-center items-center h-24 lg:h-32 bg-white rounded-xl lg:rounded-2xl overflow-hidden border border-slate-100 group-hover:border-brand-500 transition-all duration-500">
+                        <img src="images/calorine_logo.png" alt="Calorine" class="h-20 lg:h-28 w-auto object-contain transform transition-transform duration-500 group-hover:scale-105 z-10">
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-brand-50 text-brand-600 text-[10px] font-bold rounded-lg border border-brand-100 uppercase tracking-wider z-10">Python</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-lg lg:text-xl font-bold text-slate-900 mb-2 lg:mb-3 flex items-center group-hover:text-brand-600 transition-colors">Calorine</h3>
+                        <p class="text-slate-500 text-xs lg:text-sm mb-4 lg:mb-6 leading-relaxed flex-grow">Provides Python interface for NEP, used for calculation and analysis of various properties.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>Gitlab</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>Eric Lindgren</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 3: NepTrainKit -->
+                <a href="https://github.com/aboys-cb/NepTrainKit/" target="_blank" class="ecosystem-card group relative bg-white rounded-2xl lg:rounded-3xl p-6 lg:p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="neptrainkit">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-8 flex justify-center items-center h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-purple-500 transition-all duration-500">
+                        <img src="images/neptrainkit_logo.svg" alt="NepTrainKit" class="h-28 w-auto object-contain transform transition-transform duration-500 group-hover:scale-105 z-10">
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-purple-50 text-purple-600 text-[10px] font-bold rounded-lg border border-purple-100 uppercase tracking-wider z-10">GUI</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center group-hover:text-purple-600 transition-colors">NepTrainKit</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">Toolkit focused on NEP training dataset manipulation and visualization, providing an intuitive GUI.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>GitHub</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>Chengbing Chen</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 4: GPUMDkit -->
+                <a href="https://github.com/zhyan0603/GPUMDkit" target="_blank" class="ecosystem-card group relative bg-white rounded-3xl p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="gpumdkit">
+                    <div class="absolute inset-0 bg-gradient-to-br from-brand-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-8 flex justify-center items-center h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-brand-500 transition-all duration-500">
+                        <img src="images/gpumdkit_logo.png" alt="GPUMDkit" class="h-28 w-auto object-contain transform transition-transform duration-500 group-hover:scale-105 z-10">
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-brand-50 text-brand-600 text-[10px] font-bold rounded-lg border border-brand-100 uppercase tracking-wider z-10">Toolkit</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center group-hover:text-brand-600 transition-colors">GPUMDkit</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">Pre-processing and post-processing toolkit designed for GPUMD, providing a user-friendly CLI.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>GitHub</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>Zihan Yan</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 5: GPUMD-Wizard -->
+                <a href="https://github.com/Jonsnow-willow/GPUMD-Wizard" target="_blank" class="ecosystem-card group relative bg-white rounded-3xl p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="gpumd-wizard">
+                    <div class="absolute inset-0 bg-gradient-to-br from-orange-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-8 flex justify-center items-center h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-orange-500 transition-all duration-500">
+                        <img src="images/G-Wizard.png" alt="GPUMD-Wizard" class="h-28 w-auto object-contain transform transition-transform duration-500 group-hover:scale-105 z-10">
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-orange-50 text-orange-600 text-[10px] font-bold rounded-lg border border-orange-100 uppercase tracking-wider z-10">Python</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center group-hover:text-orange-600 transition-colors">GPUMD-Wizard</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">ASE-based material structure processing software capable of automating property calculations and calling GPUMD.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>GitHub</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>Jiahui Liu</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 6: PySED -->
+                <a href="https://github.com/Tingliangstu/pySED" target="_blank" class="ecosystem-card group relative bg-white rounded-3xl p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="pysed">
+                    <div class="absolute inset-0 bg-gradient-to-br from-green-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-8 flex justify-center items-center h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-green-500 transition-all duration-500">
+                        <img src="images/pysed_logo.png" alt="PySED" class="h-28 w-auto object-contain transform transition-transform duration-500 group-hover:scale-105 z-10">
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-green-50 text-green-600 text-[10px] font-bold rounded-lg border border-green-100 uppercase tracking-wider z-10">Python</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center group-hover:text-green-600 transition-colors">PySED</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">Efficient tool for analyzing phonon dynamics and thermal transport, supporting spectral energy density calculation.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>GitHub</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>Ting Liang</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 7: mdapy -->
+                <a href="https://github.com/mushroomfire/mdapy" target="_blank" class="ecosystem-card group relative bg-white rounded-3xl p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="mdapy">
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-8 flex justify-center items-center h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-cyan-500 transition-all duration-500">
+                        <img src="images/mdapy_logo.png" alt="mdapy" class="h-28 w-auto object-contain transform transition-transform duration-500 group-hover:scale-105 z-10">
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-cyan-100 text-cyan-600 text-[10px] font-bold rounded-lg border border-cyan-200 uppercase tracking-wider z-10">Python</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center group-hover:text-cyan-600 transition-colors">mdapy</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">Simple and efficient Python MD analysis library, supporting multiple formats and parallel computing.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>GitHub</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>Yongchao Wu</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 8: PyNEP -->
+                <a href="https://github.com/bigd4/PyNEP" target="_blank" class="ecosystem-card group relative bg-white rounded-3xl p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="pynep">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-8 flex justify-center items-center h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-blue-500 transition-all duration-500">
+                        <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 group-hover:rotate-6 z-10">
+                            <i data-lucide="terminal" class="w-10 h-10"></i>
+                        </div>
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-blue-100 text-blue-600 text-[10px] font-bold rounded-lg border border-blue-200 uppercase tracking-wider z-10">Python</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center group-hover:text-blue-600 transition-colors">PyNEP</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">Python interface for NEP potentials, supporting ASE calculators and various analyses.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>GitHub</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>Junjie Wang</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 9: gpyumd -->
+                <a href="https://github.com/AlexGabourie/gpyumd" target="_blank" class="ecosystem-card group relative bg-white rounded-3xl p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="gpyumd">
+                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-8 flex justify-center items-center h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-emerald-500 transition-all duration-500">
+                        <div class="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 group-hover:rotate-6 z-10">
+                            <i data-lucide="file-code" class="w-10 h-10"></i>
+                        </div>
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-emerald-100 text-emerald-600 text-[10px] font-bold rounded-lg border border-emerald-200 uppercase tracking-wider z-10">Python</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center group-hover:text-emerald-600 transition-colors">gpyumd</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">Python interface for GPUMD, assisting in generating input files and processing output data.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>GitHub</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>Alexander J. Gabourie</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 10: somd -->
+                <a href="https://github.com/initqp/somd" target="_blank" class="ecosystem-card group relative bg-white rounded-3xl p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="somd">
+                    <div class="absolute inset-0 bg-gradient-to-br from-slate-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-8 flex justify-center items-center h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-slate-500 transition-all duration-500">
+                        <div class="w-20 h-20 bg-slate-50 text-slate-600 rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-slate-600 group-hover:text-white transition-all duration-500 group-hover:rotate-6 z-10">
+                            <i data-lucide="box" class="w-10 h-10"></i>
+                        </div>
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-slate-100 text-slate-600 text-[10px] font-bold rounded-lg border border-slate-200 uppercase tracking-wider z-10">Python</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center group-hover:text-slate-600 transition-colors">somd</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">MD package for SIESTA, integrating NEP interface and active learning.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>GitHub</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>Jingtu Zhang</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 11: NepTrain -->
+                <a href="https://github.com/aboys-cb/NepTrain" target="_blank" class="ecosystem-card group relative bg-white rounded-3xl p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="neptrain">
+                    <div class="absolute inset-0 bg-gradient-to-br from-violet-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-8 flex justify-center items-center h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-violet-500 transition-all duration-500">
+                        <div class="w-20 h-20 bg-violet-50 text-violet-600 rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-violet-600 group-hover:text-white transition-all duration-500 group-hover:rotate-6 z-10">
+                            <i data-lucide="workflow" class="w-10 h-10"></i>
+                        </div>
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-violet-100 text-violet-600 text-[10px] font-bold rounded-lg border border-violet-200 uppercase tracking-wider z-10">Python</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center group-hover:text-violet-600 transition-colors">NepTrain</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">NEP automated training toolkit, integrating VASP/GPUMD workflow and active learning.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>GitHub</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>Chengbing Chen</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Extension Placeholder -->
+                <div class="ecosystem-placeholder hidden"></div>
+
+            </div>
+
+            <!-- Developer Legend -->
+            <div class="mt-14 text-center">
+                <p class="text-xs text-slate-400">Core developers listed in the bottom right corner of each card</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-8 lg:py-16 border-t border-slate-900 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-8 lg:gap-x-12 lg:gap-y-16 mb-8 lg:mb-16">
+                <!-- Column 1: Brand & Status -->
+                <div class="col-span-2 lg:col-span-2">
+                    <a href="home_en.html" class="flex items-center gap-2 mb-4 lg:mb-8 group">
+                        <img src="images/logo.png" alt="GPUMD Logo" class="h-8 lg:h-10 w-auto">
+                        <span class="text-xl lg:text-2xl font-black text-white tracking-tight">GPUMD</span>
+                    </a>
+                    <div class="space-y-4 lg:space-y-6">
+                        <p class="text-xs lg:text-sm leading-relaxed text-slate-400">
+                            High-performance heterogeneous parallel molecular dynamics software for CPU+GPU, dedicated to providing extreme computational efficiency and accuracy for complex many-body systems.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Column 2: Software -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">Software & DB</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="features_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Features</a></li>
+                        <li><a href="download_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Latest Version</a></li>
+                        <li><a href="database_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>NEP Database</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Resources -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">Resources</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="https://gpumd.org" target="_blank" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Official Docs</a></li>
+                        <li><a href="faq_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>FAQ</a></li>
+                        <li><a href="books_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Books</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Community -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">Community</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="ecosystem_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Ecosystem</a></li>
+                        <li><a href="support_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Support</a></li>
+                        <li><a href="https://github.com/brucefan1983/GPUMD" target="_blank" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>GitHub</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 5: Social & QR -->
+                <div class="col-span-2 lg:col-span-1 flex lg:justify-end">
+                    <div class="space-y-4 lg:space-y-8">
+                        <p class="text-white text-[10px] font-black mb-4 lg:mb-6 uppercase tracking-[0.2em] opacity-40 lg:text-right">Connect</p>
+                        <div class="flex gap-4 lg:gap-6 lg:justify-end">
+                            <div class="group relative">
+                                <div class="w-16 h-16 lg:w-20 lg:h-20 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center p-2 group-hover:border-brand-500/50 group-hover:bg-white/10 transition-all duration-500 shadow-2xl">
+                                    <img src="images/qr_qq.png" alt="QQ Group" class="w-full h-full object-contain">
+                                </div>
+                                <p class="text-[9px] mt-2 lg:mt-3 text-center font-bold opacity-40 group-hover:opacity-100 transition-opacity">QQ Group</p>
+                            </div>
+                            <div class="group relative">
+                                <div class="w-16 h-16 lg:w-20 lg:h-20 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center p-2 group-hover:border-brand-500/50 group-hover:bg-white/10 transition-all duration-500 shadow-2xl">
+                                    <img src="images/qr_wechat.png" alt="WeChat" class="w-full h-full object-contain">
+                                </div>
+                                <p class="text-[9px] mt-2 lg:mt-3 text-center font-bold opacity-40 group-hover:opacity-100 transition-opacity">WeChat</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 lg:pt-12 border-t border-slate-900 flex flex-col md:flex-row items-center justify-between gap-6 text-[11px] font-medium tracking-wider">
+                <p class="opacity-40">© 2026 GPUMD TEAM. PROUDLY DEVELOPED FOR SCIENCE.</p>
+                <a href="https://beian.miit.gov.cn/" target="_blank" class="opacity-40 hover:opacity-100 transition-opacity">苏ICP备2025218443号-1</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

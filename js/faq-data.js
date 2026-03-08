@@ -1,0 +1,193 @@
+/**
+ * GPUMD FAQ Data
+ * Stored as a constant to allow synchronous loading and avoid Fetch/CORS issues on local preview.
+ */
+
+const GPUMD_FAQ_DATA = [
+    {
+        "id": "install-01",
+        "category": "安装配置",
+        "question": "GPUMD 支持哪些类型的显卡？",
+        "answer": "GPUMD 原生基于 CUDA 开发，完美支持 NVIDIA 显卡。同时，最新的 master 版本也支持 AMD 显卡和海光 DCU 计算卡（通过 HIP 编译）。"
+    },
+    {
+        "id": "install-02",
+        "category": "安装配置",
+        "question": "如何在 Windows 上安装 GPUMD 或 pynep？",
+        "answer": "不建议在 Windows 原生环境下直接编译，因为涉及复杂的 C++ 编译器配置。推荐使用 WSL (Windows Subsystem for Linux) 或直接在 Linux 系统下进行安装和使用。"
+    },
+    {
+        "id": "install-03",
+        "category": "安装配置",
+        "question": "编译时提示找不到 nvcc 或 CUDA 库怎么办？",
+        "answer": "这是环境变量未配置好。请检查 CUDA Toolkit 是否安装，并将 CUDA 的 `bin` 和 `lib64` 路径添加到系统的 `PATH` 和 `LD_LIBRARY_PATH` 环境变量中。"
+    },
+    {
+        "id": "install-04",
+        "category": "安装配置",
+        "question": "什么是 NEP_CPU，它有什么用？",
+        "answer": "NEP_CPU 是 NEP 势函数的 CPU 版本实现。它主要用于在没有 GPU 的机器上进行推理（如通过 LAMMPS 调用 NEP 势），或者在 Python 脚本中快速计算能量和力。"
+    },
+    {
+        "id": "install-05",
+        "category": "安装配置",
+        "question": "GPUMD 支持多卡并行吗？",
+        "answer": "GPUMD 的 MD 模拟通常设计为单卡高效运行。NEP 的训练过程支持多卡并行以加速训练，需在编译时确保相关并行库（如 NCCL）配置正确。"
+    },
+    {
+        "id": "training-01",
+        "category": "模型训练",
+        "question": "nep.in 和 nep.txt 有什么区别？",
+        "answer": "`nep.in` 是训练时的输入控制文件，包含神经网络结构和训练参数；`nep.txt` 是训练完成后生成的势函数文件，用于后续的 MD 模拟或预测。"
+    },
+    {
+        "id": "training-02",
+        "category": "模型训练",
+        "question": "train.xyz 文件的格式是什么？",
+        "answer": "它采用扩展的 XYZ 格式 (extxyz)。除了原子坐标和类型外，还必须包含晶格信息 (Lattice)，以及作为标签的能量 (energy)、力 (force) 和位力 (virial)。"
+    },
+    {
+        "id": "training-03",
+        "category": "模型训练",
+        "question": "训练时 Force RMSE 很低但 Energy RMSE 很高，这是为什么？",
+        "answer": "这可能是因为训练集中的能量范围太窄，导致数值上的相对误差看起来大；或者是能量的参考基准（reference）不一致。只要力的描述准确，MD 跑出来的结构通常是合理的。"
+    },
+    {
+        "id": "training-04",
+        "category": "模型训练",
+        "question": "NEP 训练中 ZBL 电势的作用是什么？",
+        "answer": "ZBL 用于描述原子间极短距离（高能碰撞）时的排斥作用。在 `nep.in` 中开启 ZBL 可以防止 MD 模拟中原子核重叠导致的非物理现象，增强势函数的鲁棒性。"
+    },
+    {
+        "id": "training-05",
+        "category": "模型训练",
+        "question": "什么是 NEP89 模型？",
+        "answer": "NEP89 是一个通用的、预训练的大型 NEP 模型，涵盖了元素周期表中大部分元素。用户可以直接使用它进行初步模拟，或者在其基础上针对特定体系进行微调 (Fine-tuning)。"
+    },
+    {
+        "id": "training-06",
+        "category": "模型训练",
+        "question": "如何验证训练好的 NEP 模型精度？",
+        "answer": "可以在 `nep.in` 中设置 `prediction 1`，程序会读取 `train.xyz` (或测试集) 并计算 NEP 预测值与 DFT 真实值的误差（RMSE），输出到 `energy_train.out` 等文件中。"
+    },
+    {
+        "id": "training-07",
+        "category": "模型训练",
+        "question": "如何进行主动学习 (Active Learning) 采样？",
+        "answer": "利用 NEP 计算原子环境的描述符，结合 `nep_active` 或 `nepkit` 等工具，筛选出与训练集差异较大（外推度高）的结构进行 DFT 计算并加入训练集。"
+    },
+    {
+        "id": "training-08",
+        "category": "模型训练",
+        "question": "训练时出现 Loss 震荡不收敛怎么办？",
+        "answer": "可能是 Batch Size 设置过小，或者学习率不合适。对于小体系或内存允许的情况，建议使用 Full Batch (即 Batch Size 等于样本总数) 进行训练以获得更平滑的收敛。"
+    },
+    {
+        "id": "training-09",
+        "category": "模型训练",
+        "question": "训练集中的 Stress 单位应该是什么？",
+        "answer": "GPUMD 要求的 Stress 单位通常是 eV/Å³ (即 GPa 数量级换算后的值)。如果是从 VASP 导入，需要注意单位转换（VASP 的 stress 单位通常是 kBar，且由体积归一化差异）。"
+    },
+    {
+        "id": "training-10",
+        "category": "模型训练",
+        "question": "nep.in 中的 cutoff 该如何选择？",
+        "answer": "Cutoff 决定了原子相互作用的范围。一般建议在 6-8 Å 之间。过小会丢失长程相互作用，过大会显著增加计算量且可能导致过拟合。"
+    },
+    {
+        "id": "usage-01",
+        "category": "日常使用",
+        "question": "模拟时 run.in 中的 time_step 设置多少合适？",
+        "answer": "对于大多数固态体系，1 fs (1.0) 是标准选择。如果体系包含轻原子（如氢）或进行高温高压模拟，建议减小到 0.5 fs 或更低以保证能量守恒。"
+    },
+    {
+        "id": "usage-02",
+        "category": "日常使用",
+        "question": "model.xyz 和 train.xyz 有什么区别？",
+        "answer": "`model.xyz` 是 GPUMD 模拟的初始结构文件，只需要坐标、类型和晶格；`train.xyz` 是 NEP 训练用的数据集，必须包含 DFT 计算出的能量、力和位力标签。"
+    },
+    {
+        "id": "usage-03",
+        "category": "日常使用",
+        "question": "GPUMD 如何计算热导率？",
+        "answer": "推荐使用 HNEMD (Homogeneous Non-Equilibrium MD) 方法，通过 `compute_shc` 命令计算热流自相关或驱动力下的响应。相比 Green-Kubo 方法，HNEMD 收敛更快且精度更高。"
+    },
+    {
+        "id": "usage-04",
+        "category": "日常使用",
+        "question": "模拟过程中出现 'Nan' 错误怎么办？",
+        "answer": "通常是由于系统“爆炸”了。原因包括：初始结构原子重叠严重、时间步长太大、或者使用的势函数（NEP）在当前温度/压力下泛化能力差。尝试最小化能量或减小步长。"
+    },
+    {
+        "id": "usage-05",
+        "category": "日常使用",
+        "question": "如何实现 NPT 系综下的模拟？",
+        "answer": "在 `run.in` 中使用 `ensemble npt_mttk` 或 `ensemble npt_scr` 等命令，并指定温度、压力以及相应的恒温/恒压器参数（如 T-coupling, P-coupling）。"
+    },
+    {
+        "id": "usage-06",
+        "category": "日常使用",
+        "question": "如何接续之前的模拟继续跑（Restart）？",
+        "answer": "在之前的模拟中需输出 restart 文件。新模拟的 `run.in` 中不使用 `model.xyz`，而是使用 `restart` 命令加载之前的检查点文件。"
+    },
+    {
+        "id": "usage-07",
+        "category": "日常使用",
+        "question": "run.in 中的 group 命令有什么用？",
+        "answer": "`group` 命令用于将原子分组。这对于计算特定区域的性质（如界面热阻、分层态密度）或对不同组施加不同的恒温器非常重要。"
+    },
+    {
+        "id": "usage-08",
+        "category": "日常使用",
+        "question": "如何只做静态计算（不跑 MD）？",
+        "answer": "在 `run.in` 中设置 `time_step` 后，直接 `run 0`。GPUMD 会计算当前 `model.xyz` 的能量、力和位力并输出，常用于验证势函数或单点计算。"
+    },
+    {
+        "id": "usage-09",
+        "category": "日常使用",
+        "question": "thermo.out 文件包含哪些信息？",
+        "answer": "包含模拟过程中的热力学量，如温度 (T)、动能 (K)、势能 (U)、总能量 (Etot)、压力 (P) 以及晶格矢量的大小等，按列排列。"
+    },
+    {
+        "id": "usage-10",
+        "category": "日常使用",
+        "question": "GPUMD 支持 PIMD (路径积分分子动力学) 吗？",
+        "answer": "支持。GPUMD 实现了基于 GPU 加速的 PIMD，用于处理包含显著核量子效应的体系（如富氢材料）。"
+    },
+    {
+        "id": "analysis-01",
+        "category": "结果分析",
+        "question": "有没有推荐的 Python 库来处理 GPUMD 数据？",
+        "answer": "推荐使用 `gpyumd`。这是一个专门为 GPUMD 开发的 Python 包，可以方便地读取输入输出文件、处理轨迹、计算声子谱和热导率等。"
+    },
+    {
+        "id": "analysis-02",
+        "category": "结果分析",
+        "question": "nepkit 是什么？",
+        "answer": "`nepkit` (或 NepTrainKit) 是一个辅助工具，提供图形界面或脚本接口，用于可视化 NEP 训练过程、转换 VASP 数据格式、分析 Loss 曲线等。"
+    },
+    {
+        "id": "analysis-03",
+        "category": "结果分析",
+        "question": "如何计算声子谱 (Phonon Dispersion)？",
+        "answer": "可以使用 `compute_phonon` 命令（配合适当的微扰及后处理），或者使用 `phonopy` 结合 GPUMD 接口（通过计算力常数）来得到声子谱。"
+    },
+    {
+        "id": "analysis-04",
+        "category": "结果分析",
+        "question": "如何分析原子轨迹文件 (dump.xyz)？",
+        "answer": "输出的轨迹通常是 standard xyz 或 extended xyz 格式，可以使用 OVITO 软件直接可视化，或者用 ASE、MDAnalysis 等 Python 库读取分析。"
+    },
+    {
+        "id": "theory-01",
+        "category": "原理相关",
+        "question": "NEP 与 DeepMD (DP) 有什么主要区别？",
+        "answer": "NEP 使用预定义的描述符（如径向和角向分量）结合前馈神经网络，训练和推理速度通常比 DeepMD 快很多（尤其在单卡上），适合大规模、长时间模拟；DeepMD 灵活性更强，但在同等硬件下效率通常低于 NEP。"
+    },
+    {
+        "id": "theory-02",
+        "category": "原理相关",
+        "question": "NEP 势函数能否处理化学反应？",
+        "answer": "可以。只要训练集中包含了反应过渡态和产物的结构信息，NEP 作为机器学习势函数可以描述键的断裂和生成，适用于反应分子动力学模拟。"
+    }
+];

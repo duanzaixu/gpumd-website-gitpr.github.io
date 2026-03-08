@@ -1,0 +1,188 @@
+[
+    {
+        "id": "install-01",
+        "category": "Installation",
+        "question": "Which graphics cards does GPUMD support?",
+        "answer": "GPUMD is natively developed based on CUDA and perfectly supports NVIDIA graphics cards. The latest master version also supports AMD graphics cards and DCU computing cards (compiled via HIP)."
+    },
+    {
+        "id": "install-02",
+        "category": "Installation",
+        "question": "How to install GPUMD or pynep on Windows?",
+        "answer": "Direct compilation in a native Windows environment is not recommended due to complex C++ compiler configurations. We recommend using WSL (Windows Subsystem for Linux) or installing directly on a Linux system."
+    },
+    {
+        "id": "install-03",
+        "category": "Installation",
+        "question": "What if 'nvcc' or CUDA libraries are not found during compilation?",
+        "answer": "This indicates that environment variables are not configured correctly. Please check if the CUDA Toolkit is installed and add the CUDA `bin` and `lib64` paths to your system's `PATH` and `LD_LIBRARY_PATH` environment variables."
+    },
+    {
+        "id": "install-04",
+        "category": "Installation",
+        "question": "What is NEP_CPU and what is it used for?",
+        "answer": "NEP_CPU is the CPU implementation of NEP potentials. It is mainly used for inference on machines without GPUs (e.g., calling NEP potentials via LAMMPS) or for quick energy and force calculations in Python scripts."
+    },
+    {
+        "id": "install-05",
+        "category": "Installation",
+        "question": "Does GPUMD support multi-card parallelism?",
+        "answer": "GPUMD's MD simulations are typically designed for efficient single-card execution. NEP training supports multi-card parallelism to accelerate training, provided that relevant parallel libraries (like NCCL) are correctly configured during compilation."
+    },
+    {
+        "id": "training-01",
+        "category": "Model Training",
+        "question": "What is the difference between nep.in and nep.txt?",
+        "answer": "`nep.in` is the input control file for training, containing the neural network structure and training parameters; `nep.txt` is the potential file generated after training, used for subsequent MD simulations or predictions."
+    },
+    {
+        "id": "training-02",
+        "category": "Model Training",
+        "question": "What is the format of the train.xyz file?",
+        "answer": "It uses the extended XYZ format (extxyz). In addition to atomic coordinates and types, it must include Lattice information, as well as energy, force, and virial labels."
+    },
+    {
+        "id": "training-03",
+        "category": "Model Training",
+        "question": "Why is the Force RMSE low but Energy RMSE high during training?",
+        "answer": "This may be because the energy range in the training set is too narrow, making the relative numerical error appear large, or due to inconsistent energy references. As long as the force description is accurate, the structures obtained from MD are usually reasonable."
+    },
+    {
+        "id": "training-04",
+        "category": "Model Training",
+        "question": "What is the role of the ZBL potential in NEP training?",
+        "answer": "ZBL is used to describe repulsive interactions at very short atomic distances (high-energy collisions). Enabling ZBL in `nep.in` prevents non-physical phenomena caused by nuclear overlap in MD simulations and enhances the robustness of the potential."
+    },
+    {
+        "id": "training-05",
+        "category": "Model Training",
+        "question": "What is the NEP89 model?",
+        "answer": "NEP89 is a general-purpose, pre-trained large NEP model covering most elements in the periodic table. Users can use it directly for preliminary simulations or fine-tune it for specific systems."
+    },
+    {
+        "id": "training-06",
+        "category": "Model Training",
+        "question": "How to validate the accuracy of a trained NEP model?",
+        "answer": "You can set `prediction 1` in `nep.in`. The program will read `train.xyz` (or a test set) and calculate the error (RMSE) between NEP predictions and DFT ground truth values, outputting the results to files like `energy_train.out`."
+    },
+    {
+        "id": "training-07",
+        "category": "Model Training",
+        "question": "How to perform Active Learning sampling?",
+        "answer": "Use NEP to calculate descriptors of atomic environments, combined with tools like `nep_active` or `nepkit`, to screen for structures with large differences (high extrapolation) from the training set, perform DFT calculations on them, and add them to the training set."
+    },
+    {
+        "id": "training-08",
+        "category": "Model Training",
+        "question": "What if the Loss oscillates or does not converge during training?",
+        "answer": "The Batch Size might be too small, or the learning rate may be inappropriate. For small systems or when memory allows, it is recommended to use Full Batch (Batch Size equals total samples) training for smoother convergence."
+    },
+    {
+        "id": "training-09",
+        "category": "Model Training",
+        "question": "What should be the unit for Stress in the training set?",
+        "answer": "The Stress unit required by GPUMD is typically eV/Å³ (derived from GPa). If importing from VASP, pay attention to unit conversion (VASP stress is usually in kBar and differs by volume normalization)."
+    },
+    {
+        "id": "training-10",
+        "category": "Model Training",
+        "question": "How to choose the cutoff in nep.in?",
+        "answer": "Cutoff determines the range of atomic interactions. It is generally recommended to be between 6-8 Å. Too small misses long-range interactions; too large significantly increases computational cost and may lead to overfitting."
+    },
+    {
+        "id": "usage-01",
+        "category": "Usage",
+        "question": "What is a suitable time_step setting in run.in?",
+        "answer": "For most solid-state systems, 1 fs (1.0) is a standard choice. If the system contains light atoms (like hydrogen) or for high-temperature/high-pressure simulations, it is recommended to reduce it to 0.5 fs or lower to ensure energy conservation."
+    },
+    {
+        "id": "usage-02",
+        "category": "Usage",
+        "question": "What is the difference between model.xyz and train.xyz?",
+        "answer": "`model.xyz` is the initial structure file for GPUMD simulations, requiring only coordinates, types, and lattice; `train.xyz` is the dataset for NEP training, which must include DFT-calculated energy, force, and virial labels."
+    },
+    {
+        "id": "usage-03",
+        "category": "Usage",
+        "question": "How does GPUMD calculate thermal conductivity?",
+        "answer": "It is recommended to use the HNEMD (Homogeneous Non-Equilibrium MD) method, calculating heat current autocorrelation or response under driving force via the `compute_shc` command. Compared to the Green-Kubo method, HNEMD converges faster and has higher accuracy."
+    },
+    {
+        "id": "usage-04",
+        "category": "Usage",
+        "question": "What to do if a 'Nan' error occurs during simulation?",
+        "answer": "This usually means the system has 'exploded'. Causes include: severe atomic overlap in the initial structure, time step too large, or the potential (NEP) having poor generalization at the current temperature/pressure. Try minimizing energy or reducing the time step."
+    },
+    {
+        "id": "usage-05",
+        "category": "Usage",
+        "question": "How to implement NPT ensemble simulations?",
+        "answer": "Use commands like `ensemble npt_mttk` or `ensemble npt_scr` in `run.in`, and specify temperature, pressure, and corresponding thermostat/barostat parameters (e.g., T-coupling, P-coupling)."
+    },
+    {
+        "id": "usage-06",
+        "category": "Usage",
+        "question": "How to restart a simulation from a previous run?",
+        "answer": "You need to output a restart file in the previous simulation. In the new simulation's `run.in`, do not use `model.xyz`, but instead use the `restart` command to load the previous checkpoint file."
+    },
+    {
+        "id": "usage-07",
+        "category": "Usage",
+        "question": "What is the purpose of the group command in run.in?",
+        "answer": "The `group` command is used to group atoms. This is crucial for calculating properties of specific regions (e.g., interfacial thermal resistance, layered density of states) or applying different thermostats to different groups."
+    },
+    {
+        "id": "usage-08",
+        "category": "Usage",
+        "question": "How to perform only static calculations (no MD)?",
+        "answer": "Set `time_step` in `run.in` and then `run 0`. GPUMD will calculate and output the energy, forces, and virials of the current `model.xyz`, commonly used for potential validation or single-point calculations."
+    },
+    {
+        "id": "usage-09",
+        "category": "Usage",
+        "question": "What information does thermo.out contain?",
+        "answer": "It contains thermodynamic quantities during the simulation, such as temperature (T), kinetic energy (K), potential energy (U), total energy (Etot), pressure (P), and lattice vector magnitudes, arranged in columns."
+    },
+    {
+        "id": "usage-10",
+        "category": "Usage",
+        "question": "Does GPUMD support PIMD (Path Integral Molecular Dynamics)?",
+        "answer": "Yes. GPUMD implements GPU-accelerated PIMD for handling systems with significant nuclear quantum effects (e.g., hydrogen-rich materials)."
+    },
+    {
+        "id": "analysis-01",
+        "category": "Analysis",
+        "question": "Is there a recommended Python library for processing GPUMD data?",
+        "answer": "We recommend `gpyumd`. This is a Python package specifically developed for GPUMD, facilitating easy reading of input/output files, trajectory processing, and calculation of phonon spectra and thermal conductivity."
+    },
+    {
+        "id": "analysis-02",
+        "category": "Analysis",
+        "question": "What is nepkit?",
+        "answer": "`nepkit` (or NepTrainKit) is an auxiliary tool providing a GUI or script interface for visualizing the NEP training process, converting VASP data formats, analyzing Loss curves, etc."
+    },
+    {
+        "id": "analysis-03",
+        "category": "Analysis",
+        "question": "How to calculate Phonon Dispersion?",
+        "answer": "You can use the `compute_phonon` command (with appropriate perturbation and post-processing), or use `phonopy` combined with the GPUMD interface (via force constant calculation) to obtain phonon spectra."
+    },
+    {
+        "id": "analysis-04",
+        "category": "Analysis",
+        "question": "How to analyze the atomic trajectory file (dump.xyz)?",
+        "answer": "The output trajectory is usually in standard xyz or extended xyz format, which can be visualized directly using OVITO software, or read and analyzed using Python libraries like ASE or MDAnalysis."
+    },
+    {
+        "id": "theory-01",
+        "category": "Theory",
+        "question": "What is the main difference between NEP and DeepMD (DP)?",
+        "answer": "NEP uses predefined descriptors (e.g., radial and angular components) combined with a Feedforward Neural Network. Its training and inference speeds are typically much faster than DeepMD (especially on a single card), making it suitable for large-scale, long-time simulations. DeepMD is more flexible but generally less efficient than NEP on equivalent hardware."
+    },
+    {
+        "id": "theory-02",
+        "category": "Theory",
+        "question": "Can NEP potentials handle chemical reactions?",
+        "answer": "Yes. As long as the training set includes structural information of reaction transition states and products, NEP as a machine learning potential can describe bond breaking and formation, making it suitable for reactive molecular dynamics simulations."
+    }
+]

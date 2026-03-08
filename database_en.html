@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEP Potential Database - GPUMD</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- External Resources -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/database-hero.css">
+    <link rel="stylesheet" href="css/database-modal.css">
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    
+    <script>
+        // Mobile Detection and Blocker
+        (function() {
+            function isMobile() {
+                const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+                // Check for iOS, Android, Windows Phone, and other mobile devices
+                return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
+            }
+
+            if (isMobile()) {
+                // Force viewport to device width to prevent zooming out
+                let viewport = document.querySelector('meta[name="viewport"]');
+                if (viewport) {
+                    viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+                } else {
+                    viewport = document.createElement('meta');
+                    viewport.name = "viewport";
+                    viewport.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no";
+                    document.head.appendChild(viewport);
+                }
+
+                // Add CSS to force fixed positioning context on body
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    body.mobile-blocked {
+                        overflow: hidden !important;
+                        position: fixed !important;
+                        width: 100% !important;
+                        height: 100% !important;
+                    }
+                `;
+                document.head.appendChild(style);
+
+                function createOverlay() {
+                    if (document.getElementById('mobile-blocker-overlay')) return;
+
+                    const overlay = document.createElement('div');
+                    overlay.id = 'mobile-blocker-overlay';
+                    overlay.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100vw;
+                        height: 100vh;
+                        background-color: #f8fafc;
+                        z-index: 2147483647;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 2rem;
+                        text-align: center;
+                        overflow: hidden;
+                    `;
+
+                    overlay.innerHTML = `
+                        <div style="background: white; padding: 2rem; border-radius: 1.5rem; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); width: 90%; max-width: 320px;">
+                            <div style="width: 3.5rem; height: 3.5rem; background: #fee2e2; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem auto;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                                </svg>
+                            </div>
+                            <h2 style="font-size: 1.125rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">Mobile View Not Supported</h2>
+                            <p style="font-size: 0.875rem; color: #64748b; line-height: 1.5;">
+                                To ensure the best experience,<br>please visit on a PC.
+                            </p>
+                            <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid #f1f5f9;">
+                                <a href="home_en.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1.25rem; background: #0ea5e9; color: white; border-radius: 0.75rem; font-weight: 600; text-decoration: none; font-size: 0.875rem; transition: background 0.2s;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                    </svg>
+                                    Back to Home
+                                </a>
+                            </div>
+                        </div>
+                    `;
+
+                    document.body.classList.add('mobile-blocked');
+                    document.body.appendChild(overlay);
+                }
+
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', createOverlay);
+                } else {
+                    createOverlay();
+                }
+            }
+        })();
+    </script>
+    
+    <style>
+        /* Database Specific Styles */
+        :root {
+            /* Scale factor for periodic table fonts */
+            --pt-scale: 0.8; 
+            /* Scale factor for legend fonts */
+            --legend-scale: 0.75;
+        }
+
+        .periodic-table-grid {
+            display: grid;
+            grid-template-columns: repeat(18, minmax(0, 1fr));
+            gap: 4px;
+            padding: 1rem;
+            min-width: 1200px; /* Base width for scaling reference */
+            
+            /* Enable container queries */
+            container-type: inline-size;
+            container-name: periodic-table;
+        }
+        
+        /* Apply legend scaling */
+        .periodic-table-legend .text-base {
+            font-size: calc(1rem * var(--legend-scale));
+        }
+
+        .element-cell {
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent; /* 2px solid border */
+            position: relative;
+            padding: 0.3cqw;
+        }
+
+        .element-cell:hover {
+            transform: scale(1.1);
+            z-index: 20;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            filter: brightness(0.95); /* Darken slightly on hover */
+        }
+
+        .element-cell.selected {
+            background: #0ea5e9 !important;
+            color: white !important;
+            border-color: #0284c7 !important;
+            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.3);
+            z-index: 10;
+        }
+
+        .element-cell.selected::after {
+            display: none;
+        }
+
+        .element-cell .atomic-number {
+            /* Base: ~11px at 1200px width. 11/1200*100 = 0.9cqw */
+            font-size: calc(0.9cqw * var(--pt-scale)); 
+            position: absolute;
+            top: 4px;
+            left: 6px;
+            opacity: 0.7;
+            font-weight: 600;
+        }
+
+        .element-cell .symbol {
+            /* Base: ~20px at 1200px width. 20/1200*100 = 1.66cqw */
+            font-size: calc(1.7cqw * var(--pt-scale));
+            font-weight: 800;
+            margin-top: 4px;
+            margin-bottom: 2px;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+        }
+
+        .element-cell .name {
+            /* Base: ~11px at 1200px width. 11/1200*100 = 0.9cqw */
+            font-size: calc(0.9cqw * var(--pt-scale));
+            text-align: center;
+            line-height: 1.1;
+            opacity: 0.9;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+            font-weight: 600;
+        }
+
+
+        /* Element Categories - High Contrast & 2px Borders */
+        .nonmetal { background: #d1fae5; color: #065f46; border: 2px solid #6ee7b7; }
+        .noble-gas { background: #f3f4f6; color: #1f2937; border: 2px solid #d1d5db; }
+        .alkali-metal { background: #fee2e2; color: #991b1b; border: 2px solid #fca5a5; }
+        .alkaline-earth { background: #ffedd5; color: #9a3412; border: 2px solid #fdba74; }
+        .metalloid { background: #ccfbf1; color: #115e59; border: 2px solid #5eead4; }
+        .halogen { background: #ede9fe; color: #5b21b6; border: 2px solid #c4b5fd; }
+        .post-transition { background: #e0f2fe; color: #075985; border: 2px solid #7dd3fc; }
+        .transition { background: #dbeafe; color: #1e40af; border: 2px solid #93c5fd; }
+        .lanthanide { background: #fce7f3; color: #9d174d; border: 2px solid #f9a8d4; }
+        .actinide { background: #ffedd5; color: #9a3412; border: 2px solid #fdba74; }
+        
+        .marker { 
+            background: transparent; 
+            color: #64748b; 
+            font-size: 12px; 
+            font-weight: 800;
+            pointer-events: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .element-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            background: #f0f9ff;
+            color: #0ea5e9;
+            border: 1px solid #bae6fd;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .element-tag:hover {
+            background: #e0f2fe;
+            border-color: #7dd3fc;
+        }
+
+        .force-field-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .force-field-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #e0f2fe;
+        }
+
+        .element-mini-tag {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 6px;
+            background: #f8fafc;
+            color: #64748b;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+        }
+
+        /* Search Container & Button */
+        .search-container {
+            position: relative;
+            flex-grow: 1;
+            width: 100%;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s;
+        }
+
+        .search-container:focus-within {
+            box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.15), 0 4px 6px -2px rgba(14, 165, 233, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 7rem 1rem 3rem; /* Space for icon (left) and button (right) */
+            border-radius: 1rem;
+            border: 1px solid #e2e8f0;
+            background: transparent;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #0ea5e9;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            pointer-events: none;
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 6px;
+            top: 6px;
+            bottom: 6px;
+            padding: 0 20px;
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            color: white;
+            border-radius: 0.8rem;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(14, 165, 233, 0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .search-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(14, 165, 233, 0.3);
+            filter: brightness(1.05);
+        }
+
+        .search-btn:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased text-slate-800 bg-white font-sans flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="glass-nav sticky top-0 z-50 border-b border-slate-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="home_en.html" class="flex items-center gap-3 group">
+                        <img src="images/logo.png" alt="GPUMD Logo" class="h-12 w-auto transform transition-transform group-hover:scale-105">
+                        <span class="text-3xl font-bold bg-gradient-to-r from-brand-700 to-brand-500 bg-clip-text text-transparent">
+                            GPUMD
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="hidden lg:flex items-center space-x-1">
+                    <a href="home_en.html" class="nav-link">Home</a>
+                    
+                    <!-- Dropdown: Software Download -->
+                    <div class="relative group">
+                        <button class="nav-link-dropdown">
+                            Download <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="download_en.html#features" class="dropdown-item">Features</a>
+                            <a href="download_en.html#latest" class="dropdown-item">Latest Version</a>
+                            <a href="download_en.html#history" class="dropdown-item">History Versions</a>
+                        </div>
+                    </div>
+
+                    <a href="database_en.html" class="nav-link active">NEP Database</a>
+
+                    <!-- Dropdown: Ecosystem -->
+                    <div class="relative group">
+                        <button class="nav-link-dropdown">
+                            Ecosystem <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="faq_en.html" class="dropdown-item">FAQ</a>
+                            <a href="ecosystem_en.html" class="dropdown-item">Tools</a>
+                            <a href="support_en.html" class="dropdown-item">Community</a>
+                            <a href="books_en.html" class="dropdown-item">Books</a>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown: About Us -->
+                    <div class="relative group">
+                        <button class="nav-link-dropdown">
+                            About <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="teams_en.html" class="dropdown-item">Team</a>
+                            <a href="units_en.html" class="dropdown-item">Units</a>
+                            <a href="contact_en.html" class="dropdown-item">Contact</a>
+                        </div>
+                    </div>
+
+                    <!-- Language Toggle -->
+                    <a href="database.html" class="ml-2 flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 text-slate-600 hover:border-brand-500 hover:text-brand-600 transition-all text-sm font-bold no-underline" onclick="window.location.href='database.html'">
+                        <i data-lucide="globe" class="w-4 h-4"></i>
+                        CN / EN
+                    </a>
+                </div>
+
+                <div class="flex items-center lg:hidden">
+                    <button id="mobile-menu-btn" class="p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none transition-colors">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 shadow-xl absolute w-full left-0 max-h-[80vh] overflow-y-auto">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="home_en.html" class="block px-3 py-3 rounded-lg text-base font-bold text-slate-600 hover:text-brand-600 hover:bg-slate-50">Home</a>
+                
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">Download</div>
+                    <a href="download_en.html#features" class="block px-6 py-2 text-base font-medium text-slate-600">Features</a>
+                    <a href="download_en.html#latest" class="block px-6 py-2 text-base font-medium text-slate-600">Latest Version</a>
+                    <a href="download_en.html#history" class="block px-6 py-2 text-base font-medium text-slate-600">History Versions</a>
+                </div>
+
+                <a href="database_en.html" class="block px-3 py-3 rounded-lg text-base font-bold text-brand-600 bg-brand-50">NEP Database</a>
+
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">Ecosystem</div>
+                    <a href="faq_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">FAQ</a>
+                    <a href="ecosystem_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Tools</a>
+                    <a href="support_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Community</a>
+                    <a href="books_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Books</a>
+                </div>
+
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">About</div>
+                    <a href="teams_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Team</a>
+                    <a href="units_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Units</a>
+                    <a href="contact_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="database-hero-section hero-bg">
+        <div class="hero-orb bg-brand-400 top-0 -left-20 opacity-20"></div>
+        <div class="hero-orb bg-purple-400 bottom-0 -right-20 opacity-20" style="animation-delay: -5s;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="font-extrabold text-slate-900">NEP Potential Database</h1>
+            <p class="text-slate-600">
+                The NEP Potential Database is a public resource platform for researchers in computational materials science, physical chemistry, and related fields. Its main purpose is to promote the adoption, validation, and collaboration of NEP models, providing efficient and reliable interaction description tools for cross-scale atomic simulations. Each potential comes with clear documentation and corresponding literature, explicitly stating its training data sources, element composition, and scope of application.
+            </p>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 database-main-container flex-grow">
+
+        <!-- Periodic Table -->
+        <section class="periodic-table-section">
+            <div class="periodic-table-card">
+                <div class="periodic-table-header">
+                    <h3 class="font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="layout-grid" class="w-4 h-4 text-brand-600"></i>
+                        Click elements to filter
+                    </h3>
+                    <!-- <div class="text-xs text-slate-400">Click elements to filter</div> -->
+                </div>
+                <div class="overflow-x-auto">
+                    <div id="periodic-table-container">
+                        <!-- JS will render periodic table here -->
+                    </div>
+                </div>
+                
+                <!-- Legend -->
+                <div class="periodic-table-legend">
+                    <div class="flex flex-wrap gap-y-3 gap-x-6 justify-center">
+                        <div class="flex items-center gap-2 text-base leading-relaxed font-bold uppercase tracking-wider text-slate-500">
+                            <div class="w-4 h-4 rounded bg-fee2e2 alkali-metal"></div> Alkali Metal
+                        </div>
+                        <div class="flex items-center gap-2 text-base leading-relaxed font-bold uppercase tracking-wider text-slate-500">
+                            <div class="w-4 h-4 rounded bg-ffedd5 alkaline-earth"></div> Alkaline Earth
+                        </div>
+                        <div class="flex items-center gap-2 text-base leading-relaxed font-bold uppercase tracking-wider text-slate-500">
+                            <div class="w-4 h-4 rounded bg-eff6ff transition"></div> Transition Metal
+                        </div>
+                        <div class="flex items-center gap-2 text-base leading-relaxed font-bold uppercase tracking-wider text-slate-500">
+                            <div class="w-4 h-4 rounded bg-f0fdf4 nonmetal"></div> Nonmetal
+                        </div>
+                        <div class="flex items-center gap-2 text-base leading-relaxed font-bold uppercase tracking-wider text-slate-500">
+                            <div class="w-4 h-4 rounded bg-f5f3ff halogen"></div> Halogen
+                        </div>
+                        <div class="flex items-center gap-2 text-base leading-relaxed font-bold uppercase tracking-wider text-slate-500">
+                            <div class="w-4 h-4 rounded bg-f8fafc noble-gas"></div> Noble Gas
+                        </div>
+                        <div class="flex items-center gap-2 text-base leading-relaxed font-bold uppercase tracking-wider text-slate-500">
+                            <div class="w-4 h-4 rounded bg-fff1f2 lanthanide"></div> Lanthanide/Actinide
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results-section">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-3">
+                    Potential List
+                    <span id="results-count-badge" class="px-2.5 py-0.5 rounded-full bg-brand-100 text-brand-700 text-sm font-bold">
+                        <span id="results-count">0</span>
+                    </span>
+                </h2>
+                <div class="flex items-center gap-4">
+                    <span class="text-sm text-slate-400">Sort by:</span>
+                    <select class="bg-transparent border-none text-sm font-bold text-slate-600 focus:ring-0 cursor-pointer">
+                        <option>Newest</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="results-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- JS will render cards here -->
+            </div>
+
+            <!-- Pagination -->
+            <div id="pagination-container">
+                <!-- JS will render pagination here -->
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-8 lg:py-16 border-t border-slate-900 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-8 lg:gap-x-12 lg:gap-y-16 mb-8 lg:mb-16">
+                <!-- Column 1: Brand & Status -->
+                <div class="col-span-2 lg:col-span-2">
+                    <a href="home_en.html" class="flex items-center gap-2 mb-4 lg:mb-8 group">
+                        <img src="images/logo.png" alt="GPUMD Logo" class="h-8 lg:h-10 w-auto">
+                        <span class="text-xl lg:text-2xl font-black text-white tracking-tight">GPUMD</span>
+                    </a>
+                    <div class="space-y-4 lg:space-y-6">
+                        <p class="text-xs lg:text-sm leading-relaxed text-slate-400">
+                            High-performance CPU+GPU heterogeneous parallel molecular dynamics software, dedicated to providing extreme computational efficiency and accuracy for complex many-body systems.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Column 2: Software -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">Software & Database</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="features_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Features</a></li>
+                        <li><a href="download_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Latest Version</a></li>
+                        <li><a href="database_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>NEP Database</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Resources -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">Resources & Docs</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="https://gpumd.org" target="_blank" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Official Manual</a></li>
+                        <li><a href="faq_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>FAQ</a></li>
+                        <li><a href="books_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Books</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Community -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">Community & Tools</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="ecosystem_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Tools</a></li>
+                        <li><a href="support_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Support</a></li>
+                        <li><a href="https://github.com/brucefan1983/GPUMD" target="_blank" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>GitHub Repo</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 5: Social & QR -->
+                <div class="col-span-2 lg:col-span-1 flex lg:justify-end">
+                    <div class="space-y-4 lg:space-y-8">
+                        <p class="text-white text-[10px] font-black mb-4 lg:mb-6 uppercase tracking-[0.2em] opacity-40 lg:text-right">Connect</p>
+                        <div class="flex gap-4 lg:gap-6 lg:justify-end">
+                            <div class="group relative">
+                                <div class="w-16 h-16 lg:w-20 lg:h-20 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center p-2 group-hover:border-brand-500/50 group-hover:bg-white/10 transition-all duration-500 shadow-2xl">
+                                    <img src="images/qr_qq.png" alt="QQ Group" class="w-full h-full object-contain">
+                                </div>
+                                <p class="text-[9px] mt-2 lg:mt-3 text-center font-bold opacity-40 group-hover:opacity-100 transition-opacity">QQ Group</p>
+                            </div>
+                            <div class="group relative">
+                                <div class="w-16 h-16 lg:w-20 lg:h-20 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center p-2 group-hover:border-brand-500/50 group-hover:bg-white/10 transition-all duration-500 shadow-2xl">
+                                    <img src="images/qr_wechat.png" alt="WeChat" class="w-full h-full object-contain">
+                                </div>
+                                <p class="text-[9px] mt-2 lg:mt-3 text-center font-bold opacity-40 group-hover:opacity-100 transition-opacity">WeChat</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 lg:pt-12 border-t border-slate-900 flex flex-col md:flex-row items-center justify-between gap-6 text-[11px] font-medium tracking-wider">
+                <p class="opacity-40">© 2026 GPUMD TEAM. PROUDLY DEVELOPED FOR SCIENCE.</p>
+                <a href="https://beian.miit.gov.cn/" target="_blank" class="opacity-40 hover:opacity-100 transition-opacity">苏ICP备2025218443号-1</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Force Field Detail Modal -->
+    <div id="db-modal" class="db-modal-backdrop" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+        <div class="db-modal-container bg-gradient-to-br from-white via-sky-50 to-sky-100 relative overflow-hidden shadow-2xl" role="document">
+            
+            <!-- Top-Right Decoration: Hexagon (Structure) -->
+            <i data-lucide="hexagon" class="absolute -top-32 -right-32 w-96 h-96 text-sky-200/20 fill-sky-50/30 stroke-[0.5] pointer-events-none"></i>
+
+            <!-- Bottom-Left Decoration: Box (Data) -->
+            <i data-lucide="box" class="absolute -bottom-32 -left-32 w-80 h-80 text-indigo-200/20 fill-indigo-50/30 stroke-[0.5] pointer-events-none"></i>
+
+            <button id="db-modal-close" class="db-modal-close-btn absolute z-50 hover:rotate-90 transition-transform duration-300 shadow-sm bg-white/80 backdrop-blur-sm border-slate-200 text-slate-400 hover:text-brand-500 hover:border-brand-200" aria-label="Close">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            
+            <div class="db-modal-header relative z-10 bg-transparent">
+                <div class="db-modal-title-group pr-12">
+                    <h2 id="modal-title" class="db-modal-title">Force Field Name</h2>
+                    <div class="flex items-center gap-3">
+                        <span id="modal-date" class="text-xs font-bold text-slate-400 uppercase tracking-wider bg-white/60 backdrop-blur-sm px-2 py-1 rounded border border-slate-100 shadow-sm">
+                            2024
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="db-modal-content custom-scrollbar relative z-10">
+                <!-- Introduction -->
+                <div class="db-modal-section">
+                    <h3 class="db-modal-label"><i data-lucide="info" class="w-3.5 h-3.5"></i> Introduction</h3>
+                    <p id="modal-intro" class="db-modal-text">
+                        Loading...
+                    </p>
+                </div>
+
+                <!-- Elements -->
+                <div class="db-modal-section">
+                    <h3 class="db-modal-label"><i data-lucide="layers" class="w-3.5 h-3.5"></i> Elements</h3>
+                    <div id="modal-elements" class="db-modal-elements">
+                        <!-- Elements injected here -->
+                    </div>
+                </div>
+
+                <!-- Authors -->
+                <div class="db-modal-section">
+                    <h3 class="db-modal-label"><i data-lucide="users" class="w-3.5 h-3.5"></i> Authors</h3>
+                    <p id="modal-authors" class="db-modal-text font-medium text-slate-700">
+                        Loading...
+                    </p>
+                </div>
+
+                <!-- Publication -->
+                <div class="db-modal-section">
+                    <h3 class="db-modal-label"><i data-lucide="book-open" class="w-3.5 h-3.5"></i> Publications</h3>
+                    <div class="db-modal-pub-card">
+                        <div id="modal-pub-title" class="db-modal-pub-title">Publication Title</div>
+                        <div id="modal-pub-journal" class="db-modal-pub-journal">Journal Name, Year</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="db-modal-footer">
+                <a id="modal-btn-doi" href="#" target="_blank" class="db-modal-btn db-modal-btn-secondary">
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                    View Paper
+                </a>
+                <a id="modal-btn-repo" href="#" target="_blank" class="db-modal-btn db-modal-btn-secondary">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                    Source Code
+                </a>
+                <a id="modal-btn-download" href="#" class="db-modal-btn db-modal-btn-secondary">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    Download nep.txt
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Database JS -->
+    <script src="js/database.js"></script>
+</body>
+</html>

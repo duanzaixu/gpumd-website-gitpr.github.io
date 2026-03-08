@@ -1,0 +1,149 @@
+{
+  "force_fields": [
+    {
+      "id": "001-2025-nep89",
+      "name": "Universal NEP89",
+      "intro": "Universal neuroevolution potential for inorganic and organic materials across 89 elements.",
+      "elements": ["H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne", "Na", "Mg", "Al", "Si", "P", "S", "Cl", "Ar", "K", "Ca", "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As", "Se", "Br", "Kr", "Rb", "Sr", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn", "Sb", "Te", "I", "Xe", "Cs", "Ba", "La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu", "Hf", "Ta", "W", "Re", "Os", "Ir", "Pt", "Au", "Hg", "Tl", "Pb", "Bi", "Po", "At", "Rn", "Fr", "Ra", "Ac"],
+      "authors": ["Ting Liang", "Ke Xu", "Eric Lindgren", "Zherui Chen", "Rui Zhao", "Jiahui Liu", "Esmée Berger", "Benrui Tang", "Bohan Zhang", "Yanzhou Wang", "Keke Song", "Penghua Ying", "Nan Xu", "Haikuan Dong", "Shunda Chen", "Paul Erhart", "Zheyong Fan", "Tapio Ala-Nissila", "Jianbin Xu"],
+      "publication": {
+        "title": "NEP89: Universal neuroevolution potential for inorganic and organic materials across 89 elements",
+        "journal": "arXiv",
+        "year": 2025,
+        "doi": "10.48550/arXiv.2504.21286"
+      },
+      "repository_url": "https://github.com/brucefan1983/GPUMD/tree/master/potentials/nep/nep89_20250409",
+      "created_date": "2025-04-09",
+      "nep_file": "potentials/001-2025-nep89.txt"
+    },
+    {
+      "id": "002-2024-unep-v1",
+      "name": "UNEP-v1 (16 Metals)",
+      "intro": "A general-purpose machine-learned potential for 16 elemental metals and their alloys, covering a wide range of physical properties.",
+      "elements": ["Al", "Ti", "Cu", "Ni", "Fe", "Mo", "W", "Ag", "Au", "Pd", "Pt", "Ta", "Nb", "V", "Cr", "Zr"],
+      "authors": ["Keke Song", "Rui Zhao", "Jiahui Liu", "Yanzhou Wang", "Eric Lindgren", "Yong Wang", "Shunda Chen", "Ke Xu", "Ting Liang", "Penghua Ying", "Nan Xu", "Zhiqiang Zhao", "Jiuyang Shi", "Junjie Wang", "Shuang Lyu", "Zezhu Zeng", "Shirong Liang", "Haikuan Dong", "Ligang Sun", "Yue Chen", "Zhuhua Zhang", "Wanlin Guo", "Ping Qian", "Jian Sun", "Zheyong Fan"],
+      "publication": {
+        "title": "General-purpose machine-learned potential for 16 elemental metals and their alloys",
+        "journal": "Nature Communications",
+        "year": 2024,
+        "doi": "10.1038/s41467-024-54554-x"
+      },
+      "repository_url": "https://github.com/brucefan1983/GPUMD/blob/master/potentials/nep/Song-2024-UNEP-v1-AgAlAuCrCuMgMoNiPbPdPtTaTiVWZr.txt",
+      "created_date": "2024-05-09",
+      "nep_file": "potentials/002-2024-unep-v1.txt"
+    },
+
+    {
+      "id": "003-2022-nep-si-3body",
+      "name": "Silicon NEP (3body)",
+      "intro": "The 3body NEP model for silicon, applicable to most of the phases of silicon.",
+      "elements": ["Si"],
+      "authors": ["Zheyong Fan", "Yanzhou Wang", "Penghua Ying", "Keke Song", "Junjie Wang", "Yong Wang", "Zezhu Zeng", "Ke Xu", "Eric Lindgren", "J. Magnus Rahm", "Alexander J. Gabourie", "Jiahui Liu", "Haikuan Dong", "Jianyang Wu", "Yue Chen", "Zheng Zhong", "Jian Sun", "Paul Erhart", "Yanjing Su", "Tapio Ala-Nissila"],
+      "publication": {
+        "title": "GPUMD: A package for constructing accurate machine-learned potentials and performing highly efficient atomistic simulations",
+        "journal": "The Journal of Chemical Physics",
+        "year": 2022,
+        "doi": "10.1063/5.0106617"
+      },
+      "repository_url": "https://github.com/brucefan1983/GPUMD/tree/master/potentials/nep",
+      "created_date": "2022-06-29",
+      "nep_file": "003-2022-nep-si-3body.txt"
+    },
+    {
+      "id": "004-2022-nep-si-4body",
+      "name": "Silicon NEP (4body)",
+      "intro": "The 4body NEP model for silicon, applicable to most of the phases of silicon.",
+      "elements": ["Si"],
+      "authors": ["Zheyong Fan", "Yanzhou Wang", "Penghua Ying", "Keke Song", "Junjie Wang", "Yong Wang", "Zezhu Zeng", "Ke Xu", "Eric Lindgren", "J. Magnus Rahm", "Alexander J. Gabourie", "Jiahui Liu", "Haikuan Dong", "Jianyang Wu", "Yue Chen", "Zheng Zhong", "Jian Sun", "Paul Erhart", "Yanjing Su", "Tapio Ala-Nissila"],
+      "publication": {
+        "title": "GPUMD: A package for constructing accurate machine-learned potentials and performing highly efficient atomistic simulations",
+        "journal": "The Journal of Chemical Physics",
+        "year": 2022,
+        "doi": "10.1063/5.0106617"
+      },
+      "repository_url": "https://github.com/brucefan1983/GPUMD/tree/master/potentials/nep",
+      "created_date": "2022-06-29",
+      "nep_file": "004-2022-nep-si-4body.txt"
+    },
+    {
+      "id": "005-2022-nep-si-5body",
+      "name": "Silicon NEP (5body)",
+      "intro": "The 5body NEP model for silicon, applicable to most of the phases of silicon.",
+      "elements": ["Si"],
+      "authors": ["Zheyong Fan", "Yanzhou Wang", "Penghua Ying", "Keke Song", "Junjie Wang", "Yong Wang", "Zezhu Zeng", "Ke Xu", "Eric Lindgren", "J. Magnus Rahm", "Alexander J. Gabourie", "Jiahui Liu", "Haikuan Dong", "Jianyang Wu", "Yue Chen", "Zheng Zhong", "Jian Sun", "Paul Erhart", "Yanjing Su", "Tapio Ala-Nissila"],
+      "publication": {
+        "title": "GPUMD: A package for constructing accurate machine-learned potentials and performing highly efficient atomistic simulations",
+        "journal": "The Journal of Chemical Physics",
+        "year": 2022,
+        "doi": "10.1063/5.0106617"
+      },
+      "repository_url": "https://github.com/brucefan1983/GPUMD/tree/master/potentials/nep",
+      "created_date": "2022-06-29",
+      "nep_file": "005-2022-nep-si-5body.txt"
+    },
+    {
+      "id": "006-2024-nep-c",
+      "name": "Carbon NEP (JPCM 2024)",
+      "intro": "A robust NEP4 model for carbon, capable of describing diamond, graphite, and amorphous carbon with high fidelity.",
+      "elements": ["C"],
+      "authors": ["Zheyong Fan", "Yang Xiao", "Yanzhou Wang", "Penghua Ying", "Shunda Chen", "Haikuan Dong"],
+      "publication": {
+        "title": "Combining linear-scaling quantum transport and machine-learning molecular dynamics to study thermal and electronic transports in complex materials",
+        "journal": "Journal of Physics: Condensed Matter",
+        "year": 2024,
+        "doi": "10.1088/1361-648X/ad31c2"
+      },
+      "repository_url": "https://github.com/brucefan1983/GPUMD/tree/master/potentials/nep",
+      "created_date": "2024-03-17",
+      "nep_file": "006-2024-nep-c.txt"
+    },
+    {
+      "id": "007-2022-nep-c",
+      "name": "Carbon NEP (JCP 2022)",
+      "intro": "A NEP3 model for carbon, mainly for amorphous carbon.",
+      "elements": ["C"],
+      "authors": ["Zheyong Fan", "Yanzhou Wang", "Penghua Ying", "Keke Song", "Junjie Wang", "Yong Wang", "Zezhu Zeng", "Ke Xu", "Eric Lindgren", "J. Magnus Rahm", "Alexander J. Gabourie", "Jiahui Liu", "Haikuan Dong", "Jianyang Wu", "Yue Chen", "Zheng Zhong", "Jian Sun", "Paul Erhart", "Yanjing Su", "Tapio Ala-Nissila"],
+      "publication": {
+        "title": "GPUMD: A package for constructing accurate machine-learned potentials and performing highly efficient atomistic simulations",
+        "journal": "The Journal of Chemical Physics",
+        "year": 2022,
+        "doi": "10.1063/5.0106617"
+      },
+      "repository_url": "https://github.com/brucefan1983/GPUMD/tree/master/potentials/nep",
+      "created_date": "2022-04-22",
+      "nep_file": "007-2022-nep-c.txt"
+    },
+    {
+      "id": "008-2021-nep-si",
+      "name": "Silicene NEP (PRB 2021)",
+      "intro": "The original NEP model applicable to monolayer silicene with temperature < 900 K and biaxial in-plane strain from -1% to 1%.",
+      "elements": ["Si"],
+      "authors": ["Zheyong Fan", "Zezhu Zeng", "Cunzhi Zhang", "Yanzhou Wang", "Keke Song", "Haikuan Dong", "Yue Chen", "and Tapio Ala-Nissila"],
+      "publication": {
+        "title": "Neuroevolution machine learning potentials: Combining high accuracy and low cost in atomistic simulations and application to heat transport",
+        "journal": "Physical Review B",
+        "year": 2021,
+        "doi": "10.1103/PhysRevB.104.104309"
+      },
+      "repository_url": "https://gitlab.com/brucefan1983/nep-data/-/tree/main/2021_Fan_Silicene",
+      "created_date": "2021-09-20",
+      "nep_file": "potentials/008-2021-nep-si.txt"
+    },
+    {
+      "id": "009-2023-nep-sio2",
+      "name": "Silica (SiO2) NEP",
+      "intro": "Designed for amorphous and crystalline silica phases, capturing the complex network structure and thermal properties.",
+      "elements": ["Si", "O"],
+      "authors": ["Ting Liang", "Penghua Ying", "Ke Xu", "Zhenqiang Ye", "Chao Ling", "Zheyong Fan", "Jianbin Xu"],
+      "publication": {
+        "title": "Mechanisms of temperature-dependent thermal transport in amorphous silica from machine-learning molecular dynamics",
+        "journal": "Physical Review B",
+        "year": 2023,
+        "doi": "10.1103/PhysRevB.108.184203"
+      },
+      "repository_url": "https://gitlab.com/brucefan1983/nep-data/-/tree/main/2023_Liang_SiO2",
+      "created_date": "2023-08-05",
+      "nep_file": "potentials/009-2023-nep-sio2"
+    }
+  ]
+}

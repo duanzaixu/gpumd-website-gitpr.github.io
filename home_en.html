@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPUMD - Efficient General-Purpose MD Simulation Software</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/common.css">
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    <style>
+        /* Font size adjustments for English */
+        .general-hero-title {
+            font-size: clamp(2rem, 4vw, 3.5rem) !important; /* Reduced from default */
+        }
+        .general-hero-description {
+            font-size: clamp(1rem, 1.5vw, 1.125rem) !important;
+        }
+    </style>
+</head>
+<body class="antialiased text-slate-800 bg-white font-sans flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="glass-nav sticky top-0 z-50 border-b border-slate-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 lg:h-20">
+                <div class="flex items-center">
+                    <a href="home_en.html" class="flex items-center gap-2 lg:gap-3 group">
+                        <img src="images/logo.png" alt="GPUMD Logo" class="h-8 lg:h-12 w-auto transform transition-transform group-hover:scale-105">
+                        <span class="text-xl lg:text-3xl font-bold bg-gradient-to-r from-brand-700 to-brand-500 bg-clip-text text-transparent">
+                            GPUMD
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="hidden lg:flex items-center space-x-1">
+                    <a href="home_en.html" class="nav-link active">Home</a>
+                    
+                    <!-- Dropdown: Download -->
+                    <div class="relative group">
+                        <button class="nav-link-dropdown">
+                            Download <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="features_en.html" class="dropdown-item">Features</a>
+                            <a href="download_en.html#latest" class="dropdown-item">Latest Version</a>
+                            <a href="download_en.html#history" class="dropdown-item">History</a>
+                        </div>
+                    </div>
+
+                    <a href="database_en.html" class="nav-link">NEP Database</a>
+
+                    <!-- Dropdown: Ecosystem -->
+                    <div class="relative group">
+                        <button class="nav-link-dropdown">
+                            Ecosystem <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="faq_en.html" class="dropdown-item">FAQ</a>
+                            <a href="ecosystem_en.html" class="dropdown-item">Tools</a>
+                            <a href="support_en.html" class="dropdown-item">Support</a>
+                            <a href="books_en.html" class="dropdown-item">Books</a>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown: About -->
+                    <div class="relative group">
+                        <button class="nav-link-dropdown">
+                            About Us <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="teams_en.html" class="dropdown-item">Team</a>
+                            <a href="units_en.html" class="dropdown-item">Acknowledgments</a>
+                            <a href="contact_en.html" class="dropdown-item">Contact</a>
+                        </div>
+                    </div>
+
+                    <!-- Language Toggle -->
+                    <button class="ml-2 flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 text-slate-600 hover:border-brand-500 hover:text-brand-600 transition-all text-sm font-bold" onclick="window.location.href='home.html'">
+                        <i data-lucide="globe" class="w-4 h-4"></i>
+                        EN / CN
+                    </button>
+                </div>
+
+                <div class="flex items-center lg:hidden">
+                    <button class="mr-2 flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 hover:border-brand-500 hover:text-brand-600 transition-all text-xs font-bold" onclick="window.location.href='home.html'">
+                        CN
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none transition-colors">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 shadow-xl absolute w-full left-0 max-h-[80vh] overflow-y-auto">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="home_en.html" class="block px-3 py-3 rounded-lg text-base font-bold text-brand-600 bg-brand-50">Home</a>
+                
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">Download</div>
+                    <a href="features_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Features</a>
+                    <a href="download_en.html#latest" class="block px-6 py-2 text-base font-medium text-slate-600">Latest Version</a>
+                    <a href="download_en.html#history" class="block px-6 py-2 text-base font-medium text-slate-600">History</a>
+                </div>
+
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">NEP Database</div>
+                    <a href="database_en.html#intro" class="block px-6 py-2 text-base font-medium text-slate-600">Introduction</a>
+                    <a href="database_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Access Database</a>
+                </div>
+
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">Ecosystem</div>
+                    <a href="faq_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">FAQ</a>
+                    <a href="ecosystem_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Tools</a>
+                    <a href="support_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Support</a>
+                    <a href="books_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Books</a>
+                </div>
+
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">About Us</div>
+                    <a href="teams_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Team</a>
+                    <a href="units_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Acknowledgments</a>
+                    <a href="contact_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Contact</a>
+                </div>
+
+                <div class="py-2 border-t border-slate-100 mt-2">
+                    <button class="w-full flex items-center justify-center gap-2 px-3 py-3 rounded-lg text-base font-bold text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all" onclick="window.location.href='home.html'">
+                        <i data-lucide="globe" class="w-5 h-5"></i>
+                        切换到中文
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    <!-- Hero Section -->
+    <div class="relative overflow-hidden bg-slate-50 hero-bg pt-16 pb-10 lg:pt-32 lg:pb-12 reveal">
+        <!-- Background Decorative Orbs -->
+        <div class="hero-orb bg-brand-400 top-0 -left-20 opacity-20"></div>
+        <div class="hero-orb bg-purple-400 bottom-0 -right-20 opacity-20" style="animation-delay: -5s;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    <h1 class="text-xl tracking-tight font-extrabold text-slate-900 sm:text-3xl md:text-4xl lg:text-5xl lg:leading-tight">
+                        <span class="text-brand-600">GPU Accelerated</span><br>
+                        MD Simulation
+                    </h1>
+                    <p class="mt-4 lg:mt-6 text-xs text-slate-600 sm:text-base lg:text-lg max-w-2xl mx-auto text-justify lg:mx-0 leading-relaxed">
+                        GPUMD is an efficient, open-source molecular dynamics (MD) simulation package based on heterogeneous CPU+GPU parallelization. Combined with machine-learning Neuroevolution Potential (NEP), it achieves a perfect unity of high precision and high efficiency.
+                    </p>
+                    <div class="mt-6 lg:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+                        <a href="download.html" class="inline-flex items-center justify-center px-5 py-2.5 lg:px-8 lg:py-4 border border-transparent text-xs lg:text-sm font-medium rounded-xl text-white bg-brand-600 hover:bg-brand-700 shadow-lg hover:shadow-brand-500/30 transition-all duration-300 transform hover:-translate-y-1">
+                            <i data-lucide="download" class="mr-2 h-4 w-4 lg:h-5 lg:w-5"></i>
+                            Download Now
+                        </a>
+                        <a href="https://gpumd.org" target="_blank" class="inline-flex items-center justify-center px-5 py-2.5 lg:px-8 lg:py-4 border border-slate-200 text-xs lg:text-sm font-medium rounded-xl text-slate-700 bg-white hover:bg-slate-50 hover:border-brand-200 hover:text-brand-600 shadow-sm transition-all duration-300">
+                            <i data-lucide="book-open" class="mr-2 h-4 w-4 lg:h-5 lg:w-5"></i>
+                            Documentation
+                        </a>
+                    </div>
+                    <div class="mt-6 lg:mt-8 flex items-center justify-center lg:justify-start space-x-4 lg:space-x-8 text-slate-400 text-xs lg:text-sm">
+                        <div class="flex items-center hover:text-brand-500 transition-colors cursor-default"><i data-lucide="check-circle-2" class="w-4 h-4 mr-2 text-green-500"></i> Open Source</div>
+                        <div class="flex items-center hover:text-brand-500 transition-colors cursor-default"><i data-lucide="check-circle-2" class="w-4 h-4 mr-2 text-green-500"></i> CUDA/HIP</div>
+                        <div class="flex items-center hover:text-brand-500 transition-colors cursor-default"><i data-lucide="check-circle-2" class="w-4 h-4 mr-2 text-green-500"></i> GPU/DCU</div>
+                    </div>
+                </div>
+                
+                <div class="hidden lg:block lg:col-span-5 relative">
+                    <div class="relative rounded-2xl bg-slate-900 shadow-2xl border border-slate-800 p-2 transform hover:scale-[1.02] transition-transform duration-500 z-10">
+                        <!-- Pseudo Terminal Window -->
+                        <div class="bg-slate-950 rounded-xl overflow-hidden">
+                            <div class="flex items-center px-4 py-3 bg-slate-900 border-b border-slate-800">
+                                <div class="flex space-x-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                </div>
+                                <div class="ml-4 text-xs text-slate-500 font-mono">Terminal</div>
+                            </div>
+                            <div class="p-6 font-mono text-sm text-slate-300 leading-relaxed">
+                                <div class="flex terminal-line type-line-1"><span class="text-brand-400 mr-2">$</span> gpumd</div>
+                                <div class="text-slate-500 mt-2 terminal-line type-line-2">Initializing GPU devices...</div>
+                                <div class="text-green-400 terminal-line type-line-3">Found an NVIDIA RTX 4090</div>
+                                <div class="mt-2 terminal-line type-line-4">Loading NEP potential... <span class="text-green-400">Done</span></div>
+                                <div class="mt-2 terminal-line type-line-5">5000 steps completed.</div>
+                                <div class="mt-1 terminal-line type-line-6">10000 steps completed.</div>
+                                <div class="mt-1 terminal-line type-line-7">15000 steps completed.</div>
+                                <div class="mt-2 text-brand-400 animate-pulse font-bold">>>> Simulation Running...</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decorative background glow for terminal -->
+                    <div class="absolute -inset-4 bg-brand-500/20 blur-2xl rounded-full z-0"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="pt-0 pb-12 lg:pb-24 bg-slate-50 relative overflow-hidden reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Slogan -->
+            <div class="text-center max-w-4xl mx-auto mb-8 lg:mb-12">
+                <p class="text-lg sm:text-2xl md:text-4xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-purple-600 tracking-tight py-2">
+                    Redefining Atomistic Simulation
+                </p>
+                <p class="mt-2 lg:mt-4 text-xs lg:text-lg text-slate-500">
+                    More Accurate, Faster, Easier-to-use MD Software
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 lg:gap-10">
+                <!-- GPUMD Intro Card -->
+                <div class="group relative bg-white rounded-3xl overflow-hidden border border-slate-100 card-hover-3d shadow-xl">
+                    <div class="card-shine absolute inset-0 pointer-events-none z-20"></div>
+                    <div class="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10"></div>
+                    <div class="absolute top-0 right-0 -mr-16 -mt-16 lg:-mr-20 lg:-mt-20 w-48 h-48 lg:w-64 lg:h-64 bg-brand-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 group-hover:bg-brand-200 group-hover:scale-150 transition-all duration-700"></div>
+                    
+                    <div class="p-6 lg:p-10 flex flex-col h-full relative z-10">
+                        <div class="flex items-center justify-between mb-6 lg:mb-8">
+                            <div class="w-12 h-12 lg:w-16 lg:h-16 bg-brand-50 rounded-2xl flex items-center justify-center text-brand-600 shadow-sm group-hover:bg-brand-600 group-hover:text-white transition-all duration-500 group-hover:rotate-6">
+                                <i data-lucide="cpu" class="w-6 h-6 lg:w-8 lg:h-8"></i>
+                            </div>
+                            <span class="text-xl lg:text-5xl font-black text-slate-100 select-none absolute top-4 right-4 lg:top-6 lg:right-6 z-0 group-hover:text-brand-50 transition-colors duration-500">GPUMD</span>
+                        </div>
+                        
+                        <h2 class="text-base lg:text-2xl font-bold mb-4 lg:mb-6 text-slate-900 relative z-10">
+                            <span class="text-brand-600">GPUMD</span> Features
+                        </h2>
+                        
+                        <div class="space-y-4 mb-6 lg:mb-8 flex-grow">
+                            <p class="text-slate-600 leading-relaxed text-justify text-xs lg:text-base">
+                                GPUMD is a highly efficient open-source molecular dynamics simulation software. Developed natively with CUDA/HIP, it achieves extreme simulation efficiency on GPUs and DCUs. GPUMD supports various empirical potentials and NEP machine learning potentials, with speeds reaching tens of millions of atom-steps per second.
+                            </p>
+                            <ul class="space-y-3 mt-4 text-[10px] lg:text-sm">
+                                <li class="flex items-start text-slate-600 group/item">
+                                    <i data-lucide="zap" class="w-5 h-5 text-yellow-500 mr-3 mt-1 flex-shrink-0 group-hover/item:scale-125 transition-transform"></i>
+                                    <span><strong>Extreme Performance:</strong> Built for GPU/DCU, handles millions of atoms.</span>
+                                </li>
+                                <li class="flex items-start text-slate-600 group/item">
+                                    <i data-lucide="code-2" class="w-5 h-5 text-brand-500 mr-3 mt-1 flex-shrink-0 group-hover/item:scale-125 transition-transform"></i>
+                                    <span><strong>Easy to Use:</strong> Comprehensive docs, rich tools, active community.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <a href="features.html" target="_blank" class="inline-flex items-center justify-center w-full py-3 lg:py-4 rounded-xl bg-slate-50 text-slate-700 font-bold hover:bg-brand-600 hover:text-white transition-all duration-300 group-hover:shadow-lg text-xs lg:text-sm">
+                            Explore Core Features
+                            <i data-lucide="arrow-right" class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- NEP Intro Card -->
+                <div class="group relative bg-white rounded-3xl overflow-hidden border border-slate-100 card-hover-3d shadow-xl">
+                    <div class="card-shine absolute inset-0 pointer-events-none z-20"></div>
+                    <div class="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10"></div>
+                    <div class="absolute bottom-0 left-0 -ml-16 -mb-16 lg:-ml-20 lg:-mb-20 w-48 h-48 lg:w-64 lg:h-64 bg-purple-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 group-hover:bg-purple-200 group-hover:scale-150 transition-all duration-700"></div>
+                    
+                    <div class="p-6 lg:p-10 flex flex-col h-full relative z-10">
+                        <div class="flex items-center justify-between mb-6 lg:mb-8">
+                            <div class="w-12 h-12 lg:w-16 lg:h-16 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 shadow-sm group-hover:bg-purple-600 group-hover:text-white transition-all duration-500 group-hover:-rotate-6">
+                                <i data-lucide="brain-circuit" class="w-6 h-6 lg:w-8 lg:h-8"></i>
+                            </div>
+                            <span class="text-xl lg:text-5xl font-black text-slate-100 select-none absolute top-4 right-4 lg:top-6 lg:right-6 z-0 group-hover:text-purple-50 transition-colors duration-500">NEP</span>
+                        </div>
+                        
+                        <h2 class="text-base lg:text-2xl font-bold mb-4 lg:mb-6 text-slate-900 relative z-10">
+                            <span class="text-purple-600">NEP</span> Introduction
+                        </h2>
+                        
+                        <div class="space-y-4 mb-6 lg:mb-8 flex-grow">
+                            <p class="text-slate-600 leading-relaxed text-justify text-xs lg:text-base">
+                                NEP is a machine learning potential function natively supported by GPUMD, based on neuro-evolution algorithms. It predicts energy, force, and virial with ab initio accuracy at a cost close to empirical potentials. NEP is suitable for large-scale MD simulations of complex materials.
+                            </p>
+                            <ul class="space-y-3 mt-4 text-[10px] lg:text-sm">
+                                <li class="flex items-start text-slate-600 group/item">
+                                    <i data-lucide="target" class="w-5 h-5 text-red-500 mr-3 mt-1 flex-shrink-0 group-hover/item:scale-125 transition-transform"></i>
+                                    <span><strong>Simulation Efficiency:</strong> Speeds up to tens of millions of atom-steps/s.</span>
+                                </li>
+                                <li class="flex items-start text-slate-600 group/item">
+                                    <i data-lucide="rocket" class="w-5 h-5 text-purple-500 mr-3 mt-1 flex-shrink-0 group-hover/item:scale-125 transition-transform"></i>
+                                    <span><strong>Data Efficiency:</strong> High quality potentials from small datasets.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <a href="https://gpumd.org/potentials/nep.html" class="inline-flex items-center justify-center w-full py-3 lg:py-4 rounded-xl bg-slate-50 text-slate-700 font-bold hover:bg-purple-600 hover:text-white transition-all duration-300 group-hover:shadow-lg text-xs lg:text-sm">
+                            Learn about NEP
+                            <i data-lucide="arrow-right" class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="py-12 lg:py-24 bg-white reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-8 lg:mb-12">
+                <div>
+                    <h2 class="text-lg lg:text-2xl font-bold text-slate-900">GPUMD News</h2>
+                    <div class="h-1 w-20 bg-brand-500 rounded-full mt-4"></div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- News Item 1 -->
+                <div class="group rounded-2xl overflow-hidden border border-slate-100 shadow-lg hover:shadow-2xl transition-all duration-500 bg-white hover:-translate-y-2 flex flex-col">
+                    <a href="news/gpumd-nep-science-paper.html" class="block relative overflow-hidden h-40 lg:h-[225px]">
+                        <img src="images/news1.png" alt="Science Paper" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </a>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="text-slate-400 text-[10px] lg:text-xs font-medium mb-2">2025-11-06</div>
+                        <h3 class="text-sm lg:text-base font-bold mb-3 text-slate-900 group-hover:text-brand-600 transition-colors line-clamp-2">
+                            <a href="news/gpumd-nep-science-paper.html">GPUMD-NEP helps publish in "Science", revealing short-range order in semiconductors</a>
+                        </h3>
+                        <p class="text-slate-600 text-[10px] lg:text-xs leading-relaxed line-clamp-4 mb-6 flex-grow">
+                            Recently, "Science" published the latest research work on short-range order in semiconductor alloys by a collaborative team from Lawrence Berkeley National Laboratory and George Washington University. This work captures and quantitatively characterizes short-range order in semiconductor alloys for the first time in experiments.
+                        </p>
+                        <a href="news/gpumd-nep-science-paper.html" class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-slate-50 text-brand-600 font-bold text-[10px] lg:text-xs hover:bg-brand-600 hover:text-white transition-all duration-300">
+                            Read Article <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- News Item 2 -->
+                <div class="group rounded-2xl overflow-hidden border border-slate-100 shadow-lg hover:shadow-2xl transition-all duration-500 bg-white hover:-translate-y-2 flex flex-col">
+                    <a href="news/gpumd-4-0-paper.html" class="block relative overflow-hidden h-40 lg:h-[225px]">
+                        <img src="images/news2.png" alt="GPUMD 4.0 Paper" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </a>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="text-slate-400 text-[10px] lg:text-xs font-medium mb-2">2025-11-06</div>
+                        <h3 class="text-sm lg:text-base font-bold mb-3 text-slate-900 group-hover:text-brand-600 transition-colors line-clamp-2">
+                            <a href="news/gpumd-4-0-paper.html">GPUMD 4.0 paper published in MGE Advances</a>
+                        </h3>
+                        <p class="text-slate-600 text-[10px] lg:text-xs leading-relaxed line-clamp-4 mb-6 flex-grow">
+                            GPUMD 4.0 was released on April 29, 2025, and the corresponding paper was published online in the domestic journal MGE Advances on August 3, 2025. Bohai University is the first author unit of this paper.
+                        </p>
+                        <a href="news/gpumd-4-0-paper.html" class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-slate-50 text-brand-600 font-bold text-[10px] lg:text-xs hover:bg-brand-600 hover:text-white transition-all duration-300">
+                            Read Article <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- News Item 3 -->
+                <div class="group rounded-2xl overflow-hidden border border-slate-100 shadow-lg hover:shadow-2xl transition-all duration-500 bg-white hover:-translate-y-2 flex flex-col">
+                    <a href="news/gpu-md-developer-conference-2025.html" class="block relative overflow-hidden h-40 lg:h-[225px]">
+                        <img src="images/news3.jpg" alt="Developer Conference" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </a>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="text-slate-400 text-[10px] lg:text-xs font-medium mb-2">2025-06-01</div>
+                        <h3 class="text-sm lg:text-base font-bold mb-3 text-slate-900 group-hover:text-brand-600 transition-colors line-clamp-2">
+                            <a href="news/gpu-md-developer-conference-2025.html">1st GPUMD Developer Conference & AI-MD Frontier Symposium</a>
+                        </h3>
+                        <p class="text-slate-600 text-[10px] lg:text-xs leading-relaxed line-clamp-4 mb-6 flex-grow">
+                            The 1st GPUMD Developer Conference and AI Molecular Dynamics Frontier Symposium was successfully held in Ningbo in June 2025. The conference gathered developers and experts from all over the country to discuss the latest progress.
+                        </p>
+                        <a href="news/gpu-md-developer-conference-2025.html" class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-slate-50 text-brand-600 font-bold text-[10px] lg:text-xs hover:bg-brand-600 hover:text-white transition-all duration-300">
+                            Read Article <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Developer Section -->
+    <section id="developers" class="py-8 lg:py-24 bg-slate-50 reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-6 lg:mb-16">
+                <h2 class="text-lg lg:text-2xl font-bold text-slate-900">Developers</h2>
+                <div class="h-1 w-20 bg-brand-500 rounded-full mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-4 lg:gap-10">
+                <div class="bg-white rounded-[2rem] lg:rounded-[3rem] p-8 lg:p-12 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-slate-100 flex flex-col items-center text-center group h-full">
+                    
+                    <div class="flex items-center gap-2 mb-6">
+                        <span class="px-3 lg:px-4 py-1.5 rounded-full bg-brand-100 text-brand-700 text-[10px] lg:text-xs font-black uppercase tracking-widest border border-brand-200 shadow-sm">Core Founder & Lead Developer</span>
+                    </div>
+
+                    <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-2 group-hover:text-brand-600 transition-colors">Zheyong Fan</h3>
+                    <p class="text-brand-600 font-bold text-xs lg:text-sm mb-6">Professor at Bohai University | Adjunct Researcher at Suzhou Laboratory</p>
+                    
+                    <p class="text-slate-600 leading-relaxed text-xs lg:text-sm mb-6 flex-grow max-w-lg mx-auto">
+                        PhD in Theoretical Physics from Nanjing University. Currently Professor at Bohai University and Adjunct Researcher at Suzhou Laboratory. Focused on MD theory and HPC.
+                    </p>
+                    
+                    <p class="text-slate-500 text-[10px] lg:text-xs pt-6 border-t border-slate-100 w-full">
+                        Lead developer of GPUMD and NEP method.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-[2rem] lg:rounded-[3rem] p-8 lg:p-12 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-slate-100 flex flex-col items-center text-center group h-full">
+                    
+                    <div class="flex items-center gap-2 mb-6">
+                        <span class="px-3 lg:px-4 py-1.5 rounded-full bg-purple-100 text-purple-700 text-[10px] lg:text-xs font-black uppercase tracking-widest border border-purple-200 shadow-sm">Strategic Guide & Expert Group Leader</span>
+                    </div>
+
+                    <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-2 group-hover:text-purple-600 transition-colors">Yanjing Su</h3>
+                    <p class="text-purple-600 font-bold text-xs lg:text-sm mb-6">Professor at USTB | Principal Researcher at Suzhou Laboratory</p>
+                    
+                    <p class="text-slate-600 leading-relaxed text-xs lg:text-sm mb-6 flex-grow max-w-lg mx-auto">
+                        Professor at University of Science and Technology Beijing, Principal Researcher at Suzhou Laboratory. Research in materials databases and intelligent technology.
+                    </p>
+                    
+                    <p class="text-slate-500 text-[10px] lg:text-xs pt-6 border-t border-slate-100 w-full">
+                        Guiding GPUMD project development and materials large model R&D.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-8 lg:mt-12 text-center">
+                <a href="teams.html" class="btn-secondary group text-xs lg:text-sm px-4 py-2 lg:px-6 lg:py-3">
+                    View All Developers
+                    <i data-lucide="arrow-right" class="w-4 h-4 lg:w-5 lg:h-5 ml-2 group-hover:translate-x-2 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ecosystem Tools -->
+    <section id="ecosystem" class="py-8 lg:py-24 bg-white reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-6 lg:mb-12 gap-4 lg:gap-6">
+                <div class="text-center md:text-left">
+                    <h2 class="text-lg lg:text-2xl font-bold text-slate-900">GPUMD Ecosystem</h2>
+                    <div class="h-1 w-20 bg-brand-500 rounded-full mt-4 mx-auto md:mx-0"></div>
+                </div>
+                <a href="ecosystem.html" class="btn-secondary group text-xs lg:text-sm px-4 py-2 lg:px-6 lg:py-3">
+                    View All Tools <i data-lucide="arrow-right" class="ml-2 w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-2 transition-transform"></i>
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
+
+                <!-- Card 1: NEP_CPU -->
+                <a href="https://github.com/brucefan1983/NEP_CPU" class="group relative bg-white rounded-3xl p-4 lg:p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full">
+                    <div class="absolute inset-0 bg-gradient-to-br from-indigo-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <!-- Branding Area -->
+                    <div class="relative mb-4 lg:mb-8 flex justify-center items-center h-16 lg:h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-indigo-500 transition-all duration-500">
+                        <div class="w-12 h-12 lg:w-20 lg:h-20 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-indigo-600 group-hover:text-white transition-all duration-500 group-hover:rotate-6 z-10">
+                            <i data-lucide="cpu" class="w-6 h-6 lg:w-10 lg:h-10"></i>
+                        </div>
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-indigo-100 text-indigo-600 text-[10px] font-bold rounded-lg border border-indigo-200 uppercase tracking-wider z-10">CPU</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-sm lg:text-lg font-bold text-slate-900 mb-2 lg:mb-3 flex items-center group-hover:text-indigo-600 transition-colors">
+                            NEP_CPU
+                        </h3>
+                        <p class="text-slate-500 text-[10px] lg:text-xs mb-4 lg:mb-6 leading-relaxed flex-grow">
+                            C++ implementation of NEP potentials, providing interfaces for many Python packages and LAMMPS.
+                        </p>
+                        <div class="flex items-center text-brand-600 text-[10px] lg:text-xs font-bold pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <span>Github Repo</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 2: Calorine -->
+                <a href="https://gitlab.com/materials-modeling/calorine" class="group relative bg-white rounded-3xl p-4 lg:p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full">
+                    <div class="absolute inset-0 bg-gradient-to-br from-brand-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <!-- Branding Area -->
+                    <div class="relative mb-4 lg:mb-8 flex justify-center items-center h-16 lg:h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-brand-500 transition-all duration-500">
+                        <!-- Background Pattern (Subtle) -->
+                        <div class="absolute inset-0 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity">
+                            <svg class="w-full h-full" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0H100V100H0V0Z" fill="url(#grid-pattern-1)"/>
+                                <defs>
+                                    <pattern id="grid-pattern-1" width="20" height="20" patternUnits="userSpaceOnUse">
+                                        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                                    </pattern>
+                                </defs>
+                            </svg>
+                        </div>
+                        <!-- Logo (Adjusted size to fill height and blend with white) -->
+                        <img src="images/calorine_logo.png" alt="Calorine" class="h-12 lg:h-28 w-auto object-contain transform transition-transform duration-500 group-hover:scale-105 z-10">
+                        <!-- Tag -->
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-brand-50 text-brand-600 text-[10px] font-bold rounded-lg border border-brand-100 uppercase tracking-wider z-10">Python</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-sm lg:text-lg font-bold text-slate-900 mb-2 lg:mb-3 flex items-center group-hover:text-brand-600 transition-colors">
+                            Calorine
+                        </h3>
+                        <p class="text-slate-500 text-[10px] lg:text-xs mb-4 lg:mb-6 leading-relaxed flex-grow">
+                            Provides Python interface for NEP, used for calculation and analysis of various properties.
+                        </p>
+                        <div class="flex items-center text-brand-600 text-[10px] lg:text-xs font-bold pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <span>Gitlab Repo</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 3: NepTrainKit -->
+                <a href="https://github.com/aboys-cb/NepTrainKit/" class="group relative bg-white rounded-3xl p-4 lg:p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <!-- Branding Area (Icon Version) -->
+                    <div class="relative mb-4 lg:mb-8 flex justify-center items-center h-16 lg:h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-purple-500 transition-all duration-500">
+                        <div class="absolute inset-0 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity">
+                            <svg class="w-full h-full" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="0.5" stroke-dasharray="4 4"/>
+                            </svg>
+                        </div>
+                        <img src="images/neptrainkit_logo.svg" alt="Neptrainkit" class="h-12 lg:h-28 w-auto object-contain transform transition-transform duration-500 group-hover:scale-105 z-10">
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-purple-50 text-purple-600 text-[10px] font-bold rounded-lg border border-purple-100 uppercase tracking-wider z-10">GUI</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-sm lg:text-lg font-bold text-slate-900 mb-2 lg:mb-3 flex items-center group-hover:text-purple-600 transition-colors">
+                            NepTrainKit
+                        </h3>
+                        <p class="text-slate-500 text-[10px] lg:text-xs mb-4 lg:mb-6 leading-relaxed flex-grow">
+                            Toolkit focusing on NEP training dataset manipulation and visualization, providing intuitive GUI and analysis tools.
+                        </p>
+                        <div class="flex items-center text-brand-600 text-[10px] lg:text-xs font-bold pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <span>Github Repo</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 4: GPUMDkit -->
+                <a href="https://github.com/zhyan0603/GPUMDkit" class="group relative bg-white rounded-3xl p-6 lg:p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full">
+                    <div class="absolute inset-0 bg-gradient-to-br from-brand-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <!-- Branding Area -->
+                    <div class="relative mb-6 lg:mb-8 flex justify-center items-center h-20 lg:h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-brand-500 transition-all duration-500">
+                        <!-- Background Pattern (Subtle) -->
+                        <div class="absolute inset-0 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity">
+                            <svg class="w-full h-full" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0H100V100H0V0Z" fill="url(#grid-pattern-1)"/>
+                                <defs>
+                                    <pattern id="grid-pattern-1" width="20" height="20" patternUnits="userSpaceOnUse">
+                                        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                                    </pattern>
+                                </defs>
+                            </svg>
+                        </div>
+                        <!-- Logo (Adjusted size to fill height and blend with white) -->
+                        <img src="images/gpumdkit_logo.png" alt="GPUMDkit" class="h-16 lg:h-28 w-auto object-contain transform transition-transform duration-500 group-hover:scale-105 z-10">
+                        <!-- Tag -->
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-brand-50 text-brand-600 text-[10px] font-bold rounded-lg border border-brand-100 uppercase tracking-wider z-10">Toolkit</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-base lg:text-lg font-bold text-slate-900 mb-3 flex items-center group-hover:text-brand-600 transition-colors">
+                            GPUMDkit
+                        </h3>
+                        <p class="text-slate-500 text-[10px] lg:text-xs mb-6 leading-relaxed flex-grow">
+                            Pre- and post-processing toolkit designed for GPUMD, providing a user-friendly CLI to improve efficiency.
+                        </p>
+                        <div class="flex items-center text-brand-600 text-[10px] lg:text-xs font-bold pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <span>Github Repo</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 5: GPUMD-Wizard -->
+                <a href="https://github.com/Jonsnow-willow/GPUMD-Wizard" class="group relative bg-white rounded-3xl p-6 lg:p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full">
+                    <div class="absolute inset-0 bg-gradient-to-br from-orange-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <!-- Branding Area -->
+                    <div class="relative mb-6 lg:mb-8 flex justify-center items-center h-20 lg:h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-orange-500 transition-all duration-500">
+                        <!-- Logo -->
+                        <img src="images/G-Wizard.png" alt="GPUMD-Wizard" class="h-16 lg:h-28 w-auto object-contain transform transition-transform duration-500 group-hover:scale-105 z-10">
+                        <!-- Tag -->
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-orange-50 text-orange-600 text-[10px] font-bold rounded-lg border border-orange-100 uppercase tracking-wider z-10">Python</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-base lg:text-lg font-bold text-slate-900 mb-3 flex items-center group-hover:text-orange-600 transition-colors">
+                            GPUMD-Wizard
+                        </h3>
+                        <p class="text-slate-500 text-[10px] lg:text-xs mb-6 leading-relaxed flex-grow">
+                            ASE-based materials structure processing software, automating calculation of various properties. Supports calling GPUMD for simulations.
+                        </p>
+                        <div class="flex items-center text-brand-600 text-[10px] lg:text-xs font-bold pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <span>Github Repo</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 6: PySED -->
+                <a href="https://github.com/Tingliangstu/pySED" class="group relative bg-white rounded-3xl p-6 lg:p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full">
+                    <div class="absolute inset-0 bg-gradient-to-br from-green-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <!-- Branding Area -->
+                    <div class="relative mb-6 lg:mb-8 flex justify-center items-center h-20 lg:h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-green-500 transition-all duration-500">
+                        <img src="images/pysed_logo.png" alt="PySED" class="h-16 lg:h-28 w-auto object-contain transform transition-transform duration-500 group-hover:scale-105 z-10">
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-green-50 text-green-600 text-[10px] font-bold rounded-lg border border-green-100 uppercase tracking-wider z-10">Python</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-base lg:text-lg font-bold text-slate-900 mb-3 flex items-center group-hover:text-green-600 transition-colors">
+                            PySED
+                        </h3>
+                        <p class="text-slate-500 text-[10px] lg:text-xs mb-6 leading-relaxed flex-grow">
+                            Efficient tool for phonon dynamics and thermal transport analysis, supporting spectral energy density calculation.
+                        </p>
+                        <div class="flex items-center text-brand-600 text-[10px] lg:text-xs font-bold pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <span>Github Repo</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Supporting Units -->
+    <section id="units" class="py-12 lg:py-16 bg-white border-t border-slate-100 reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl font-bold text-slate-800">Supporting Units</h2>
+                <div class="h-1 w-16 bg-brand-500 rounded-full mx-auto mt-3"></div>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-24">
+                <div class="flex items-center justify-center h-12 w-36 lg:h-16 lg:w-48 group transition-transform duration-300 hover:scale-105">
+                    <img src="images/units/suzhou_lab.png" alt="Suzhou Laboratory" class="max-h-full max-w-full object-contain">
+                </div>
+                <div class="flex items-center justify-center h-12 w-36 lg:h-16 lg:w-48 group transition-transform duration-300 hover:scale-105">
+                    <img src="images/units/bohai_univ.png" alt="Bohai University" class="max-h-full max-w-full object-contain">
+                </div>
+                <div class="flex items-center justify-center h-12 w-36 lg:h-16 lg:w-48 group transition-transform duration-300 hover:scale-105">
+                    <img src="images/units/ustb.png" alt="USTB" class="max-h-full max-w-full object-contain">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-8 lg:py-16 border-t border-slate-900 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-8 lg:gap-x-12 lg:gap-y-16 mb-8 lg:mb-16">
+                <!-- Column 1: Brand & Status -->
+                <div class="col-span-2 lg:col-span-2">
+                    <a href="home_en.html" class="flex items-center gap-2 mb-4 lg:mb-8 group">
+                        <img src="images/logo.png" alt="GPUMD Logo" class="h-8 lg:h-10 w-auto">
+                        <span class="text-xl lg:text-2xl font-black text-white tracking-tight">GPUMD</span>
+                    </a>
+                    <div class="space-y-4 lg:space-y-6">
+                        <p class="text-xs lg:text-sm leading-relaxed text-slate-400">
+                            High-performance CPU+GPU heterogeneous parallel molecular dynamics software, dedicated to providing extreme computational efficiency and accuracy for complex many-body systems.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Column 2: Software -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">Software & Database</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="features.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Features</a></li>
+                        <li><a href="download.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Latest Version</a></li>
+                        <li><a href="database.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>NEP Database</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Resources -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">Resources & Docs</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="https://gpumd.org" target="_blank" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Documentation</a></li>
+                        <li><a href="faq.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>FAQ</a></li>
+                        <li><a href="books.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Books</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Community -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">Community & Tools</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="ecosystem.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Tools</a></li>
+                        <li><a href="support.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Support</a></li>
+                        <li><a href="https://github.com/brucefan1983/GPUMD" target="_blank" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>GitHub Repo</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 5: Social & QR -->
+                <div class="col-span-2 lg:col-span-1 flex lg:justify-end">
+                    <div class="space-y-4 lg:space-y-8">
+                        <p class="text-white text-[10px] font-black mb-4 lg:mb-6 uppercase tracking-[0.2em] opacity-40 lg:text-right">Community Discussion</p>
+                        <div class="flex gap-4 lg:gap-6 lg:justify-end">
+                            <div class="group relative">
+                                <div class="w-16 h-16 lg:w-20 lg:h-20 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center p-2 group-hover:border-brand-500/50 group-hover:bg-white/10 transition-all duration-500 shadow-2xl">
+                                    <img src="images/qr_qq.png" alt="QQ Group" class="w-full h-full object-contain">
+                                </div>
+                                <p class="text-[9px] mt-2 lg:mt-3 text-center font-bold opacity-40 group-hover:opacity-100 transition-opacity">QQ Group</p>
+                            </div>
+                            <div class="group relative">
+                                <div class="w-16 h-16 lg:w-20 lg:h-20 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center p-2 group-hover:border-brand-500/50 group-hover:bg-white/10 transition-all duration-500 shadow-2xl">
+                                    <img src="images/qr_wechat.png" alt="WeChat" class="w-full h-full object-contain">
+                                </div>
+                                <p class="text-[9px] mt-2 lg:mt-3 text-center font-bold opacity-40 group-hover:opacity-100 transition-opacity">WeChat</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 lg:pt-12 border-t border-slate-900 flex flex-col md:flex-row items-center justify-between gap-6 text-[11px] font-medium tracking-wider">
+                <p class="opacity-40">© 2026 GPUMD TEAM. PROUDLY DEVELOPED FOR SCIENCE.</p>
+                <a href="https://beian.miit.gov.cn/" target="_blank" class="opacity-40 hover:opacity-100 transition-opacity">苏ICP备2025218443号-1</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

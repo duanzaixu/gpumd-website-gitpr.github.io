@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supporting Units - GPUMD</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- External Resources -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/general-hero.css">
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body class="antialiased text-slate-800 bg-white font-sans flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="glass-nav sticky top-0 z-50 border-b border-slate-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 lg:h-20">
+                <div class="flex items-center">
+                    <a href="home_en.html" class="flex items-center gap-2 lg:gap-3 group">
+                        <img src="images/logo.png" alt="GPUMD Logo" class="h-8 lg:h-12 w-auto transform transition-transform group-hover:scale-105">
+                        <span class="text-xl lg:text-3xl font-bold bg-gradient-to-r from-brand-700 to-brand-500 bg-clip-text text-transparent">
+                            GPUMD
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="hidden lg:flex items-center space-x-1">
+                    <a href="home_en.html" class="nav-link">Home</a>
+                    
+                    <div class="relative group">
+                        <button class="nav-link-dropdown">
+                            Downloads <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="features_en.html" class="dropdown-item">Features</a>
+                            <a href="download_en.html#latest" class="dropdown-item">Latest Version</a>
+                            <a href="download_en.html#history" class="dropdown-item">Version History</a>
+                        </div>
+                    </div>
+
+                    <a href="database_en.html" class="nav-link">NEP Potentials</a>
+
+                    <div class="relative group">
+                        <button class="nav-link-dropdown">
+                            Community <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="faq_en.html" class="dropdown-item">FAQ</a>
+                            <a href="ecosystem_en.html" class="dropdown-item">Ecosystem</a>
+                            <a href="support_en.html" class="dropdown-item">Support</a>
+                            <a href="books_en.html" class="dropdown-item">Books</a>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <button class="nav-link-dropdown active">
+                            About <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="teams_en.html" class="dropdown-item">Team</a>
+                            <a href="units_en.html" class="dropdown-item active">Acknowledgments</a>
+                            <a href="contact_en.html" class="dropdown-item">Contact</a>
+                        </div>
+                    </div>
+
+                    <button class="ml-2 flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 text-slate-600 hover:border-brand-500 hover:text-brand-600 transition-all text-sm font-bold" onclick="window.location.href='units.html'">
+                        <i data-lucide="globe" class="w-4 h-4"></i>
+                        EN / CN
+                    </button>
+                </div>
+
+                <div class="flex items-center lg:hidden">
+                    <button class="mr-2 flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 hover:border-brand-500 hover:text-brand-600 transition-all text-xs font-bold" onclick="window.location.href='units.html'">
+                        CN
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none transition-colors">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 shadow-xl absolute w-full left-0 max-h-[80vh] overflow-y-auto">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="home_en.html" class="block px-3 py-3 rounded-lg text-base font-bold text-slate-600">Home</a>
+                
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">Downloads</div>
+                    <a href="features_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Features</a>
+                    <a href="download_en.html#latest" class="block px-6 py-2 text-base font-medium text-slate-600">Latest Version</a>
+                    <a href="download_en.html#history" class="block px-6 py-2 text-base font-medium text-slate-600">Version History</a>
+                </div>
+
+                <a href="database_en.html" class="block px-3 py-3 rounded-lg text-base font-bold text-slate-600 hover:text-brand-600 hover:bg-slate-50">NEP Potentials</a>
+
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">Ecosystem</div>
+                    <a href="faq_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">FAQ</a>
+                    <a href="ecosystem_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Tools</a>
+                    <a href="support_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Support</a>
+                    <a href="books_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Books</a>
+                </div>
+
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-brand-600 bg-brand-50 rounded-lg uppercase tracking-wider">About</div>
+                    <a href="teams_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Team</a>
+                    <a href="units_en.html" class="block px-6 py-2 text-base font-bold text-brand-600">Acknowledgments</a>
+                    <a href="contact_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Contact</a>
+                </div>
+
+                <div class="py-2 border-t border-slate-100 mt-2">
+                    <button class="w-full flex items-center justify-center gap-2 px-3 py-3 rounded-lg text-base font-bold text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all" onclick="window.location.href='units.html'">
+                        <i data-lucide="globe" class="w-5 h-5"></i>
+                        切换到中文
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    <!-- Hero Section -->
+    <div class="general-hero-section hero-bg reveal">
+        <!-- Background Decorative Orbs -->
+        <div class="hero-orb bg-brand-400 top-0 -left-20 opacity-20"></div>
+        <div class="hero-orb bg-purple-400 bottom-0 -right-20 opacity-20" style="animation-delay: -5s;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            
+            <h1 class="general-hero-title">
+                Deep Academic Heritage, Strong Collaborative Support
+            </h1>
+
+            <p class="general-hero-description">
+                GPUMD's growth relies on the support of major research institutions, laboratories, and universities.<br class="hidden md:block">
+                Through extensive academic cooperation and joint research and development, we collectively push the boundaries of molecular dynamics simulation technology.
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow bg-white py-12 lg:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Supporting Units Section -->
+            <div class="mb-16 lg:mb-32">
+                <div class="flex items-center gap-2 lg:gap-4 mb-8 lg:mb-12">
+                    <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-xl lg:rounded-2xl bg-brand-600 flex items-center justify-center text-white shadow-lg shadow-brand-500/20">
+                        <i data-lucide="shield-check" class="w-5 h-5 lg:w-6 lg:h-6"></i>
+                    </div>
+                    <h2 class="text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">Supporting Units</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-8">
+                    <!-- Suzhou Laboratory -->
+                    <div class="group bg-white rounded-xl lg:rounded-[2rem] p-5 lg:p-10 shadow-sm border border-slate-100 hover:shadow-xl hover:border-brand-100 hover:-translate-y-1 transition-all duration-500 flex flex-col items-center text-center relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-brand-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                        <div class="h-14 lg:h-24 w-full flex items-center justify-center mb-5 lg:mb-8">
+                            <img src="images/units/suzhou_lab.png" alt="Suzhou Laboratory" class="max-h-full max-w-[80%] object-contain transform group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <h3 class="text-base lg:text-xl font-black text-slate-900 group-hover:text-brand-600 transition-colors">Suzhou Laboratory</h3>
+                        <p class="mt-2 lg:mt-3 text-xs lg:text-sm text-slate-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500">Major Supporting Unit</p>
+                    </div>
+
+                    <!-- Bohai University -->
+                    <div class="group bg-white rounded-xl lg:rounded-[2rem] p-5 lg:p-10 shadow-sm border border-slate-100 hover:shadow-xl hover:border-brand-100 hover:-translate-y-1 transition-all duration-500 flex flex-col items-center text-center relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-brand-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                        <div class="h-14 lg:h-24 w-full flex items-center justify-center mb-5 lg:mb-8">
+                            <img src="images/units/bohai_univ.png" alt="Bohai University" class="max-h-full max-w-[80%] object-contain transform group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <h3 class="text-base lg:text-xl font-black text-slate-900 group-hover:text-brand-600 transition-colors">Bohai University</h3>
+                        <p class="mt-2 lg:mt-3 text-xs lg:text-sm text-slate-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500">Major Supporting Unit</p>
+                    </div>
+
+                    <!-- USTB -->
+                    <div class="group bg-white rounded-xl lg:rounded-[2rem] p-5 lg:p-10 shadow-sm border border-slate-100 hover:shadow-xl hover:border-brand-100 hover:-translate-y-1 transition-all duration-500 flex flex-col items-center text-center relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-brand-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                        <div class="h-14 lg:h-24 w-full flex items-center justify-center mb-5 lg:mb-8">
+                            <img src="images/units/ustb.png" alt="University of Science and Technology Beijing" class="max-h-full max-w-[80%] object-contain transform group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <h3 class="text-base lg:text-xl font-black text-slate-900 group-hover:text-brand-600 transition-colors">USTB</h3>
+                        <p class="mt-2 lg:mt-3 text-xs lg:text-sm text-slate-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500">Major Supporting Unit</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cooperative Units Section -->
+            <div class="mb-16 lg:mb-32">
+                <div class="flex items-center gap-2 lg:gap-4 mb-8 lg:mb-12">
+                    <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-xl lg:rounded-2xl bg-purple-600 flex items-center justify-center text-white shadow-lg shadow-purple-500/20">
+                        <i data-lucide="handshake" class="w-5 h-5 lg:w-6 lg:h-6"></i>
+                    </div>
+                    <h2 class="text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">Cooperative Units</h2>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
+                    <!-- NJU -->
+                    <div class="group bg-white rounded-xl lg:rounded-2xl p-4 lg:p-6 border border-slate-100 hover:border-brand-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-center">
+                        <div class="h-12 lg:h-16 flex items-center justify-center mb-3 lg:mb-4">
+                            <img src="images/units/nju.png" alt="Nanjing University" class="max-w-full max-h-full object-contain transform group-hover:scale-110 transition-transform">
+                        </div>
+                        <p class="text-xs lg:text-sm font-bold text-slate-600 group-hover:text-brand-600 transition-colors">Nanjing University</p>
+                    </div>
+
+                    <!-- FZU -->
+                    <div class="group bg-white rounded-xl lg:rounded-2xl p-4 lg:p-6 border border-slate-100 hover:border-brand-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-center">
+                        <div class="h-12 lg:h-16 flex items-center justify-center mb-3 lg:mb-4">
+                            <img src="images/units/fzu.png" alt="Fuzhou University" class="max-w-full max-h-full object-contain transform group-hover:scale-110 transition-transform">
+                        </div>
+                        <p class="text-xs lg:text-sm font-bold text-slate-600 group-hover:text-brand-600 transition-colors">Fuzhou University</p>
+                    </div>
+
+                    <!-- CUHK -->
+                    <div class="group bg-white rounded-xl lg:rounded-2xl p-4 lg:p-6 border border-slate-100 hover:border-brand-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-center">
+                        <div class="h-12 lg:h-16 flex items-center justify-center mb-3 lg:mb-4">
+                            <img src="images/units/cuhk.png" alt="The Chinese University of Hong Kong" class="max-w-full max-h-full object-contain transform group-hover:scale-110 transition-transform">
+                        </div>
+                        <p class="text-xs lg:text-sm font-bold text-slate-600 group-hover:text-brand-600 transition-colors">CUHK</p>
+                    </div>
+
+                    <!-- NSCC Tianjin -->
+                    <div class="group bg-white rounded-xl lg:rounded-2xl p-4 lg:p-6 border border-slate-100 hover:border-brand-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-center">
+                        <div class="h-12 lg:h-16 flex items-center justify-center mb-3 lg:mb-4">
+                            <img src="images/units/nscc_tianjin.png" alt="NSCC Tianjin" class="max-w-full max-h-full object-contain transform group-hover:scale-110 transition-transform">
+                        </div>
+                        <p class="text-xs lg:text-sm font-bold text-slate-600 group-hover:text-brand-600 transition-colors">NSCC Tianjin</p>
+                    </div>
+
+                    <!-- WHU -->
+                    <div class="group bg-white rounded-xl lg:rounded-2xl p-4 lg:p-6 border border-slate-100 hover:border-brand-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-center">
+                        <div class="h-12 lg:h-16 flex items-center justify-center mb-3 lg:mb-4">
+                            <img src="images/units/whu.png" alt="Wuhan University" class="max-w-full max-h-full object-contain transform group-hover:scale-110 transition-transform">
+                        </div>
+                        <p class="text-xs lg:text-sm font-bold text-slate-600 group-hover:text-brand-600 transition-colors">Wuhan University</p>
+                    </div>
+
+                    <!-- Chalmers -->
+                    <div class="group bg-white rounded-xl lg:rounded-2xl p-4 lg:p-6 border border-slate-100 hover:border-brand-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-center">
+                        <div class="h-12 lg:h-16 flex items-center justify-center mb-3 lg:mb-4">
+                            <img src="images/units/chalmers.png" alt="Chalmers University of Technology" class="max-w-full max-h-full object-contain transform group-hover:scale-110 transition-transform">
+                        </div>
+                        <p class="text-xs lg:text-sm font-bold text-slate-600 group-hover:text-brand-600 transition-colors">Chalmers University</p>
+                    </div>
+
+                    <!-- Aalto -->
+                    <div class="group bg-white rounded-xl lg:rounded-2xl p-4 lg:p-6 border border-slate-100 hover:border-brand-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-center">
+                        <div class="h-12 lg:h-16 flex items-center justify-center mb-3 lg:mb-4">
+                            <img src="images/units/aalto.png" alt="Aalto University" class="max-w-full max-h-full object-contain transform group-hover:scale-110 transition-transform">
+                        </div>
+                        <p class="text-xs lg:text-sm font-bold text-slate-600 group-hover:text-brand-600 transition-colors">Aalto University</p>
+                    </div>
+
+                    <!-- NIMTE -->
+                    <div class="group bg-white rounded-xl lg:rounded-2xl p-4 lg:p-6 border border-slate-100 hover:border-brand-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-center">
+                        <div class="h-12 lg:h-16 flex items-center justify-center mb-3 lg:mb-4">
+                            <img src="images/units/nimte.png" alt="NIMTE, CAS" class="max-w-full max-h-full object-contain transform group-hover:scale-100 transition-transform">
+                        </div>
+                        <p class="text-xs lg:text-sm font-bold text-slate-600 group-hover:text-brand-600 transition-colors">NIMTE, CAS</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fund Acknowledgments Section -->
+            <div class="mb-12">
+                <div class="flex items-center gap-4 mb-8 lg:mb-12">
+                    <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-xl lg:rounded-2xl bg-slate-800 flex items-center justify-center text-white shadow-lg shadow-slate-500/20">
+                        <i data-lucide="award" class="w-5 h-5 lg:w-6 lg:h-6"></i>
+                    </div>
+                    <h2 class="text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">Funding Acknowledgments</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+                    <div class="group bg-slate-50 rounded-2xl lg:rounded-3xl p-6 lg:p-8 border border-slate-100 flex items-center gap-4 lg:gap-6 hover:bg-white hover:shadow-xl hover:border-brand-200 transition-all duration-300 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-24 h-24 lg:w-32 lg:h-32 bg-brand-500/5 rounded-full -mr-12 -mt-12 lg:-mr-16 lg:-mt-16 group-hover:scale-150 transition-transform duration-700"></div>
+                        <div class="w-12 h-12 lg:w-14 lg:h-14 rounded-xl lg:rounded-2xl bg-white shadow-sm flex items-center justify-center text-brand-600 shrink-0 relative z-10">
+                            <i data-lucide="scroll-text" class="w-6 h-6 lg:w-7 lg:h-7"></i>
+                        </div>
+                        <div class="relative z-10">
+                            <p class="text-[10px] lg:text-xs font-black text-brand-600 uppercase tracking-[0.2em] mb-1">National Major Research Project</p>
+                            <h3 class="text-base lg:text-lg font-bold text-slate-800 leading-tight">National Science and Technology Major Project (2024ZD0606900)</h3>
+                        </div>
+                    </div>
+
+                    <div class="group bg-slate-50 rounded-2xl lg:rounded-3xl p-6 lg:p-8 border border-slate-100 flex items-center gap-4 lg:gap-6 hover:bg-white hover:shadow-xl hover:border-brand-200 transition-all duration-300 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-24 h-24 lg:w-32 lg:h-32 bg-brand-500/5 rounded-full -mr-12 -mt-12 lg:-mr-16 lg:-mt-16 group-hover:scale-150 transition-transform duration-700"></div>
+                        <div class="w-12 h-12 lg:w-14 lg:h-14 rounded-xl lg:rounded-2xl bg-white shadow-sm flex items-center justify-center text-brand-600 shrink-0 relative z-10">
+                            <i data-lucide="scroll-text" class="w-6 h-6 lg:w-7 lg:h-7"></i>
+                        </div>
+                        <div class="relative z-10">
+                            <p class="text-[10px] lg:text-xs font-black text-brand-600 uppercase tracking-[0.2em] mb-1">National Major Research Project</p>
+                            <h3 class="text-base lg:text-lg font-bold text-slate-800 leading-tight">National Science and Technology Major Project (2024ZD0607800)</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-8 lg:py-16 border-t border-slate-900 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-8 lg:gap-x-12 lg:gap-y-16 mb-8 lg:mb-16">
+                <!-- Column 1: Brand & Status -->
+                <div class="col-span-2 lg:col-span-2">
+                    <a href="home_en.html" class="flex items-center gap-2 mb-4 lg:mb-8 group">
+                        <img src="images/logo.png" alt="GPUMD Logo" class="h-8 lg:h-10 w-auto">
+                        <span class="text-xl lg:text-2xl font-black text-white tracking-tight">GPUMD</span>
+                    </a>
+                    <div class="space-y-4 lg:space-y-6">
+                        <p class="text-xs lg:text-sm leading-relaxed text-slate-400">
+                            High-performance CPU+GPU heterogeneous parallel molecular dynamics simulation software, dedicated to providing extreme calculation efficiency and accuracy for complex many-body systems.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Column 2: Software -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">Software & Data</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="features_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Features</a></li>
+                        <li><a href="download_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Latest Version</a></li>
+                        <li><a href="database_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>NEP Potentials</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Resources -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">Resources</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="https://gpumd.org" target="_blank" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Official Manual</a></li>
+                        <li><a href="faq_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>FAQ</a></li>
+                        <li><a href="books_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Books</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Community -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">Community</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="ecosystem_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Ecosystem</a></li>
+                        <li><a href="support_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Support</a></li>
+                        <li><a href="https://github.com/brucefan1983/GPUMD" target="_blank" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>GitHub</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 5: Social & QR -->
+                <div class="col-span-2 lg:col-span-1 flex lg:justify-end">
+                    <div class="space-y-4 lg:space-y-8">
+                        <p class="text-white text-[10px] font-black mb-4 lg:mb-6 uppercase tracking-[0.2em] opacity-40 lg:text-right">Community</p>
+                        <div class="flex gap-4 lg:gap-6 lg:justify-end">
+                            <div class="group relative">
+                                <div class="w-16 h-16 lg:w-20 lg:h-20 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center p-2 group-hover:border-brand-500/50 group-hover:bg-white/10 transition-all duration-500 shadow-2xl">
+                                    <img src="images/qr_qq.png" alt="QQ Group" class="w-full h-full object-contain">
+                                </div>
+                                <p class="text-[9px] mt-2 lg:mt-3 text-center font-bold opacity-40 group-hover:opacity-100 transition-opacity">QQ Group</p>
+                            </div>
+                            <div class="group relative">
+                                <div class="w-16 h-16 lg:w-20 lg:h-20 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center p-2 group-hover:border-brand-500/50 group-hover:bg-white/10 transition-all duration-500 shadow-2xl">
+                                    <img src="images/qr_wechat.png" alt="WeChat" class="w-full h-full object-contain">
+                                </div>
+                                <p class="text-[9px] mt-2 lg:mt-3 text-center font-bold opacity-40 group-hover:opacity-100 transition-opacity">WeChat</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 lg:pt-12 border-t border-slate-900 flex flex-col md:flex-row items-center justify-between gap-6 text-[11px] font-medium tracking-wider">
+                <p class="opacity-40">© 2026 GPUMD TEAM. PROUDLY DEVELOPED FOR SCIENCE.</p>
+                <a href="https://beian.miit.gov.cn/" target="_blank" class="opacity-40 hover:opacity-100 transition-opacity">苏ICP备2025218443号-1</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

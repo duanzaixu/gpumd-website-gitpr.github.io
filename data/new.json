@@ -1,0 +1,98 @@
+[
+    {
+        "id": "install-01",
+        "category": "安装配置",
+        "question": "GPUMD 支持哪些类型的显卡？",
+        "answer": "GPUMD 是基于 CUDA 开发的，目前仅支持 NVIDIA 显卡。建议使用计算能力 (Compute Capability) 在 3.5 及以上的显卡。对于大规模模拟，建议使用显存较大且双精度浮点性能较好的专业计算卡（如 Tesla、Quadro 系列），但 GeForce 系列的游戏显卡也能获得非常不错的性能。"
+    },
+    {
+        "id": "install-02",
+        "category": "安装配置",
+        "question": "如何在 Linux 环境下快速编译 GPUMD？",
+        "answer": "1. 安装 NVIDIA 驱动和 CUDA Toolkit。\n2. 从 GitHub 克隆源码：`git clone https://github.com/brucefan1983/GPUMD.git`。\n3. 进入 `src` 目录，执行 `make`。如果需要特定架构优化，可修改 `Makefile` 中的 `GENCODE_FLAGS`。"
+    },
+    {
+        "id": "install-03",
+        "category": "安装配置",
+        "question": "编译时提示找不到 nvcc 怎么办？",
+        "answer": "这通常是因为 CUDA 的 bin 目录没有添加到系统的环境变量中。请在 `~/.bashrc` 或 `~/.zshrc` 中添加：`export PATH=/usr/local/cuda/bin:$PATH`，然后运行 `source ~/.bashrc`。"
+    },
+    {
+        "id": "perf-01",
+        "category": "性能优化",
+        "question": "如何优化千万级原子规模的模拟性能？",
+        "answer": "1. 使用多 GPU 并行（通过 `gpumd` 的多设备支持）。\n2. 增加 `skin` 参数（在 `neighbor` 命令中）以减少邻居表更新频率。\n3. 确保使用最新版本的 CUDA 和驱动。\n4. 针对特定势函数（如 NEP），使用 `gnep` 替代传统 `nep` 以获得更好的性能优化。"
+    },
+    {
+        "id": "perf-02",
+        "category": "性能优化",
+        "question": "GPUMD 支持多 GPU 并行吗？",
+        "answer": "支持。GPUMD 通过域分解（Domain Decomposition）支持跨多块 GPU 的并行计算。在编译时需确保开启了相应的并行选项，并在运行时通过 `mpirun` 或指定设备号进行调用。"
+    },
+    {
+        "id": "forcefield-01",
+        "category": "力场选择",
+        "question": "NEP 势函数相比传统 EAM/Tersoff 有什么优势？",
+        "answer": "NEP (Neuroevolution Potential) 结合了第一性原理计算的高精度和经验势的高效率。它能够描述复杂的多体相互作用，且计算速度比 LAMMPS 中的类似机器学习力场快 2-3 个数量级，非常适合大规模长时间尺度的模拟。"
+    },
+    {
+        "id": "forcefield-02",
+        "category": "力场选择",
+        "question": "如何为自己的体系训练 NEP 势函数？",
+        "answer": "可以使用 `NepTrainKit` 或官方提供的训练脚本。主要流程包括：1. 准备 DFT 训练数据集（能量、力、位力）；2. 提取特征描述符；3. 使用神经演化算法优化神经网络参数；4. 验证力场在测试集上的表现。"
+    },
+    {
+        "id": "forcefield-03",
+        "category": "力场选择",
+        "question": "GPUMD 支持混合势（Hybrid Potentials）吗？",
+        "answer": "支持。您可以在一个模拟体系中同时定义多种势函数。例如，使用 NEP 描述核心区域，使用 Lennard-Jones 描述远距离相互作用或溶剂环境。这通过在输入文件中多次调用 `potential` 相关命令实现。"
+    },
+    {
+        "id": "analysis-01",
+        "category": "结果分析",
+        "question": "如何计算材料的热导率？",
+        "answer": "GPUMD 在热输运计算方面具有独特优势。推荐使用 HNEMD (Homogeneous Non-Equilibrium Molecular Dynamics) 方法。在输入文件中设置 `fix hnemd`，并在输出中分析热流响应。此外，还可以使用光谱热流分解法分析不同频率声子的贡献。"
+    },
+    {
+        "id": "analysis-02",
+        "category": "结果分析",
+        "question": "GPUMD 的输出轨迹文件格式是什么？",
+        "answer": "GPUMD 默认输出二进制轨迹文件（通常以 `.bin` 或自定义后缀结尾），以节省空间。您可以使用 `GPUMDkit` 或 `gpyumd` 将其转换为常用的 `.xyz`、`.lammpstrj` 或 PDB 格式，以便在 VMD 或 OVITO 中可视化。"
+    },
+    {
+        "id": "analysis-03",
+        "category": "结果分析",
+        "question": "如何处理 GPUMD 输出的 thermo.out 文件？",
+        "answer": "可以使用 `gpyumd` 或简单的 Python 脚本读取 `thermo.out`。该文件包含了能量、温度、压力等随时间变化的数据。推荐使用 Pandas 进行加载和 Matplotlib 进行绘图分析。"
+    },
+    {
+        "id": "usage-01",
+        "category": "日常使用",
+        "question": "GPUMD 运行过程中报错 'CUDA out of memory' 怎么办？",
+        "answer": "这说明体系规模超过了显卡的显存限制。您可以：1. 减少原子总数；2. 增加 GPU 数量（如果支持多卡）；3. 检查是否有不合理的邻居表参数（如 `cutoff` 过大）；4. 使用显存更大的专业显卡（如 A100/H100）。"
+    },
+    {
+        "id": "usage-02",
+        "category": "日常使用",
+        "question": "如何设置模拟的步长（Timestep）？",
+        "answer": "在 `run` 命令前使用 `time_step` 命令。对于一般的原子模拟，步长通常设为 0.5 到 1.0 fs。如果体系中包含氢原子或高能碰撞，需适当减小步长（如 0.1-0.2 fs）以保证能量守恒。"
+    },
+    {
+        "id": "usage-03",
+        "category": "日常使用",
+        "question": "如何实现 NPT 系综的压力控制？",
+        "answer": "在 GPUMD 中，可以使用 `ensemble npt` 或 `fix npt` 相关的热库和压库（如 Bussi 热库和 Berendsen 压库）。确保在输入文件中正确设置了目标压力、弛豫时间以及压缩率参数。"
+    },
+    {
+        "id": "ecosystem-01",
+        "category": "生态工具",
+        "question": "GPUMDkit 主要有哪些功能？",
+        "answer": "GPUMDkit 是一个功能强大的预处理和后处理工具箱。它可以：1. 快速生成 GPUMD 输入文件；2. 转换多种轨迹格式；3. 计算关联函数和性质分析；4. 提供简易的命令行交互，极大简化了用户的工作流。"
+    },
+    {
+        "id": "ecosystem-02",
+        "category": "生态工具",
+        "question": "Calorine 和 GPUMD 是什么关系？",
+        "answer": "Calorine 提供了基于 Python 的 ASE (Atomic Simulation Environment) 接口。通过 Calorine，您可以直接在 Python 环境中定义 GPUMD 计算任务，利用 ASE 丰富的结构操作和高级算法（如 NEB、声子谱计算）来驱动 GPUMD 核心。"
+    }
+]

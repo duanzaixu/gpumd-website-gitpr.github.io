@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常见问题 - GPUMD</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- External Resources -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/general-hero.css">
+    <link rel="stylesheet" href="css/faq.css">
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        window.FAQ_CONFIG = {
+            dataUrl: 'data/gpumd-faq.json',
+            lang: 'zh'
+        };
+    </script>
+    <script src="js/faq.js"></script>
+</head>
+<body class="antialiased text-slate-800 bg-white font-sans flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="glass-nav sticky top-0 z-50 border-b border-slate-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 lg:h-20">
+                <div class="flex items-center">
+                    <a href="home.html" class="flex items-center gap-2 lg:gap-3 group">
+                        <img src="images/logo.png" alt="GPUMD Logo" class="h-8 lg:h-12 w-auto transform transition-transform group-hover:scale-105">
+                        <span class="text-xl lg:text-3xl font-bold bg-gradient-to-r from-brand-700 to-brand-500 bg-clip-text text-transparent">
+                            GPUMD
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="hidden lg:flex items-center space-x-1">
+                    <a href="home.html" class="nav-link">首页</a>
+                    
+                    <div class="relative group">
+                        <button class="nav-link-dropdown">
+                            软件下载 <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="features.html" class="dropdown-item">主要功能</a>
+                            <a href="download.html#latest" class="dropdown-item">最新版本</a>
+                            <a href="download.html#history" class="dropdown-item">历史版本</a>
+                        </div>
+                    </div>
+
+                    <a href="database.html" class="nav-link">NEP势函数库</a>
+
+                    <div class="relative group">
+                        <button class="nav-link-dropdown active">
+                            社区生态 <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="faq.html" class="dropdown-item active">常见问题</a>
+                            <a href="ecosystem.html" class="dropdown-item">生态工具</a>
+                            <a href="support.html" class="dropdown-item">用户交流</a>
+                            <a href="books.html" class="dropdown-item">参考书籍</a>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <button class="nav-link-dropdown">
+                            关于我们 <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="teams.html" class="dropdown-item">开发团队</a>
+                            <a href="units.html" class="dropdown-item">支持单位</a>
+                            <a href="contact.html" class="dropdown-item">联系我们</a>
+                        </div>
+                    </div>
+
+                    <button class="ml-2 flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 text-slate-600 hover:border-brand-500 hover:text-brand-600 transition-all text-sm font-bold" onclick="window.location.href='faq_en.html'">
+                        <i data-lucide="globe" class="w-4 h-4"></i>
+                        CN / EN
+                    </button>
+                </div>
+
+                <div class="flex items-center lg:hidden">
+                    <button class="mr-2 flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 hover:border-brand-500 hover:text-brand-600 transition-all text-xs font-bold" onclick="window.location.href='faq_en.html'">
+                        EN
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none transition-colors">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 shadow-xl absolute w-full left-0 max-h-[80vh] overflow-y-auto">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="home.html" class="block px-3 py-3 rounded-lg text-base font-bold text-slate-600">首页</a>
+                
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">软件下载</div>
+                    <a href="features.html" class="block px-6 py-2 text-base font-medium text-slate-600">主要功能</a>
+                    <a href="download.html#latest" class="block px-6 py-2 text-base font-medium text-slate-600">最新版本</a>
+                    <a href="download.html#history" class="block px-6 py-2 text-base font-medium text-slate-600">历史版本</a>
+                </div>
+
+                <a href="database.html" class="block px-3 py-3 rounded-lg text-base font-bold text-slate-600 hover:text-brand-600 hover:bg-slate-50">NEP势函数库</a>
+
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-brand-600 bg-brand-50 rounded-lg uppercase tracking-wider">社区生态</div>
+                    <a href="faq.html" class="block px-6 py-2 text-base font-bold text-brand-600">常见问题</a>
+                    <a href="ecosystem.html" class="block px-6 py-2 text-base font-medium text-slate-600">生态工具</a>
+                    <a href="support.html" class="block px-6 py-2 text-base font-medium text-slate-600">用户交流</a>
+                    <a href="books.html" class="block px-6 py-2 text-base font-medium text-slate-600">参考书籍</a>
+                </div>
+
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">关于我们</div>
+                    <a href="teams.html" class="block px-6 py-2 text-base font-medium text-slate-600">开发团队</a>
+                    <a href="units.html" class="block px-6 py-2 text-base font-medium text-slate-600">支持单位</a>
+                    <a href="contact.html" class="block px-6 py-2 text-base font-medium text-slate-600">联系我们</a>
+                </div>
+
+                <div class="py-2 border-t border-slate-100 mt-2">
+                    <button class="w-full flex items-center justify-center gap-2 px-3 py-3 rounded-lg text-base font-bold text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all" onclick="window.location.href='faq_en.html'">
+                        <i data-lucide="globe" class="w-5 h-5"></i>
+                        Switch to English
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    <!-- Search Hero Section -->
+    <div class="faq-search-container py-12 lg:py-16 text-white text-center">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h1 class="text-3xl lg:text-4xl font-black mb-4 tracking-tight">常见问题解答</h1>
+            <p class="text-slate-400 text-base lg:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+                在这里寻找关于安装、性能优化、力场选择及结果分析的高频技术问答。
+            </p>
+            
+            <div class="relative max-w-2xl mx-auto group">
+                <i data-lucide="search" class="absolute left-6 top-1/2 -translate-y-1/2 w-6 h-6 text-slate-400 group-focus-within:text-brand-500 transition-colors"></i>
+                <input type="text" id="faq-search" placeholder="输入关键词搜索问题..." class="w-full pl-16 pr-6 py-3 lg:py-5 rounded-xl lg:rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white/20 transition-all">
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Main Section -->
+    <main class="flex-grow bg-slate-50 py-12 lg:py-16">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Persistent Notice Bar -->
+            <div class="faq-notice-bar mb-8 lg:mb-12 p-4 lg:p-5 rounded-xl lg:rounded-2xl border flex items-center gap-4 bg-brand-50 border-brand-100 text-brand-700 shadow-sm">
+                <div class="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-brand-600 text-white flex items-center justify-center flex-shrink-0 animate-pulse">
+                    <i data-lucide="message-circle" class="w-4 h-4 lg:w-5 lg:h-5"></i>
+                </div>
+                <p class="text-sm font-bold leading-relaxed">
+                    若未找到对应问题，请滑至页尾扫码加入官方 QQ 群交流。
+                </p>
+            </div>
+
+            <!-- Category Navigation -->
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-8">
+                <div id="faq-categories" class="flex flex-wrap gap-3 justify-center md:justify-start">
+                    <!-- Dynamic Categories -->
+                </div>
+                <div class="flex gap-4">
+                    <button id="expand-all" class="text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-brand-600 transition-colors flex items-center gap-2">
+                        <i data-lucide="maximize-2" class="w-4 h-4"></i> 全部展开
+                    </button>
+                    <button id="collapse-all" class="text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-brand-600 transition-colors flex items-center gap-2">
+                        <i data-lucide="minimize-2" class="w-4 h-4"></i> 全部折叠
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats & Feedback -->
+            <div class="mb-8 flex items-center justify-between text-sm">
+                <p class="text-slate-500">共找到 <span id="faq-count" class="font-bold text-brand-600">0</span> 条相关问答</p>
+                <a href="support.html" class="text-brand-600 font-bold hover:underline flex items-center gap-1">
+                    没有找到答案？联系支持团队 <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+            </div>
+
+            <!-- FAQ List Container -->
+            <div id="faq-list" class="space-y-6">
+                <!-- Data will be injected here immediately by faq.js -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-8 lg:py-16 border-t border-slate-900 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-8 lg:gap-x-12 lg:gap-y-16 mb-8 lg:mb-16">
+                <!-- Column 1: Brand & Status -->
+                <div class="col-span-2 lg:col-span-2">
+                    <a href="home.html" class="flex items-center gap-2 mb-4 lg:mb-8 group">
+                        <img src="images/logo.png" alt="GPUMD Logo" class="h-8 lg:h-10 w-auto">
+                        <span class="text-xl lg:text-2xl font-black text-white tracking-tight">GPUMD</span>
+                    </a>
+                    <div class="space-y-4 lg:space-y-6">
+                        <p class="text-xs lg:text-sm leading-relaxed text-slate-400">
+                            高性能 CPU+GPU 异构并行的分子动力学模拟软件，致力于为复杂多体系统提供极致的计算效率与精度。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Column 2: Software -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">软件与数据库</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="features.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>主要功能</a></li>
+                        <li><a href="download.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>最新版本</a></li>
+                        <li><a href="database.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>NEP势函数库</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Resources -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">资源与文档</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="https://gpumd.org" target="_blank" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>官方手册</a></li>
+                        <li><a href="faq.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>常见问题</a></li>
+                        <li><a href="books.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>参考书籍</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Community -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">社区与工具</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="ecosystem.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>生态工具</a></li>
+                        <li><a href="support.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>用户支持</a></li>
+                        <li><a href="https://github.com/brucefan1983/GPUMD" target="_blank" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>GitHub 仓库</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 5: Social & QR -->
+                <div class="col-span-2 lg:col-span-1 flex lg:justify-end">
+                    <div class="space-y-4 lg:space-y-8">
+                        <p class="text-white text-[10px] font-black mb-4 lg:mb-6 uppercase tracking-[0.2em] opacity-40 lg:text-right">交流讨论</p>
+                        <div class="flex gap-4 lg:gap-6 lg:justify-end">
+                            <div class="group relative">
+                                <div class="w-16 h-16 lg:w-20 lg:h-20 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center p-2 group-hover:border-brand-500/50 group-hover:bg-white/10 transition-all duration-500 shadow-2xl">
+                                    <img src="images/qr_qq.png" alt="QQ Group" class="w-full h-full object-contain">
+                                </div>
+                                <p class="text-[9px] mt-2 lg:mt-3 text-center font-bold opacity-40 group-hover:opacity-100 transition-opacity">QQ 群</p>
+                            </div>
+                            <div class="group relative">
+                                <div class="w-16 h-16 lg:w-20 lg:h-20 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center p-2 group-hover:border-brand-500/50 group-hover:bg-white/10 transition-all duration-500 shadow-2xl">
+                                    <img src="images/qr_wechat.png" alt="WeChat" class="w-full h-full object-contain">
+                                </div>
+                                <p class="text-[9px] mt-2 lg:mt-3 text-center font-bold opacity-40 group-hover:opacity-100 transition-opacity">微信公众号</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 lg:pt-12 border-t border-slate-900 flex flex-col md:flex-row items-center justify-between gap-6 text-[11px] font-medium tracking-wider">
+                <p class="opacity-40">© 2026 GPUMD TEAM. PROUDLY DEVELOPED FOR SCIENCE.</p>
+                <a href="https://beian.miit.gov.cn/" target="_blank" class="opacity-40 hover:opacity-100 transition-opacity">苏ICP备2025218443号-1</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

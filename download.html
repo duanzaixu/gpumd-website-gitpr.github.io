@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>软件下载 - GPUMD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/general-hero.css">
+    <link rel="stylesheet" href="css/download.css">
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body class="antialiased text-slate-800 bg-white font-sans flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="glass-nav sticky top-0 z-50 border-b border-slate-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 lg:h-20">
+                <div class="flex items-center">
+                    <a href="home.html" class="flex items-center gap-2 lg:gap-3 group">
+                        <img src="images/logo.png" alt="GPUMD Logo" class="h-8 lg:h-12 w-auto transform transition-transform group-hover:scale-105">
+                        <span class="text-xl lg:text-3xl font-bold bg-gradient-to-r from-brand-700 to-brand-500 bg-clip-text text-transparent">
+                            GPUMD
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="hidden lg:flex items-center space-x-1">
+                    <a href="home.html" class="nav-link">首页</a>
+                    
+                    <div class="relative group">
+                        <button class="nav-link-dropdown active">
+                            软件下载 <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="features.html" class="dropdown-item">主要功能</a>
+                            <a href="download.html#latest" class="dropdown-item active">最新版本</a>
+                            <a href="download.html#history" class="dropdown-item">历史版本</a>
+                        </div>
+                    </div>
+
+                    <a href="database.html" class="nav-link">NEP势函数库</a>
+
+                    <div class="relative group">
+                        <button class="nav-link-dropdown">
+                            社区生态 <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="faq.html" class="dropdown-item">常见问题</a>
+                            <a href="ecosystem.html" class="dropdown-item">生态工具</a>
+                            <a href="support.html#forum" class="dropdown-item">用户交流</a>
+                            <a href="books.html" class="dropdown-item">参考书籍</a>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <button class="nav-link-dropdown">
+                            关于我们 <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="teams.html" class="dropdown-item">开发团队</a>
+                            <a href="units.html" class="dropdown-item">支持单位</a>
+                            <a href="contact.html" class="dropdown-item">联系我们</a>
+                        </div>
+                    </div>
+
+                    <button class="ml-2 flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 text-slate-600 hover:border-brand-500 hover:text-brand-600 transition-all text-sm font-bold" onclick="window.location.href='download_en.html'">
+                        <i data-lucide="globe" class="w-4 h-4"></i>
+                        CN / EN
+                    </button>
+                </div>
+
+                <div class="flex items-center lg:hidden">
+                    <button class="mr-2 flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 hover:border-brand-500 hover:text-brand-600 transition-all text-xs font-bold" onclick="window.location.href='download_en.html'">
+                        EN
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none transition-colors">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 shadow-xl absolute w-full left-0 max-h-[80vh] overflow-y-auto">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="home.html" class="block px-3 py-3 rounded-lg text-base font-bold text-slate-600">首页</a>
+                
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">软件下载</div>
+                    <a href="features.html" class="block px-6 py-2 text-base font-medium text-slate-600">主要功能</a>
+                    <a href="download.html#latest" class="block px-6 py-2 text-base font-bold text-brand-600 bg-brand-50 rounded-lg">最新版本</a>
+                    <a href="download.html#history" class="block px-6 py-2 text-base font-medium text-slate-600">历史版本</a>
+                </div>
+
+                <a href="database.html" class="block px-3 py-3 rounded-lg text-base font-bold text-slate-600 hover:text-brand-600 hover:bg-slate-50">NEP势函数库</a>
+
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">社区生态</div>
+                    <a href="faq.html" class="block px-6 py-2 text-base font-medium text-slate-600">常见问题</a>
+                    <a href="ecosystem.html" class="block px-6 py-2 text-base font-medium text-slate-600">生态工具</a>
+                    <a href="support.html#forum" class="block px-6 py-2 text-base font-medium text-slate-600">用户交流</a>
+                    <a href="books.html" class="block px-6 py-2 text-base font-medium text-slate-600">参考书籍</a>
+                </div>
+
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">关于我们</div>
+                    <a href="teams.html" class="block px-6 py-2 text-base font-medium text-slate-600">开发团队</a>
+                    <a href="units.html" class="block px-6 py-2 text-base font-medium text-slate-600">支持单位</a>
+                    <a href="contact.html" class="block px-6 py-2 text-base font-medium text-slate-600">联系我们</a>
+                </div>
+
+                <div class="py-2 border-t border-slate-100 mt-2">
+                    <button class="w-full flex items-center justify-center gap-2 px-3 py-3 rounded-lg text-base font-bold text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all" onclick="window.location.href='download_en.html'">
+                        <i data-lucide="globe" class="w-5 h-5"></i>
+                        Switch to English
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    <!-- Hero Section -->
+    <div class="general-hero-section hero-bg reveal">
+        <!-- Background Decorative Orbs -->
+        <div class="hero-orb bg-brand-400 top-0 -left-20 opacity-20"></div>
+        <div class="hero-orb bg-purple-400 bottom-0 -right-20 opacity-20" style="animation-delay: -5s;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            
+            <h1 class="general-hero-title">
+                软件下载
+            </h1>
+
+            <p class="general-hero-description">
+                我们建议所有用户升级到最新版以获得最佳性能与功能。
+            </p>
+        
+        </div>
+    </div>
+
+    <main class="flex-grow">
+        <!-- Latest Version Section: Refactored v4.9.1 -->
+        <section id="latest" class="py-12 lg:py-24 bg-white reveal">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10 lg:mb-16">
+                    <span class="inline-flex items-center px-4 py-1.5 rounded-full bg-brand-50 border border-brand-100 text-brand-600 text-xs lg:text-sm font-bold uppercase tracking-widest mb-4 lg:mb-6">
+                        Stable Release
+                    </span>
+                    <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900">最新稳定版本 GPUMD-v4.9.1</h2>
+                    <div class="h-1.5 w-24 bg-brand-500 rounded-full mx-auto mt-6"></div>
+                </div>
+
+                <!-- Version 4.9.1 Highlights Card -->
+                <div class="mb-10 lg:mb-16">
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-12 shadow-sm relative overflow-hidden">
+                        
+                        <div class="relative z-10">
+                            <!-- Header with Download Button -->
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 lg:mb-12 gap-6 pb-8 border-b border-slate-200">
+                                <div class="flex items-center gap-4 lg:gap-6">
+                                    <div class="w-16 h-16 lg:w-20 lg:h-20 bg-brand-600 text-white rounded-2xl lg:rounded-3xl flex items-center justify-center shadow-lg shadow-brand-500/20">
+                                        <i data-lucide="sparkles" class="w-8 h-8 lg:w-10 lg:h-10"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-2xl lg:text-3xl font-extrabold text-slate-900 mb-2">GPUMD-v4.9.1 亮点</h3>
+                                        <p class="text-slate-500 text-sm lg:text-base font-medium">Bug 修复与功能增强</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="w-full md:w-auto flex flex-col sm:flex-row gap-3">
+                                    <a href="release/GPUMD-v4.9.1.zip" download="GPUMD-v4.9.1.zip" class="flex items-center justify-center gap-2 px-6 py-3.5 bg-slate-900 text-white rounded-xl font-bold hover:bg-brand-600 transition-all shadow-lg hover:shadow-brand-500/30 hover:-translate-y-1 text-sm lg:text-base">
+                                        <i data-lucide="download" class="w-4 h-4 lg:w-5 lg:h-5"></i>
+                                        立即下载 v4.9.1
+                                    </a>
+                                    <button class="collapse-trigger w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 bg-white border border-slate-200 rounded-xl text-sm font-bold text-slate-600 hover:border-brand-500 hover:text-brand-600 transition-all shadow-sm hover:shadow-md" data-target="v48-highlights">
+                                        <span class="collapse-text">收起详情</span>
+                                        <i data-lucide="chevron-up" class="w-4 h-4 collapse-icon transition-transform" style="transform: rotate(180deg);"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div id="v48-highlights" class="space-y-8 lg:space-y-10">
+                                <!-- nep executable -->
+                                <div class="space-y-4">
+                                    <h4 class="text-lg lg:text-xl font-bold text-slate-900 flex items-center gap-3">
+                                        <span class="w-1.5 h-6 lg:w-2 lg:h-8 bg-brand-500 rounded-full"></span>
+                                        nep 可执行文件：
+                                    </h4>
+                                    
+                                    <!-- <code class="bg-slate-100 px-1.5 py-0.5 rounded text-brand-600 font-mono text-sm">lambda_q</code> -->
+                                    <!-- 以上写法可以替代markdown中的`lambda_q`这种操作 -->
+                                    <ul class="space-y-4 ml-4 lg:ml-5">
+                                        <li class="flex items-start gap-3 text-slate-600 leading-relaxed text-sm lg:text-base">
+                                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mt-1 flex-shrink-0"></i>
+                                            <span>
+                                                对于缺失应力参考值结构，其目标应力的输出值统一修正为 -1e6。此前该值为较大的负数，但数值不固定。
+                                                <a href="https://github.com/brucefan1983/GPUMD/pull/1364" target="_blank" class="text-brand-500 font-mono text-xs hover:underline ml-2">#1364</a>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- gnep executable -->
+                                <!-- <div class="space-y-4">
+                                    <h4 class="text-lg lg:text-xl font-bold text-slate-900 flex items-center gap-3">
+                                        <span class="w-1.5 h-6 lg:w-2 lg:h-8 bg-purple-500 rounded-full"></span>
+                                        gnep 可执行文件：
+                                    </h4>
+                                    <div class="ml-4 lg:ml-5 p-4 lg:p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
+                                        <p class="text-slate-600 leading-relaxed mb-4 text-sm lg:text-base">
+                                            <code class="bg-slate-100 px-1.5 py-0.5 rounded text-purple-600 font-mono text-sm">gnep</code> 可执行文件现已正式发布并进入稳定状态。它提供了一个基于梯度下降算法的训练方案，可以用于 NEP 势函数训练。该程序经过数月的内部深度验证，已完全达到生产可用标准。
+                                        </p>
+                                    </div>
+                                </div> -->
+
+                                <!-- gpumd executable -->
+                                <div class="space-y-4">
+                                    <h4 class="text-lg lg:text-xl font-bold text-slate-900 flex items-center gap-3">
+                                        <span class="w-1.5 h-6 lg:w-2 lg:h-8 bg-orange-500 rounded-full"></span>
+                                        gpumd 可执行文件：
+                                    </h4>
+                                    <ul class="space-y-4 ml-4 lg:ml-5">
+                                        <li class="flex items-start gap-3 text-slate-600 leading-relaxed text-sm lg:text-base">
+                                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mt-1 flex-shrink-0"></i>
+                                            <span>
+                                                修复了 v4.9 引入的一个 Bug。当使用单 GPU 运行 NEP 或 qNEP 模型，且周期性盒子的厚度处于 2.5r<sub>c</sub> 与 2.5(r<sub>c</sub> + 1) 之间时，部分邻居原子会被重复计算。
+                                                <a href="https://github.com/brucefan1983/GPUMD/pull/1370" target="_blank" class="text-brand-500 font-mono text-xs hover:underline ml-2">#1370</a>
+                                            </span>
+                                        </li>
+                                        <li class="flex items-start gap-3 text-slate-600 leading-relaxed text-sm lg:text-base">
+                                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mt-1 flex-shrink-0"></i>
+                                            <span>
+                                                修复了 <code class="bg-slate-100 px-1.5 py-0.5 rounded text-brand-600 font-mono text-sm">ensemble ti_rs</code> 关键词的一个 Bug。解决了当 tswitch 与 tequil 的乘积超过整型最大值 INT_MAX (2<sup>31</sup>-1) 时导致的溢出问题。
+                                                <a href="https://github.com/brucefan1983/GPUMD/pull/1366" target="_blank" class="text-brand-500 font-mono text-xs hover:underline ml-2">#1366</a>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Compilation Tutorial & Manual Section -->
+                <div class="mb-20 lg:mb-16">
+                    <!-- Section Header -->
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 lg:mb-12 gap-6 px-4">
+                        <div>
+                            <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mb-2 lg:mb-4 tracking-tight">快速开始</h2>
+                            <p class="text-slate-500 text-sm lg:text-base font-medium">仅需三步，即可在您的环境中部署 GPUMD。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-12">
+                        <!-- Step 1 -->
+                        <div class="history-card p-6 lg:p-8 rounded-2xl lg:rounded-[2.5rem] group relative overflow-hidden bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-brand-500/5 rounded-full -mr-16 -mt-16 group-hover:bg-brand-500/10 transition-colors"></div>
+                            
+                            <div class="flex justify-between items-start mb-6 lg:mb-8 relative z-10">
+                                <div>
+                                    <div class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-brand-50 text-brand-600 text-xs font-bold mb-2">
+                                        Step 01
+                                    </div>
+                                    <h3 class="text-xl lg:text-2xl font-black text-slate-900 tracking-tighter">环境准备</h3>
+                                </div>
+                                <div class="w-10 h-10 lg:w-12 lg:h-12 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-brand-600 group-hover:text-white group-hover:rotate-12 transition-all duration-500 shadow-sm">
+                                    <i data-lucide="server" class="w-5 h-5 lg:w-6 lg:h-6"></i>
+                                </div>
+                            </div>
+
+                            <div class="h-px w-full bg-slate-100 mb-6"></div>
+
+                            <p class="text-sm text-slate-600 leading-relaxed mb-6 font-medium h-10">
+                                加载 CUDA 编译环境。
+                            </p>
+
+                            <div class="bg-slate-50 rounded-xl px-4 py-3 font-mono text-xs text-slate-600 border border-slate-200 flex items-center gap-3 group-hover:bg-brand-50/50 group-hover:border-brand-200/50 transition-colors">
+                                <i data-lucide="terminal" class="w-3.5 h-3.5 text-slate-400"></i>
+                                <span class="select-all font-bold text-brand-700">module load cuda</span>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="history-card p-6 lg:p-8 rounded-2xl lg:rounded-[2.5rem] group relative overflow-hidden bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full -mr-16 -mt-16 group-hover:bg-purple-500/10 transition-colors"></div>
+                            
+                            <div class="flex justify-between items-start mb-6 lg:mb-8 relative z-10">
+                                <div>
+                                    <div class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-purple-50 text-purple-600 text-xs font-bold mb-2">
+                                        Step 02
+                                    </div>
+                                    <h3 class="text-xl lg:text-2xl font-black text-slate-900 tracking-tighter">解压源码</h3>
+                                </div>
+                                <div class="w-10 h-10 lg:w-12 lg:h-12 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-purple-600 group-hover:text-white group-hover:rotate-12 transition-all duration-500 shadow-sm">
+                                    <i data-lucide="folder-open" class="w-5 h-5 lg:w-6 lg:h-6"></i>
+                                </div>
+                            </div>
+
+                            <div class="h-px w-full bg-slate-100 mb-6"></div>
+
+                            <p class="text-sm text-slate-600 leading-relaxed mb-6 font-medium h-10">
+                                解压下载的 ZIP 包。
+                            </p>
+
+                            <div class="bg-slate-50 rounded-xl px-4 py-3 font-mono text-xs text-slate-600 border border-slate-200 flex items-center gap-3 group-hover:bg-purple-50/50 group-hover:border-purple-200/50 transition-colors">
+                                <i data-lucide="terminal" class="w-3.5 h-3.5 text-slate-400"></i>
+                                <span class="select-all font-bold text-purple-700">unzip GPUMD.zip</span>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="history-card p-6 lg:p-8 rounded-2xl lg:rounded-[2.5rem] group relative overflow-hidden bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 rounded-full -mr-16 -mt-16 group-hover:bg-orange-500/10 transition-colors"></div>
+                            
+                            <div class="flex justify-between items-start mb-6 lg:mb-8 relative z-10">
+                                <div>
+                                    <div class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-orange-50 text-orange-600 text-xs font-bold mb-2">
+                                        Step 03
+                                    </div>
+                                    <h3 class="text-xl lg:text-2xl font-black text-slate-900 tracking-tighter">编译程序</h3>
+                                </div>
+                                <div class="w-10 h-10 lg:w-12 lg:h-12 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-orange-600 group-hover:text-white group-hover:rotate-12 transition-all duration-500 shadow-sm">
+                                    <i data-lucide="hammer" class="w-5 h-5 lg:w-6 lg:h-6"></i>
+                                </div>
+                            </div>
+
+                            <div class="h-px w-full bg-slate-100 mb-6"></div>
+
+                            <p class="text-sm text-slate-600 leading-relaxed mb-6 font-medium h-10">
+                                进入 src 目录并执行 make 编译。
+                            </p>
+
+                            <div class="bg-slate-50 rounded-xl px-4 py-3 font-mono text-xs text-slate-600 border border-slate-200 flex items-center gap-3 group-hover:bg-orange-50/50 group-hover:border-orange-200/50 transition-colors">
+                                <i data-lucide="terminal" class="w-3.5 h-3.5 text-slate-400"></i>
+                                <span class="select-all font-bold text-orange-700">cd GPUMD/src && make</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Manual Section -->
+                    <div class="bg-gradient-to-br from-slate-50 to-white rounded-2xl lg:rounded-[2rem] p-6 lg:p-10 border border-slate-200 shadow-sm relative overflow-hidden group hover:shadow-lg transition-all duration-300">
+                        <!-- Background Decoration -->
+                        <div class="absolute right-0 top-0 w-64 h-64 bg-brand-50 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none group-hover:bg-brand-100/50 transition-colors"></div>
+                        <div class="absolute left-0 bottom-0 w-48 h-48 bg-blue-50 rounded-full blur-2xl -ml-12 -mb-12 pointer-events-none"></div>
+
+                        <div class="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8 relative z-10">
+                            <div class="flex items-center gap-5">
+                                <div class="w-14 h-14 lg:w-16 lg:h-16 bg-white rounded-2xl flex items-center justify-center border border-slate-100 shadow-md text-brand-600 group-hover:scale-105 group-hover:shadow-brand-100 transition-all duration-300">
+                                    <i data-lucide="book-open" class="w-7 h-7 lg:w-8 lg:h-8"></i>
+                                </div>
+                                <div class="text-center lg:text-left">
+                                    <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1.5 tracking-tighter">官方技术手册</h3>
+                                    <p class="text-slate-500 text-sm lg:text-base font-medium">
+                                        包含完整的输入输出格式说明与模拟示例
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex gap-4 w-full lg:w-auto">
+                                <a href="https://gpumd.org" target="_blank" class="flex items-center justify-center gap-2.5 px-6 py-3 bg-white text-slate-700 border border-slate-200 rounded-xl font-bold hover:border-brand-500 hover:text-brand-600 transition-all text-sm lg:text-base flex-1 lg:flex-none whitespace-nowrap shadow-sm hover:shadow-md hover:-translate-y-0.5">
+                                    <i data-lucide="external-link" class="w-4 h-4 lg:w-5 lg:h-5"></i>
+                                    在线阅读
+                                </a>
+                                <a href="https://gpumd.org/GPUMD_Manual.pdf" class="flex items-center justify-center gap-2.5 px-6 py-3 bg-brand-600 text-white rounded-xl font-bold hover:bg-brand-700 transition-all text-sm lg:text-base flex-1 lg:flex-none whitespace-nowrap shadow-lg shadow-brand-200 hover:shadow-brand-300 hover:-translate-y-0.5">
+                                    <i data-lucide="file-down" class="w-4 h-4 lg:w-5 lg:h-5"></i>
+                                    PDF 下载
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history" class="py-12 lg:py-16 bg-slate-50 reveal">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 lg:mb-12 gap-6">
+                    <div>
+                        <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mb-2 lg:mb-4 tracking-tight">历史版本归档</h2>
+                        <p class="text-slate-500 text-sm lg:text-base font-medium">需要获取旧版本？请在此查阅版本演进历史。</p>
+                    </div>
+                    <a href="https://github.com/brucefan1983/GPUMD/releases" target="_blank" class="inline-flex items-center gap-2 text-brand-600 font-bold hover:text-brand-700 transition-colors group text-sm lg:text-base">
+                        查看 GitHub 全部版本 <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-12">
+                    
+                    <!-- v4.9 -->
+                    <div class="history-card p-6 lg:p-8 rounded-2xl lg:rounded-[2.5rem] group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-500/5 rounded-full -mr-16 -mt-16 group-hover:bg-brand-500/10 transition-colors"></div>
+                        
+                        <div class="flex justify-between items-start mb-8 relative z-10">
+                            <div>
+                                <div class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-brand-50 text-brand-600 text-xs font-bold mb-2">
+                                    Archive v4.9
+                                </div>
+                                <h3 class="text-3xl font-black text-slate-900 tracking-tighter">v4.9</h3>
+                                <div class="flex items-center gap-2 text-slate-400 mt-1">
+                                    <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                                    <span class="text-xs font-bold uppercase tracking-wider">Fab 2026</span>
+                                </div>
+                            </div>
+                            <div class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-brand-600 group-hover:text-white group-hover:rotate-12 transition-all duration-500 shadow-sm">
+                                <i data-lucide="archive" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+
+                        <div class="h-px w-full bg-slate-100 mb-6"></div>
+
+                        <p class="text-sm text-slate-600 leading-relaxed mb-10 h-12 overflow-hidden opacity-90 font-medium">
+                            加速了 GPUMD 的模拟速度。
+                        </p>
+
+                        <a href="https://github.com/brucefan1983/GPUMD/archive/refs/tags/v4.9.zip" class="w-full py-4 border-2 border-brand-600 text-brand-600 rounded-2xl text-center font-black text-sm hover:bg-brand-600 hover:text-white transition-all duration-300 block shadow-sm shadow-brand-500/10">
+                            下载 Source (ZIP)
+                        </a>
+                    </div>
+
+                    <!-- v4.8 -->
+                    <div class="history-card p-6 lg:p-8 rounded-2xl lg:rounded-[2.5rem] group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-500/5 rounded-full -mr-16 -mt-16 group-hover:bg-brand-500/10 transition-colors"></div>
+                        
+                        <div class="flex justify-between items-start mb-8 relative z-10">
+                            <div>
+                                <div class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-brand-50 text-brand-600 text-xs font-bold mb-2">
+                                    Archive v4.8
+                                </div>
+                                <h3 class="text-3xl font-black text-slate-900 tracking-tighter">v4.8</h3>
+                                <div class="flex items-center gap-2 text-slate-400 mt-1">
+                                    <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                                    <span class="text-xs font-bold uppercase tracking-wider">Jan 2026</span>
+                                </div>
+                            </div>
+                            <div class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-brand-600 group-hover:text-white group-hover:rotate-12 transition-all duration-500 shadow-sm">
+                                <i data-lucide="archive" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+
+                        <div class="h-px w-full bg-slate-100 mb-6"></div>
+
+                        <p class="text-sm text-slate-600 leading-relaxed mb-10 h-12 overflow-hidden opacity-90 font-medium">
+                            支持微调描述符；引入lambda_q 与 lambda_z 两个损失权重，发布gnep可执行文件。
+                        </p>
+
+                        <a href="https://github.com/brucefan1983/GPUMD/archive/refs/tags/v4.8.zip" class="w-full py-4 border-2 border-brand-600 text-brand-600 rounded-2xl text-center font-black text-sm hover:bg-brand-600 hover:text-white transition-all duration-300 block shadow-sm shadow-brand-500/10">
+                            下载 Source (ZIP)
+                        </a>
+                    </div>
+
+                    <!-- v4.7 -->
+                    <div class="history-card p-6 lg:p-8 rounded-2xl lg:rounded-[2.5rem] group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-500/5 rounded-full -mr-16 -mt-16 group-hover:bg-brand-500/10 transition-colors"></div>
+                        
+                        <div class="flex justify-between items-start mb-8 relative z-10">
+                            <div>
+                                <div class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-brand-50 text-brand-600 text-xs font-bold mb-2">
+                                    Archive v4.7
+                                </div>
+                                <h3 class="text-3xl font-black text-slate-900 tracking-tighter">v4.7</h3>
+                                <div class="flex items-center gap-2 text-slate-400 mt-1">
+                                    <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                                    <span class="text-xs font-bold uppercase tracking-wider">Dec 2025</span>
+                                </div>
+                            </div>
+                            <div class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-brand-600 group-hover:text-white group-hover:rotate-12 transition-all duration-500 shadow-sm">
+                                <i data-lucide="archive" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+
+                        <div class="h-px w-full bg-slate-100 mb-6"></div>
+
+                        <p class="text-sm text-slate-600 leading-relaxed mb-10 h-12 overflow-hidden opacity-90 font-medium">
+                            引入新的 typewise cutoff 方案，进一步提升了力场定义的灵活性。
+                        </p>
+
+                        <a href="https://github.com/brucefan1983/GPUMD/archive/refs/tags/v4.7.zip" class="w-full py-4 border-2 border-brand-600 text-brand-600 rounded-2xl text-center font-black text-sm hover:bg-brand-600 hover:text-white transition-all duration-300 block shadow-sm shadow-brand-500/10">
+                            下载 Source (ZIP)
+                        </a>
+                    </div>
+
+                    <!-- v4.6 -->
+                    <div class="history-card p-8 rounded-[2.5rem] group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full -mr-16 -mt-16 group-hover:bg-purple-500/10 transition-colors"></div>
+                        
+                        <div class="flex justify-between items-start mb-8 relative z-10">
+                            <div>
+                                <div class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-purple-50 text-purple-600 text-xs font-bold mb-2">
+                                    Archive v4.6
+                                </div>
+                                <h3 class="text-3xl font-black text-slate-900 tracking-tighter">v4.6</h3>
+                                <div class="flex items-center gap-2 text-slate-400 mt-1">
+                                    <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                                    <span class="text-xs font-bold uppercase tracking-wider">Nov 2025</span>
+                                </div>
+                            </div>
+                            <div class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-purple-600 group-hover:text-white group-hover:rotate-12 transition-all duration-500 shadow-sm">
+                                <i data-lucide="archive" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+
+                        <div class="h-px w-full bg-slate-100 mb-6"></div>
+
+                        <p class="text-sm text-slate-600 leading-relaxed mb-10 h-12 overflow-hidden opacity-90 font-medium">
+                            正式引入 qNEP 机器学习势模型，支持带电体系的高精度模拟。
+                        </p>
+
+                        <a href="https://github.com/brucefan1983/GPUMD/archive/refs/tags/v4.6.zip" class="w-full py-4 border-2 border-brand-600 text-brand-600 rounded-2xl text-center font-black text-sm hover:bg-brand-600 hover:text-white transition-all duration-300 block shadow-sm shadow-brand-500/10">
+                            下载 Source (ZIP)
+                        </a>
+                    </div>
+
+                    <!-- v4.5 -->
+                    <div class="history-card p-8 rounded-[2.5rem] group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 rounded-full -mr-16 -mt-16 group-hover:bg-orange-500/10 transition-colors"></div>
+                        
+                        <div class="flex justify-between items-start mb-8 relative z-10">
+                            <div>
+                                <div class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-orange-50 text-orange-600 text-xs font-bold mb-2">
+                                    Archive v4.5
+                                </div>
+                                <h3 class="text-3xl font-black text-slate-900 tracking-tighter">v4.5</h3>
+                                <div class="flex items-center gap-2 text-slate-400 mt-1">
+                                    <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                                    <span class="text-xs font-bold uppercase tracking-wider">Oct 2025</span>
+                                </div>
+                            </div>
+                            <div class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-orange-600 group-hover:text-white group-hover:rotate-12 transition-all duration-500 shadow-sm">
+                                <i data-lucide="archive" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+
+                        <div class="h-px w-full bg-slate-100 mb-6"></div>
+
+                        <p class="text-sm text-slate-600 leading-relaxed mb-10 h-12 overflow-hidden opacity-90 font-medium">
+                            添加了 ADP (Angular Dependent Potential) 势函数支持。
+                        </p>
+
+                        <a href="https://github.com/brucefan1983/GPUMD/archive/refs/tags/v4.5.zip" class="w-full py-4 border-2 border-brand-600 text-brand-600 rounded-2xl text-center font-black text-sm hover:bg-brand-600 hover:text-white transition-all duration-300 block shadow-sm shadow-brand-500/10">
+                            下载 Source (ZIP)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Citation Section -->
+        <section id="citation" class="py-24 bg-white reveal">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-6">引用声明 (Citation)</h2>
+                    <div class="h-1 w-20 bg-brand-500 rounded-full mx-auto mb-8"></div>
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        如果您的研究工作或产品使用了 <span class="text-brand-600 font-bold">GPUMD</span>，请务必引用以下文章：
+                    </p>
+                </div>
+
+                <div class="citation-metadata-card p-8 md:p-12 rounded-[2.5rem] bg-slate-50 border border-slate-200 shadow-sm relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i data-lucide="scroll-text" class="w-24 h-24 text-slate-900"></i>
+                    </div>
+                    
+                    <div class="relative z-10 space-y-6">
+                        <h3 class="text-xl md:text-2xl font-bold text-slate-900 leading-tight">
+                            GPUMD 4.0: A high-performance molecular dynamics package for versatile materials simulations with machine-learned potentials
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <p class="text-slate-600 leading-relaxed font-medium">
+                                <span class="font-bold text-slate-900">Authors:</span> Ke Xu, Hekai Bu, Shuning Pan, Eric Lindgren, Yongchao Wu, Yong Wang, Jiahui Liu, Keke Song, Bin Xu, Yifan Li, Tobias Hainer, Lucas Svensson, Julia Wiktor, Rui Zhao, Hongfu Huang, Cheng Qian, Shuo Zhang, Zezhu Zeng, Bohan Zhang, Benrui Tang, Yang Xiao, Zihan Yan, Jiuyang Shi, Zhixin Liang, Junjie Wang, Ting Liang, Shuo Cao, Yanzhou Wang, Penghua Ying, Nan Xu, Chengbing Chen, Yuwen Zhang, Zherui Chen, Xin Wu, Wenwu Jiang, Esme Berger, Yanlong Li, Shunda Chen, Alexander J. Gabourie, Haikuan Dong, Shiyun Xiong, Ning Wei, Yue Chen, Jianbin Xu, Feng Ding, Zhimei Sun, Tapio Ala-Nissila, Ari Harju, Jincheng Zheng, Pengfei Guan, Paul Erhart, Jian Sun, Wengen Ouyang, Yanjing Su, Zheyong Fan
+                            </p>
+                            
+                            <div class="flex flex-wrap gap-x-8 gap-y-4 text-sm font-medium">
+                                <p class="text-slate-600"><span class="font-bold text-slate-900">Journal:</span> Materials Genome Engineering Advances</p>
+                                <p class="text-slate-600"><span class="font-bold text-slate-900">Year:</span> 2025</p>
+                                <p class="text-slate-600"><span class="font-bold text-slate-900">Volume:</span> 3</p>
+                                <p class="text-slate-600"><span class="font-bold text-slate-900">Pages:</span> e70028</p>
+                            </div>
+                            
+                            <div class="pt-6 flex items-center justify-between border-t border-slate-200">
+                                <div class="flex items-center gap-2 text-brand-600 font-mono text-sm font-bold">
+                                    <i data-lucide="link-2" class="w-4 h-4"></i>
+                                    DOI: 10.1002/mgea.70028
+                                </div>
+                                <a href="https://doi.org/10.1002/mgea.70028" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-bold text-slate-600 hover:border-brand-500 hover:text-brand-600 transition-all shadow-sm group/link" title="在出版商网站查看全文">
+                                    <span>查看全文</span>
+                                    <i data-lucide="external-link" class="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="mt-12 p-8 rounded-3xl bg-brand-50 border border-brand-100 flex gap-6 items-start text-left">
+                    <div class="w-12 h-12 bg-brand-100 rounded-2xl flex items-center justify-center flex-shrink-0 text-brand-600">
+                        <i data-lucide="award" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-2 italic">Why cite GPUMD?</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed font-medium">
+                            您的引用是对开发团队辛勤工作的最大支持，也是 GPUMD 项目能够持续获得资助并不断更新迭代的重要依据。感谢您对开源科学软件社区的贡献。
+                        </p>
+                    </div>
+                </div> -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-8 lg:py-16 border-t border-slate-900 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-8 lg:gap-x-12 lg:gap-y-16 mb-8 lg:mb-16">
+                <!-- Column 1: Brand & Status -->
+                <div class="col-span-2 lg:col-span-2">
+                    <a href="home.html" class="flex items-center gap-2 mb-4 lg:mb-8 group">
+                        <img src="images/logo.png" alt="GPUMD Logo" class="h-8 lg:h-10 w-auto">
+                        <span class="text-xl lg:text-2xl font-black text-white tracking-tight">GPUMD</span>
+                    </a>
+                    <div class="space-y-4 lg:space-y-6">
+                        <p class="text-xs lg:text-sm leading-relaxed text-slate-400">
+                            高性能 CPU+GPU 异构并行的分子动力学模拟软件，致力于为复杂多体系统提供极致的计算效率与精度。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Column 2: Software -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">软件与数据库</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="features.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>主要功能</a></li>
+                        <li><a href="download.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>最新版本</a></li>
+                        <li><a href="database.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>NEP势函数库</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Resources -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">资源与文档</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="https://gpumd.org" target="_blank" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>官方手册</a></li>
+                        <li><a href="faq.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>常见问题</a></li>
+                        <li><a href="books.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>参考书籍</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Community -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">社区与工具</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="ecosystem.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>生态工具</a></li>
+                        <li><a href="support.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>用户支持</a></li>
+                        <li><a href="https://github.com/brucefan1983/GPUMD" target="_blank" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>GitHub 仓库</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 5: Social & QR -->
+                <div class="col-span-2 lg:col-span-1 flex lg:justify-end">
+                    <div class="space-y-4 lg:space-y-8">
+                        <p class="text-white text-[10px] font-black mb-4 lg:mb-6 uppercase tracking-[0.2em] opacity-40 lg:text-right">交流讨论</p>
+                        <div class="flex gap-4 lg:gap-6 lg:justify-end">
+                            <div class="group relative">
+                                <div class="w-16 h-16 lg:w-20 lg:h-20 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center p-2 group-hover:border-brand-500/50 group-hover:bg-white/10 transition-all duration-500 shadow-2xl">
+                                    <img src="images/qr_qq.png" alt="QQ Group" class="w-full h-full object-contain">
+                                </div>
+                                <p class="text-[9px] mt-2 lg:mt-3 text-center font-bold opacity-40 group-hover:opacity-100 transition-opacity">QQ 群</p>
+                            </div>
+                            <div class="group relative">
+                                <div class="w-16 h-16 lg:w-20 lg:h-20 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center p-2 group-hover:border-brand-500/50 group-hover:bg-white/10 transition-all duration-500 shadow-2xl">
+                                    <img src="images/qr_wechat.png" alt="WeChat" class="w-full h-full object-contain">
+                                </div>
+                                <p class="text-[9px] mt-2 lg:mt-3 text-center font-bold opacity-40 group-hover:opacity-100 transition-opacity">微信公众号</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 lg:pt-12 border-t border-slate-900 flex flex-col md:flex-row items-center justify-between gap-6 text-[11px] font-medium tracking-wider">
+                <p class="opacity-40">© 2026 GPUMD TEAM. PROUDLY DEVELOPED FOR SCIENCE.</p>
+                <a href="https://beian.miit.gov.cn/" target="_blank" class="opacity-40 hover:opacity-100 transition-opacity">苏ICP备2025218443号-1</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

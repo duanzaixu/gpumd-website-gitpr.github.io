@@ -1,0 +1,102 @@
+/* download.css - Specialized styles for GPUMD Download Page */
+
+/* Hero Styling to match home.html and features.html */
+.hero-orb {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+    pointer-events: none;
+    animation: orb-float 20s infinite alternate ease-in-out;
+}
+
+@keyframes orb-float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(50px, 50px) scale(1.1); }
+}
+
+/* Card Styling - Matching the established premium-card and shadow system */
+.download-card {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.download-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px -15px rgba(14, 165, 233, 0.12);
+    border-color: rgba(14, 165, 233, 0.3);
+}
+
+/* Version Badge */
+.version-badge {
+    background: rgba(14, 165, 233, 0.1);
+    color: #0ea5e9;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+}
+
+/* Code Box */
+.code-box {
+    background: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* History Cards */
+.history-card {
+    @apply bg-white border border-slate-200/60 shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 rounded-[2rem];
+}
+
+/* Citation Section */
+.citation-metadata-card {
+    @apply relative overflow-hidden;
+    background: linear-gradient(145deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.citation-metadata-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: theme('colors.brand.500');
+    opacity: 0.8;
+}
+
+/* Version Highlights Collapsible */
+#v48-highlights {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#v48-highlights.hidden {
+    display: none;
+}
+
+/* Code block adjustments */
+code {
+    font-family: 'Inter', 'Noto Sans SC', monospace;
+}
+
+/* Refined v4.8 Layout */
+.release-main-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.05);
+}
+
+.download-pill {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.download-pill:hover {
+    border-color: #0ea5e9;
+    background: #f0f9ff;
+    transform: translateX(4px);
+}

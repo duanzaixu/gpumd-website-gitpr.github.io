@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development Team - GPUMD</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- External Resources -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/general-hero.css">
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    <style>
+        .timeline-dot {
+            position: relative;
+        }
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--brand-500, #3b82f6);
+            border: 2px solid white;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+            z-index: 10;
+        }
+        .timeline-line {
+            position: relative;
+        }
+        .timeline-line::after {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 20px;
+            bottom: -20px;
+            width: 2px;
+            background: #e2e8f0;
+            z-index: 5;
+        }
+        .timeline-item:last-child .timeline-line::after {
+            display: none;
+        }
+    </style>
+
+    <!-- Team Photos Toggle Configuration -->
+    <script>
+        // Team photo display toggle
+        // Set to true to enable photo display
+        // Set to false to disable photo loading and placeholder area
+        const SHOW_TEAM_PHOTOS = false;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img.team-photo');
+            
+            if (SHOW_TEAM_PHOTOS) {
+                images.forEach(img => {
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        // Keep loading="lazy" behavior if browser supports it, 
+                        // or let the browser handle the new src
+                    }
+                });
+            } else {
+                // If photo display is disabled, hide the container
+                images.forEach(img => {
+                    // Find the nearest parent container with shrink-0 class
+                    const container = img.closest('.shrink-0');
+                    if (container) {
+                        container.style.display = 'none';
+                    } else {
+                        img.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
+
+</head>
+<body class="antialiased text-slate-800 bg-white font-sans flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="glass-nav sticky top-0 z-50 border-b border-slate-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 lg:h-20">
+                <div class="flex items-center">
+                    <a href="home_en.html" class="flex items-center gap-2 lg:gap-3 group">
+                        <img src="images/logo.png" alt="GPUMD Logo" class="h-8 lg:h-12 w-auto transform transition-transform group-hover:scale-105">
+                        <span class="text-xl lg:text-3xl font-bold bg-gradient-to-r from-brand-700 to-brand-500 bg-clip-text text-transparent">
+                            GPUMD
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="hidden lg:flex items-center space-x-1">
+                    <a href="home_en.html" class="nav-link">Home</a>
+                    
+                    <div class="relative group">
+                        <button class="nav-link-dropdown">
+                            Downloads <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="features_en.html" class="dropdown-item">Features</a>
+                            <a href="download_en.html#latest" class="dropdown-item">Latest Version</a>
+                            <a href="download_en.html#history" class="dropdown-item">Version History</a>
+                        </div>
+                    </div>
+
+                    <a href="database_en.html" class="nav-link">NEP Potentials</a>
+
+                    <div class="relative group">
+                        <button class="nav-link-dropdown">
+                            Ecosystem <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="faq_en.html" class="dropdown-item">FAQ</a>
+                            <a href="ecosystem_en.html" class="dropdown-item">Tools</a>
+                            <a href="support_en.html" class="dropdown-item">Support</a>
+                            <a href="books_en.html" class="dropdown-item">Books</a>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <button class="nav-link-dropdown active">
+                            About <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="teams_en.html" class="dropdown-item active">Team</a>
+                            <a href="units_en.html" class="dropdown-item">Acknowledgments</a>
+                            <a href="contact_en.html" class="dropdown-item">Contact</a>
+                        </div>
+                    </div>
+
+                    <button class="ml-2 flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 text-slate-600 hover:border-brand-500 hover:text-brand-600 transition-all text-sm font-bold" onclick="window.location.href='teams.html'">
+                        <i data-lucide="globe" class="w-4 h-4"></i>
+                        EN / CN
+                    </button>
+                </div>
+
+                <div class="flex items-center lg:hidden">
+                    <button class="mr-2 flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 hover:border-brand-500 hover:text-brand-600 transition-all text-xs font-bold" onclick="window.location.href='teams.html'">
+                        CN
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none transition-colors">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 shadow-xl absolute w-full left-0 max-h-[80vh] overflow-y-auto">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="home_en.html" class="block px-3 py-3 rounded-lg text-base font-bold text-slate-600">Home</a>
+                
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">Downloads</div>
+                    <a href="features_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Features</a>
+                    <a href="download_en.html#latest" class="block px-6 py-2 text-base font-medium text-slate-600">Latest Version</a>
+                    <a href="download_en.html#history" class="block px-6 py-2 text-base font-medium text-slate-600">Version History</a>
+                </div>
+
+                <a href="database_en.html" class="block px-3 py-3 rounded-lg text-base font-bold text-slate-600 hover:text-brand-600 hover:bg-slate-50">NEP Potentials</a>
+
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">Ecosystem</div>
+                    <a href="faq_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">FAQ</a>
+                    <a href="ecosystem_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Tools</a>
+                    <a href="support_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Support</a>
+                    <a href="books_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Books</a>
+                </div>
+
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-brand-600 bg-brand-50 rounded-lg uppercase tracking-wider">About</div>
+                    <a href="teams_en.html" class="block px-6 py-2 text-base font-bold text-brand-600">Team</a>
+                    <a href="units_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Acknowledgments</a>
+                    <a href="contact_en.html" class="block px-6 py-2 text-base font-medium text-slate-600">Contact</a>
+                </div>
+
+                <div class="py-2 border-t border-slate-100 mt-2">
+                    <button class="w-full flex items-center justify-center gap-2 px-3 py-3 rounded-lg text-base font-bold text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all" onclick="window.location.href='teams.html'">
+                        <i data-lucide="globe" class="w-5 h-5"></i>
+                        切换到中文
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    <!-- Hero Section -->
+    <div class="general-hero-section hero-bg reveal">
+        <!-- Background Decorative Orbs -->
+        <div class="hero-orb bg-brand-400 top-0 -left-20 opacity-20"></div>
+        <div class="hero-orb bg-purple-400 bottom-0 -right-20 opacity-20" style="animation-delay: -5s;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            
+            <h1 class="general-hero-title">
+                Gathering Excellence, Building the Future of Research
+            </h1>
+
+            <p class="general-hero-description">
+                GPUMD is maintained by a group of experts, scholars, and developers passionate about molecular dynamics and high-performance computing.<br class="hidden md:block">
+                We are dedicated to providing state-of-the-art theoretical and technical support for atomic-scale simulations.
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow bg-white py-12 lg:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Development History Section -->
+            <div class="mb-16 lg:mb-32">
+                <div class="flex items-center gap-2 lg:gap-4 mb-8 lg:mb-12">
+                    <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-xl lg:rounded-2xl bg-brand-600 flex items-center justify-center text-white shadow-lg shadow-brand-500/20">
+                        <i data-lucide="history" class="w-5 h-5 lg:w-6 lg:h-6"></i>
+                    </div>
+                    <h2 class="text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">Development History</h2>
+                </div>
+                
+                <div class="ml-10 lg:ml-16 space-y-8 lg:space-y-12">
+                    <!-- Timeline Items -->
+                    <div class="timeline-item timeline-line">
+                        <div class="timeline-dot">
+                            <h3 class="text-lg lg:text-xl font-bold text-slate-900 mb-2">2011: The Beginning</h3>
+                            <p class="text-sm lg:text-base text-slate-600 leading-relaxed">In 2011, Zheyong FAN wrote the first line of GPUMD code during his postdoctoral research at Xiamen University (supervised by Prof. Jincheng ZHENG).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item timeline-line">
+                        <div class="timeline-dot">
+                            <h3 class="text-lg lg:text-xl font-bold text-slate-900 mb-2">2015: Theoretical Breakthrough</h3>
+                            <p class="text-sm lg:text-base text-slate-600 leading-relaxed">In 2015, Zheyong FAN derived the formalism for many-body potentials and obtained the correct expression for the heat current of many-body potentials.</p>
+                            <a href="https://doi.org/10.1103/PhysRevB.92.094301" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-600 hover:text-brand-600 hover:border-brand-200 transition-colors group mt-2">
+                                <i data-lucide="file-text" class="w-3.5 h-3.5 group-hover:text-brand-500"></i>
+                                <span>Phys. Rev. B 2015, 92, 094301</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item timeline-line">
+                        <div class="timeline-dot">
+                            <h3 class="text-lg lg:text-xl font-bold text-slate-900 mb-2">2017: Open Source Release</h3>
+                            <p class="text-sm lg:text-base text-slate-600 leading-relaxed">In 2017, Zheyong FAN publicly released GPUMD-v1.0 on GitHub, containing approximately 10,000 lines of source code.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item timeline-line">
+                        <div class="timeline-dot">
+                            <h3 class="text-lg lg:text-xl font-bold text-slate-900 mb-2">2019: Popularity in Heat Transport</h3>
+                            <p class="text-sm lg:text-base text-slate-600 leading-relaxed mb-2">In 2019, Zheyong FAN and Haikuan DONG (Prof. Yanjing SU's group at USTB) developed the Homogeneous Non-Equilibrium Molecular Dynamics (HNEMD) method for many-body potentials and related spectral decomposition techniques, making GPUMD a popular toolkit in the field of heat transport applications.</p>
+                            <a href="https://doi.org/10.1103/PhysRevB.99.064308" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-600 hover:text-brand-600 hover:border-brand-200 transition-colors group">
+                                <i data-lucide="file-text" class="w-3.5 h-3.5 group-hover:text-brand-500"></i>
+                                <span>Phys. Rev. B 2019, 99, 064308</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item timeline-line">
+                        <div class="timeline-dot">
+                            <h3 class="text-lg lg:text-xl font-bold text-slate-900 mb-2">2021: NEP Potential Method</h3>
+                            <p class="text-sm lg:text-base text-slate-600 leading-relaxed mb-2">In 2021, Zheyong FAN, together with Prof. Ping QIAN and Prof. Yanjing SU's group (Haikuan DONG, Yanzhou WANG, Keke SONG) at USTB, developed the NEP (Neuroevolution Potential) method.</p>
+                            <a href="https://doi.org/10.1103/PhysRevB.104.104309" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-600 hover:text-brand-600 hover:border-brand-200 transition-colors group">
+                                <i data-lucide="file-text" class="w-3.5 h-3.5 group-hover:text-brand-500"></i>
+                                <span>Phys. Rev. B 2021, 104, 104309</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item timeline-line">
+                        <div class="timeline-dot">
+                            <h3 class="text-lg lg:text-xl font-bold text-slate-900 mb-2">2023: NEP-ZBL Method</h3>
+                            <p class="text-sm lg:text-base text-slate-600 leading-relaxed mb-2">In 2023, Zheyong FAN, in collaboration with Prof. Yanjing SU's group (Jiahui LIU) at USTB, developed the NEP-ZBL method suitable for radiation damage simulations.</p>
+                            <a href="https://doi.org/10.1103/PhysRevB.108.054312" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-600 hover:text-brand-600 hover:border-brand-200 transition-colors group">
+                                <i data-lucide="file-text" class="w-3.5 h-3.5 group-hover:text-brand-500"></i>
+                                <span>Phys. Rev. B 2023, 108, 054312</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item timeline-line">
+                        <div class="timeline-dot">
+                            <h3 class="text-lg lg:text-xl font-bold text-slate-900 mb-2">2024: UNEP-v1 Universal Potential</h3>
+                            <p class="text-sm lg:text-base text-slate-600 leading-relaxed mb-2">In 2024, Zheyong FAN, together with Prof. Ping QIAN and Prof. Yanjing SU's group (Keke SONG, Jiahui LIU), developed UNEP-v1, a universal potential suitable for 16 metals and alloys.</p>
+                            <a href="https://doi.org/10.1038/s41467-024-54554-x" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-600 hover:text-brand-600 hover:border-brand-200 transition-colors group">
+                                <i data-lucide="file-text" class="w-3.5 h-3.5 group-hover:text-brand-500"></i>
+                                <span>Nat. Commun. 2024, 15, 10208</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item timeline-line">
+                        <div class="timeline-dot">
+                            <h3 class="text-lg lg:text-xl font-bold text-slate-900 mb-2">2024: National Major Project Support</h3>
+                            <p class="text-sm lg:text-base text-slate-600 leading-relaxed">In 2024, GPUMD received support from the National Science and Technology Major Project for Key New Materials Research and Application (hosted by Prof. Pengfei GUAN at Ningbo Institute of Materials Technology and Engineering, CAS).</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot">
+                            <h3 class="text-lg lg:text-xl font-bold text-slate-900 mb-2">2025: GPUMD-v4.0 Released</h3>
+                            <p class="text-sm lg:text-base text-slate-600 leading-relaxed">In 2025, GPUMD-v4.0 was released, containing approximately 85,000 lines of source code. Ke XU (Bohai University), Hekai BU (Wuhan University), Shuning PAN (Nanjing University), Yongchao WU (Aalto University), and Eric Lindgren (Chalmers University) made significant contributions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lead Developers Section -->
+            <div class="mb-16 lg:mb-32">
+                <div class="flex items-center gap-2 lg:gap-4 mb-8 lg:mb-12">
+                    <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-xl lg:rounded-2xl bg-brand-600 flex items-center justify-center text-white shadow-lg shadow-brand-500/20">
+                        <i data-lucide="crown" class="w-5 h-5 lg:w-6 lg:h-6"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <h2 class="text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">Lead Developer & Maintainer</h2>
+                        <span class="text-[10px] lg:text-xs font-bold text-slate-400 mt-1 uppercase tracking-widest">主导开发与维护者</span>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 gap-8 lg:gap-12">
+                    <!-- Fan Zheyong -->
+                    <div class="group bg-slate-50/50 rounded-[2rem] lg:rounded-[3rem] p-2 shadow-sm border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col lg:flex-row min-h-0 lg:min-h-[400px]">
+                        <div class="w-full lg:w-[400px] bg-white flex items-center justify-center p-8 lg:p-12 relative overflow-hidden shrink-0 rounded-[1.5rem] lg:rounded-[2.5rem]">
+                            <div class="absolute inset-0 bg-gradient-to-br from-brand-500/10 to-transparent opacity-50"></div>
+                            <img data-src="images/fan_zheyong.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Zheyong FAN" class="team-photo relative z-10 w-32 h-32 lg:w-[180px] lg:h-[180px] object-cover shadow-2xl rounded-full border-4 border-white transform group-hover:scale-110 transition-transform duration-700" loading="lazy">
+                        </div>
+                        <div class="flex-grow p-6 lg:p-12 flex flex-col justify-center">
+                            <div class="flex items-center gap-2 mb-4 lg:mb-6">
+                                <span class="px-2 lg:px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-[10px] font-black uppercase tracking-widest border border-brand-200 shadow-sm">Core Founder & Lead Developer</span>
+                            </div>
+                            <h3 class="text-2xl lg:text-3xl font-black text-slate-900 mb-2 group-hover:text-brand-600 transition-colors leading-tight">Zheyong FAN</h3>
+                            <p class="text-brand-600 font-bold text-sm lg:text-base mb-6 lg:mb-8">Professor, Bohai University | Adjunct Researcher, Suzhou Laboratory</p>
+                            
+                            <div class="space-y-4 lg:space-y-6 text-sm leading-[1.8] text-slate-600 tracking-wide">
+                                <p><strong class="text-slate-900 font-bold border-b-2 border-brand-200 pb-0.5">Bio:</strong> Ph.D. in Theoretical Physics from Nanjing University. Currently a Professor at Bohai University and Adjunct Researcher at Suzhou Laboratory. Long-term dedication to the frontiers of molecular dynamics theory and high-performance computing.</p>
+                                <p><strong class="text-slate-900 font-bold border-b-2 border-brand-200 pb-0.5">Contributions:</strong> As the core founder of GPUMD, he has led the overall architecture design and long-term maintenance of the software. Developed the efficient NEP (Neuroevolution Potential) machine learning potential method and derived the theoretical formalism for heat current in many-body potentials, laying a solid theoretical foundation for GPUMD development.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Experts Section -->
+            <div class="mb-16 lg:mb-32">
+                <div class="flex items-center gap-2 lg:gap-4 mb-8 lg:mb-12">
+                    <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-xl lg:rounded-2xl bg-purple-600 flex items-center justify-center text-white shadow-lg shadow-purple-500/20">
+                        <i data-lucide="award" class="w-5 h-5 lg:w-6 lg:h-6"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <h2 class="text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">Project Advisor</h2>
+                        <span class="text-[10px] lg:text-xs font-bold text-slate-400 mt-1 uppercase tracking-widest">项目指导专家</span>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 gap-8 lg:gap-12">
+                    <!-- Su Yanjing -->
+                    <div class="group bg-slate-50/50 rounded-[2rem] lg:rounded-[3rem] p-2 shadow-sm border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col lg:flex-row min-h-0 lg:min-h-[400px]">
+                        <div class="w-full lg:w-[400px] bg-white flex items-center justify-center p-8 lg:p-12 relative overflow-hidden shrink-0 rounded-[1.5rem] lg:rounded-[2.5rem]">
+                            <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-50"></div>
+                            <img data-src="images/su_yanjing.png" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Yanjing SU" class="team-photo relative z-10 w-32 h-32 lg:w-[180px] lg:h-[180px] object-cover shadow-2xl rounded-full border-4 border-white transform group-hover:scale-110 transition-transform duration-700" loading="lazy">
+                        </div>
+                        <div class="flex-grow p-6 lg:p-12 flex flex-col justify-center">
+                            <div class="flex items-center gap-2 mb-4 lg:mb-6">
+                                <span class="px-2 lg:px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-[10px] font-black uppercase tracking-widest border border-purple-200 shadow-sm">Strategic Advisor & Team Leader</span>
+                            </div>
+                            <h3 class="text-2xl lg:text-3xl font-black text-slate-900 mb-2 group-hover:text-purple-600 transition-colors leading-tight">Yanjing SU</h3>
+                            <p class="text-purple-600 font-bold text-sm lg:text-base mb-6 lg:mb-8">Professor, USTB | Principal Researcher, Suzhou Laboratory | Ph.D. Supervisor</p>
+                            
+                            <div class="space-y-4 lg:space-y-6 text-sm leading-[1.8] text-slate-600 tracking-wide">
+                                <p><strong class="text-slate-900 font-bold border-b-2 border-purple-200 pb-0.5">Research Area:</strong> Long-term dedication to materials database construction, materials genome engineering, and the application of AI in materials science. Highly reputed in the academic community.</p>
+                                <p><strong class="text-slate-900 font-bold border-b-2 border-purple-200 pb-0.5">Academic Achievements:</strong> Published over 300 papers in top international journals such as Nature Communications, Acta Materialia, and npj Computational Materials. Recipient of 5 national and provincial-level teaching and scientific progress awards. Hosted major projects including the National Key R&D Program and the National Major Research Plan. Provides key strategic guidance and academic support for the long-term development of GPUMD.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contributors Section -->
+            <div class="mb-12">
+                <div class="flex items-center justify-between mb-12">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-800 flex items-center justify-center text-white shadow-lg shadow-slate-500/20">
+                            <i data-lucide="code-2" class="w-6 h-6"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <h2 class="text-3xl font-black text-slate-900 tracking-tight">Major Contributors</h2>
+                            <span class="text-xs font-bold text-slate-400 mt-1 uppercase tracking-widest">主要贡献者</span>
+                        </div>
+                    </div>
+                    <span class="text-xs font-bold text-slate-400 px-4 py-2 rounded-full border border-slate-100 bg-slate-50">(Ordered by Name)</span>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                    <!-- Bu Hekai -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/bu_hekai.png" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Hekai BU" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Hekai BU</h3>
+                                <p class="text-brand-600 text-xs lg:text-sm font-black uppercase tracking-wider">Wuhan University</p>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p><strong class="text-slate-900">Background & Focus:</strong> Master's student at Wuhan University. Research focuses on GPU high-performance computing and molecular dynamics simulation methods, with deep experience in parallel algorithm optimization.</p>
+                                <p><strong class="text-slate-900">Key Contributions:</strong> Implemented the hybrid NEP-ILP potential and friction simulation modules, and accelerated several NEP calculation modules for modern GPU architectures, improving simulation efficiency under complex force fields.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chen Chengbing -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/chen_chengbing.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Chengbing CHEN" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Chengbing CHEN</h3>
+                                <p class="text-brand-600 text-xs lg:text-sm font-black uppercase tracking-wider">CAEP</p>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p><strong class="text-slate-900">Background & Focus:</strong> Ph.D. student at China Academy of Engineering Physics (CAEP). Research focuses on magnetic material simulation and applications.</p>
+                                <p><strong class="text-slate-900">Key Contributions:</strong> Developed NepTrain and NepTrainkit packages.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dong Haikuan -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/dong_haikuan.png" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Haikuan DONG" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Haikuan DONG</h3>
+                                <p class="text-brand-600 text-xs lg:text-sm font-black uppercase tracking-wider">Bohai University</p>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p><strong class="text-slate-900">Background & Focus:</strong> Ph.D. in Materials Science and Engineering from USTB, currently Associate Professor at Bohai University. Focuses on MD simulation program development and heat transport applications.</p>
+                                <p><strong class="text-slate-900">Key Contributions:</strong> Core member of NEP method development, responsible for maintaining DCU (Hygon) and AMD GPU versions of GPUMD, and long-term lead for user manual documentation.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Alexander J Gabourie -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/alexander_j_gabourie.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Alexander J Gabourie" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Alexander J Gabourie</h3>
+                                <p class="text-brand-600 text-xs lg:text-sm font-black uppercase tracking-wider">DeepSim CTO</p>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p><strong class="text-slate-900">Background & Focus:</strong> Ph.D. from Stanford University, currently CTO at DeepSim. Focuses on improving IC design and packaging reliability using multi-scale thermal-mechanical simulations; expert in heat transport.</p>
+                                <p><strong class="text-slate-900">Key Contributions:</strong> Implemented the general Tersoff potential in GPUMD, developed GKMA and HNEMA mode decomposition methods for heat transport, and led the implementation of high-performance NetCDF interface.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Huang Hongfu -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/huang_hongfu.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Hongfu HUANG" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Hongfu HUANG</h3>
+                                <p class="text-brand-600 text-xs lg:text-sm font-black uppercase tracking-wider">Beihang University</p>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p><strong class="text-slate-900">Background & Focus:</strong> Ph.D. student at School of Integrated Circuit Science and Engineering, Beihang University. Dedicated to "AI + Materials" computing research and applications, exploring ML potential in microelectronic materials.</p>
+                                <p><strong class="text-slate-900">Key Contributions:</strong> Responsible for implementing and maintaining the GNEP module based on gradient training of NEP models, providing key technical support for high-precision ML potential training.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Liang Ting -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/liang_ting.png" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Ting LIANG" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Ting LIANG</h3>
+                                <p class="text-brand-600 text-xs lg:text-sm font-black uppercase tracking-wider">CUHK</p>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p><strong class="text-slate-900">Background & Focus:</strong> Ph.D. student at The Chinese University of Hong Kong. Research focuses on NEP ML potential development and heat transport simulation methods, with deep insights into thermal property prediction.</p>
+                                <p><strong class="text-slate-900">Key Contributions:</strong> Deeply involved in NEP89 potential model development, responsible for maintaining NetCDF module, and improved Spectral Heat Current (SHC) calculation methods.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Liang Zhixin -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/liang_zhixin.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Zhixin LIANG" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Zhixin LIANG</h3>
+                                <p class="text-brand-600 text-xs lg:text-sm font-black uppercase tracking-wider">Nanjing University</p>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p><strong class="text-slate-900">Background & Focus:</strong> Ph.D. student at Nanjing University. Research focuses on transport property calculations.</p>
+                                <p><strong class="text-slate-900">Key Contributions:</strong> Extended HNEMD method to implement HNEMDEC, enabling calculation of Onsager coefficients for multi-component systems and accurate thermal conductivity calculation for multi-component fluids.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Eric Lindgren -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/eric_lindgren.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Eric Lindgren" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Eric Lindgren</h3>
+                                <p class="text-brand-600 text-xs lg:text-sm font-black uppercase tracking-wider">Chalmers University</p>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p><strong class="text-slate-900">Background & Focus:</strong> Ph.D. student at Chalmers University of Technology. Combines machine learning, electronic structure methods, and MD simulations, focusing on physical properties of chromophores.</p>
+                                <p><strong class="text-slate-900">Key Contributions:</strong> Implemented ensemble model-based active learning module and dump_observer functionality in GPUMD, significantly enhancing automation and intelligence of potential training.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Liu Jiahui -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/liu_jiahui.png" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Jiahui LIU" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Jiahui LIU</h3>
+                                <p class="text-brand-600 text-xs lg:text-sm font-black uppercase tracking-wider">Zhongguancun AI Institute</p>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p><strong class="text-slate-900">Background & Focus:</strong> Ph.D. in Materials Science and Engineering from USTB, currently Researcher at Zhongguancun AI Institute. Focuses on MD simulation program development and engineering applications of radiation damage simulation.</p>
+                                <p><strong class="text-slate-900">Key Contributions:</strong> Deeply involved in NEP-ZBL method development, filling the gap in ML potential description of short-range repulsive forces, and perfecting radiation damage simulation capabilities in GPUMD.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pan Shuning -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/pan_shuning.png" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Shuning PAN" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Shuning PAN</h3>
+                                <p class="text-brand-600 text-xs lg:text-sm font-black uppercase tracking-wider">Nanjing University</p>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p><strong class="text-slate-900">Background & Focus:</strong> Ph.D. in Condensed Matter Physics from Nanjing University. Research focuses on MD simulation and structure prediction of material properties under extreme high pressure.</p>
+                                <p><strong class="text-slate-900">Key Contributions:</strong> Implemented shock compression, thermodynamic integration for solid free energy, NEP extrapolation degree calculation, and high-performance FIRE structure optimizer, expanding software application boundaries.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Song Keke -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/song_keke.png" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Keke SONG" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Keke SONG</h3>
+                                <p class="text-brand-600 text-xs lg:text-sm font-black uppercase tracking-wider">Fuzhou University</p>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p><strong class="text-slate-900">Background & Focus:</strong> Ph.D. in Physics from USTB, currently Postdoc at Fuzhou University. Dedicated to ML potential methods for alloy systems and universal potential model development.</p>
+                                <p><strong class="text-slate-900">Key Contributions:</strong> Participated in NEP and MC/MD hybrid algorithm development, and led the construction of UNEP-v1 universal ML potential covering 16 common metals and alloys.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tang Benrui -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/song_keke.png" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Benrui Tang" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Benrui TANG</h3>
+                                <p class="text-brand-600 text-xs lg:text-sm font-black uppercase tracking-wider">Bohai University</p>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p><strong class="text-slate-900">Background & Focus:</strong> Master's student at Bohai University.</p>
+                                <p><strong class="text-slate-900">Key Contributions:</strong> Generalize the calculation of elastic constants.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wang Yanzhou -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/wang_yanzhou.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Yanzhou WANG" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Yanzhou WANG</h3>
+                                <p class="text-brand-600 text-xs lg:text-sm font-black uppercase tracking-wider">CDUT</p>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p><strong class="text-slate-900">Background & Focus:</strong> Dual Ph.D. in Physics from USTB and Applied Physics from Aalto University, currently Associate Professor at Chengdu University of Technology (CDUT). Long-term engagement in simulation program development and heat transport applications.</p>
+                                <p><strong class="text-slate-900">Key Contributions:</strong> Core developer of NEP method, contributed various efficient potential training set extraction and processing tools to the community, optimizing user experience.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wang Yong -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/wang_yong.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Yong WANG" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Yong WANG</h3>
+                                <p class="text-brand-600 text-xs lg:text-sm font-black uppercase tracking-wider">Princeton University</p>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p><strong class="text-slate-900">Background & Focus:</strong> Ph.D. in Condensed Matter Physics from Nanjing University, currently Postdoc at Princeton University. Focuses on high-pressure physics simulation and material structure prediction, with deep expertise in high-performance parallel computing.</p>
+                                <p><strong class="text-slate-900">Key Contributions:</strong> Implemented efficient Radial Distribution Function (RDF) calculation in GPUMD and led the implementation of Multi-GPU acceleration for NEP model training.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wu Yongchao -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/wu_yongchao.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Yongchao WU" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Yongchao WU</h3>
+                                <p class="text-brand-600 text-xs lg:text-sm font-black uppercase tracking-wider">Aalto University</p>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p><strong class="text-slate-900">Background & Focus:</strong> Ph.D. in Mechanics from BIT, currently Postdoc at Aalto University. Research focuses on mechanical response of alloy materials under dynamic loading.</p>
+                                <p><strong class="text-slate-900">Key Contributions:</strong> Implemented classic EAM and ADP potentials in software, developed energy minimization algorithms supporting variable box, and key structure analysis modules like angular distribution and bond order parameters.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Xu Bin -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/xu_bin.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Bin XU" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Bin XU</h3>
+                                <p class="text-brand-600 text-xs lg:text-sm font-black uppercase tracking-wider">NIMTE, CAS</p>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p><strong class="text-slate-900">Background & Focus:</strong> Ph.D. from SJTU, currently Researcher at Ningbo Institute of Materials Technology and Engineering (NIMTE), CAS. Research covers multi-scale simulation and "AI + New Materials" design.</p>
+                                <p><strong class="text-slate-900">Key Contributions:</strong> Contributed angle-dependent Radial Distribution Function (RDF) calculation module to GPUMD, providing fine mathematical tools for describing local anisotropic structures of materials.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Xu Ke -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/xu_ke.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Ke XU" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Ke XU</h3>
+                                <p class="text-brand-600 text-xs lg:text-sm font-black uppercase tracking-wider">Bohai University</p>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p><strong class="text-slate-900">Background & Focus:</strong> Ph.D. in Biological Physics and Soft Condensed Matter from Xiamen University, currently Associate Professor at Bohai University and Honorary Postdoc at CUHK. Dedicated to research on universal machine learning potential calculation frameworks.</p>
+                                <p><strong class="text-slate-900">Key Contributions:</strong> Implemented DeepMD-kit (DP) ML potential interface in GPUMD, and significantly improved accuracy and efficiency of Spectral Heat Current calculation.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Xu Nan -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/xu_nan.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Nan XU" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Nan XU</h3>
+                                <p class="text-brand-600 text-xs lg:text-sm font-black uppercase tracking-wider">IZD, Zhejiang University</p>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p><strong class="text-slate-900">Background & Focus:</strong> Ph.D. from Zhejiang University (2021). Research focuses on molecular simulation of energy materials and development/optimization of machine learning force fields.</p>
+                                <p><strong class="text-slate-900">Key Contributions:</strong> Participated in TNEP method development, contributed various NEP training tools.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Yan Zihan -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/yan_zihan.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Zihan YAN" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Zihan YAN</h3>
+                                <p class="text-brand-600 text-xs lg:text-sm font-black uppercase tracking-wider">Westlake University</p>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p><strong class="text-slate-900">Background & Focus:</strong> Ph.D. student in Zhejiang University - Westlake University Joint Program. Research focuses on application of machine learning force fields in solid-state electrolytes.</p>
+                                <p><strong class="text-slate-900">Key Contributions:</strong> Maintains GPUMD tools and ecosystem, developed GPUMDkit post-processing package.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ying Penghua -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/ying_penghua.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Penghua YING" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Penghua YING</h3>
+                                <p class="text-brand-600 text-xs lg:text-sm font-black uppercase tracking-wider">Xi'an Jiaotong University</p>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p><strong class="text-slate-900">Background & Focus:</strong> Ph.D. from HIT (2022), Postdoc at Tel Aviv University (2022-2025). Currently Distinguished Researcher/Associate Professor at Xi'an Jiaotong University. Research focuses on kinetic evolution behavior of van der Waals and bonded interfaces.</p>
+                                <p><strong class="text-slate-900">Key Contributions:</strong> Deeply involved in development and integration of NEP-D3 (dispersion correction), NEP-ILP (interlayer potential), and Path Integral Molecular Dynamics (PIMD) methods.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Advisor Section -->
+            <div class="mb-12">
+                <div class="flex items-center justify-between mb-12">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-800 flex items-center justify-center text-white shadow-lg shadow-slate-500/20">
+                            <i data-lucide="code-2" class="w-6 h-6"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <h2 class="text-3xl font-black text-slate-900 tracking-tight">Academic Advisor</h2>
+                            <span class="text-xs font-bold text-slate-400 mt-1 uppercase tracking-widest">学术顾问</span>
+                        </div>
+                    </div>
+                    <span class="text-xs font-bold text-slate-400 px-4 py-2 rounded-full border border-slate-100 bg-slate-50">(Ordered by Name)</span>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                    <!-- Tapio Ala-Nissila start -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/wu_yongchao.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="吴永超" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Tapio Ala-Nissila</h3>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p>Professor of Aalto University and Loughborough University</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tapio Ala-Nissila end -->
+
+                    <!-- Chen Yue start -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/wu_yongchao.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="吴永超" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Yue CHEN</h3>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p>Professor of The University of Hong Kong</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Chen Yue end -->
+
+                    <!-- Ding Feng start -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/wu_yongchao.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="吴永超" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Feng DING</h3>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p>Professor of Suzhou Laboratory</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Ding Feng end -->
+
+                    <!-- Paul Erhart start -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/wu_yongchao.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="吴永超" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Paul Erhart</h3>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p>Professor of Chalmers University of Technology</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Paul Erhart end -->
+
+                    <!-- Guan Pengfei start -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/wu_yongchao.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="吴永超" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Pengfei GUAN</h3>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p>Professor of Chinese Academy of Sciences</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Guan Pengfei end -->
+
+                    <!-- Ari Harju start -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/wu_yongchao.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="吴永超" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Ari Harju</h3>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p>Professor of Varian Medical Systems Finland</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Ari Harju end -->
+
+                    <!-- Ouyang Wengen start -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/wu_yongchao.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="吴永超" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Wengen OUYANG</h3>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p>Professor of Wuhan University</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Ouyang Wengen end -->
+
+                    <!-- Sun Jian start -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/wu_yongchao.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="吴永超" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Jian SUN</h3>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p>Professor of Nanjing University</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sun Jian end -->
+
+                    <!-- Sun Zhimei start -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/wu_yongchao.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="吴永超" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Zhimei SUN</h3>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p>Professor of Beihang University</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sun Zhimei end -->
+
+                    <!-- Wei Ning start -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/wu_yongchao.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="吴永超" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Ning WEI</h3>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p>Professor of Jiangnan University</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Wei Ning end -->
+
+                    <!-- Xiong Shiyun start -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/wu_yongchao.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="吴永超" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Shiyun XIONG</h3>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p>Professor of Guangdong University of Technology</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Xiong Shiyun end -->
+
+                    <!-- Xu Jianbin start -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/wu_yongchao.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="吴永超" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Jianbin XU</h3>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p>Professor of The Chinese University of Hong Kong</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Xu Jianbin end -->
+
+                    <!-- Zheng Jincheng start -->
+                    <div class="group bg-white rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-10 shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col lg:flex-row gap-6 lg:gap-8">
+                        <div class="shrink-0">
+                            <img data-src="images/wu_yongchao.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="吴永超" class="team-photo w-20 h-20 lg:w-24 lg:h-24 rounded-2xl lg:rounded-3xl object-cover shadow-xl border-2 border-white transform group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <div class="mb-3 lg:mb-4">
+                                <h3 class="text-xl lg:text-2xl font-black text-slate-900 mb-1 group-hover:text-brand-600 transition-colors">Jincheng ZHENG</h3>
+                            </div>
+                            <div class="space-y-3 lg:space-y-4 text-xs lg:text-[13px] leading-[1.7] text-slate-600 tracking-wide">
+
+                                <p>Professor of Xiamen University</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Zheng Jincheng end -->
+
+                </div>
+            </div>
+
+            <!-- Join Us CTA -->
+            <div class="mt-12 lg:mt-24 p-6 lg:p-12 rounded-[2rem] lg:rounded-[3.5rem] bg-slate-50 border border-slate-100 relative overflow-hidden text-center">
+                <div class="absolute inset-0 opacity-5">
+                    <svg class="w-full h-full" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <pattern id="grid-light" width="20" height="20" patternUnits="userSpaceOnUse">
+                            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                        </pattern>
+                        <rect width="100" height="100" fill="url(#grid-light)" />
+                    </svg>
+                </div>
+                <div class="relative z-10 max-w-2xl mx-auto">
+                    <h2 class="text-2xl lg:text-3xl font-black mb-4 lg:mb-6 text-slate-900 tracking-tight">Join Us</h2>
+                    <p class="text-sm lg:text-base text-slate-500 mb-8 lg:mb-10 leading-relaxed font-medium">
+                        We always welcome passionate developers and researchers to join the GPUMD ecosystem. Whether contributing code, improving documentation, or submitting bugs, your contribution is invaluable.
+                    </p>
+                    <a href="https://github.com/brucefan1983/GPUMD" target="_blank" class="inline-flex items-center gap-2 px-6 lg:px-10 py-3 lg:py-4 bg-slate-900 hover:bg-slate-800 text-white rounded-xl lg:rounded-2xl font-bold transition-all shadow-xl shadow-slate-900/10 transform hover:-translate-y-1 text-sm lg:text-base">
+                        <i data-lucide="github" class="w-5 h-5"></i>
+                        Contribute on GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-8 lg:py-16 border-t border-slate-900 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-8 lg:gap-x-12 lg:gap-y-16 mb-8 lg:mb-16">
+                <!-- Column 1: Brand & Status -->
+                <div class="col-span-2 lg:col-span-2">
+                    <a href="home_en.html" class="flex items-center gap-2 mb-4 lg:mb-8 group">
+                        <img src="images/logo.png" alt="GPUMD Logo" class="h-8 lg:h-10 w-auto">
+                        <span class="text-xl lg:text-2xl font-black text-white tracking-tight">GPUMD</span>
+                    </a>
+                    <div class="space-y-4 lg:space-y-6">
+                        <p class="text-xs lg:text-sm leading-relaxed text-slate-400">
+                            High-performance CPU+GPU heterogeneous parallel molecular dynamics simulation software, dedicated to providing extreme calculation efficiency and accuracy for complex many-body systems.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Column 2: Software -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">Software & Data</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="features_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Features</a></li>
+                        <li><a href="download_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Latest Version</a></li>
+                        <li><a href="database_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>NEP Potentials</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Resources -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">Resources</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="https://gpumd.org" target="_blank" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Official Manual</a></li>
+                        <li><a href="faq_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>FAQ</a></li>
+                        <li><a href="books_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Books</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Community -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">Community</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="ecosystem_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Ecosystem</a></li>
+                        <li><a href="support_en.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>Support</a></li>
+                        <li><a href="https://github.com/brucefan1983/GPUMD" target="_blank" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>GitHub</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 5: Social & QR -->
+                <div class="col-span-2 lg:col-span-1 flex lg:justify-end">
+                    <div class="space-y-4 lg:space-y-8">
+                        <p class="text-white text-[10px] font-black mb-4 lg:mb-6 uppercase tracking-[0.2em] opacity-40 lg:text-right">Community</p>
+                        <div class="flex gap-4 lg:gap-6 lg:justify-end">
+                            <div class="group relative">
+                                <div class="w-16 h-16 lg:w-20 lg:h-20 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center p-2 group-hover:border-brand-500/50 group-hover:bg-white/10 transition-all duration-500 shadow-2xl">
+                                    <img src="images/qr_qq.png" alt="QQ Group" class="w-full h-full object-contain">
+                                </div>
+                                <p class="text-[9px] mt-2 lg:mt-3 text-center font-bold opacity-40 group-hover:opacity-100 transition-opacity">QQ Group</p>
+                            </div>
+                            <div class="group relative">
+                                <div class="w-16 h-16 lg:w-20 lg:h-20 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center p-2 group-hover:border-brand-500/50 group-hover:bg-white/10 transition-all duration-500 shadow-2xl">
+                                    <img src="images/qr_wechat.png" alt="WeChat" class="w-full h-full object-contain">
+                                </div>
+                                <p class="text-[9px] mt-2 lg:mt-3 text-center font-bold opacity-40 group-hover:opacity-100 transition-opacity">WeChat</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 lg:pt-12 border-t border-slate-900 flex flex-col md:flex-row items-center justify-between gap-6 text-[11px] font-medium tracking-wider">
+                <p class="opacity-40">© 2026 GPUMD TEAM. PROUDLY DEVELOPED FOR SCIENCE.</p>
+                <a href="https://beian.miit.gov.cn/" target="_blank" class="opacity-40 hover:opacity-100 transition-opacity">苏ICP备2025218443号-1</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

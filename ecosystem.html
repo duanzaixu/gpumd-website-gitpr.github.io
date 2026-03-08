@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生态工具 - GPUMD</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- External Resources -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/general-hero.css">
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body class="antialiased text-slate-800 bg-white font-sans flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="glass-nav sticky top-0 z-50 border-b border-slate-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 lg:h-20">
+                <div class="flex items-center">
+                    <a href="home.html" class="flex items-center gap-2 lg:gap-3 group">
+                        <img src="images/logo.png" alt="GPUMD Logo" class="h-8 lg:h-12 w-auto transform transition-transform group-hover:scale-105">
+                        <span class="text-xl lg:text-3xl font-bold bg-gradient-to-r from-brand-700 to-brand-500 bg-clip-text text-transparent">
+                            GPUMD
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="hidden lg:flex items-center space-x-1">
+                    <a href="home.html" class="nav-link">首页</a>
+                    
+                    <div class="relative group">
+                        <button class="nav-link-dropdown">
+                            软件下载 <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="features.html" class="dropdown-item">主要功能</a>
+                            <a href="download.html#latest" class="dropdown-item">最新版本</a>
+                            <a href="download.html#history" class="dropdown-item">历史版本</a>
+                        </div>
+                    </div>
+
+                    <a href="database.html" class="nav-link">NEP势函数库</a>
+
+                    <div class="relative group">
+                        <button class="nav-link-dropdown active">
+                            社区生态 <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="faq.html" class="dropdown-item">常见问题</a>
+                            <a href="ecosystem.html" class="dropdown-item active">生态工具</a>
+                            <a href="support.html" class="dropdown-item">用户交流</a>
+                            <a href="books.html" class="dropdown-item">参考书籍</a>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <button class="nav-link-dropdown">
+                            关于我们 <i data-lucide="chevron-down" class="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="teams.html" class="dropdown-item">开发团队</a>
+                            <a href="units.html" class="dropdown-item">支持单位</a>
+                            <a href="contact.html" class="dropdown-item">联系我们</a>
+                        </div>
+                    </div>
+
+                    <button class="ml-2 flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 text-slate-600 hover:border-brand-500 hover:text-brand-600 transition-all text-sm font-bold" onclick="window.location.href='ecosystem_en.html'">
+                        <i data-lucide="globe" class="w-4 h-4"></i>
+                        CN / EN
+                    </button>
+                </div>
+
+                <div class="flex items-center lg:hidden">
+                    <button class="mr-2 flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 hover:border-brand-500 hover:text-brand-600 transition-all text-xs font-bold" onclick="window.location.href='ecosystem_en.html'">
+                        EN
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none transition-colors">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 shadow-xl absolute w-full left-0 max-h-[80vh] overflow-y-auto">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="home.html" class="block px-3 py-3 rounded-lg text-base font-bold text-slate-600">首页</a>
+                
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">软件下载</div>
+                    <a href="features.html" class="block px-6 py-2 text-base font-medium text-slate-600">主要功能</a>
+                    <a href="download.html#latest" class="block px-6 py-2 text-base font-medium text-slate-600">最新版本</a>
+                    <a href="download.html#history" class="block px-6 py-2 text-base font-medium text-slate-600">历史版本</a>
+                </div>
+
+                <a href="database.html" class="block px-3 py-3 rounded-lg text-base font-bold text-slate-600 hover:text-brand-600 hover:bg-slate-50">NEP势函数库</a>
+
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-brand-600 bg-brand-50 rounded-lg uppercase tracking-wider">社区生态</div>
+                    <a href="faq.html" class="block px-6 py-2 text-base font-medium text-slate-600">常见问题</a>
+                    <a href="ecosystem.html" class="block px-6 py-2 text-base font-bold text-brand-600">生态工具</a>
+                    <a href="support.html" class="block px-6 py-2 text-base font-medium text-slate-600">用户交流</a>
+                    <a href="books.html" class="block px-6 py-2 text-base font-medium text-slate-600">参考书籍</a>
+                </div>
+
+                <div class="py-2">
+                    <div class="px-3 py-2 text-sm font-bold text-slate-400 uppercase tracking-wider">关于我们</div>
+                    <a href="teams.html" class="block px-6 py-2 text-base font-medium text-slate-600">开发团队</a>
+                    <a href="units.html" class="block px-6 py-2 text-base font-medium text-slate-600">支持单位</a>
+                    <a href="contact.html" class="block px-6 py-2 text-base font-medium text-slate-600">联系我们</a>
+                </div>
+
+                <div class="py-2 border-t border-slate-100 mt-2">
+                    <button class="w-full flex items-center justify-center gap-2 px-3 py-3 rounded-lg text-base font-bold text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all" onclick="window.location.href='ecosystem_en.html'">
+                        <i data-lucide="globe" class="w-5 h-5"></i>
+                        Switch to English
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    <!-- Hero Section -->
+    <div class="general-hero-section hero-bg reveal">
+        <!-- Background Decorative Orbs -->
+        <div class="hero-orb bg-brand-400 top-0 -left-20 opacity-20"></div>
+        <div class="hero-orb bg-purple-400 bottom-0 -right-20 opacity-20" style="animation-delay: -5s;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            
+            <h1 class="general-hero-title">
+                生态工具
+            </h1>
+
+            <p class="general-hero-description">
+                围绕 GPUMD 构建的强大工具集，涵盖建模、前后处理、机器学习势训练及可视化分析，为您提供全方位、高效的分子动力学模拟。
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow bg-white py-12 lg:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Software Grid -->
+            <div id="ecosystem-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-12">
+                
+                <!-- Card 1: NEP_CPU -->
+                <a href="https://github.com/brucefan1983/NEP_CPU" target="_blank" class="ecosystem-card group relative bg-white rounded-2xl lg:rounded-3xl p-6 lg:p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="nep_cpu">
+                    <div class="absolute inset-0 bg-gradient-to-br from-indigo-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-6 lg:mb-8 flex justify-center items-center h-24 lg:h-32 bg-white rounded-xl lg:rounded-2xl overflow-hidden border border-slate-100 group-hover:border-indigo-500 transition-all duration-500">
+                        <div class="w-16 h-16 lg:w-20 lg:h-20 bg-indigo-50 text-indigo-600 rounded-xl lg:rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-indigo-600 group-hover:text-white transition-all duration-500 group-hover:rotate-6 z-10">
+                            <i data-lucide="cpu" class="w-8 h-8 lg:w-10 lg:h-10"></i>
+                        </div>
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-indigo-100 text-indigo-600 text-[10px] font-bold rounded-lg border border-indigo-200 uppercase tracking-wider z-10">CPU</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-lg lg:text-xl font-bold text-slate-900 mb-2 lg:mb-3 flex items-center group-hover:text-indigo-600 transition-colors">NEP_CPU</h3>
+                        <p class="text-slate-500 text-xs lg:text-sm mb-4 lg:mb-6 leading-relaxed flex-grow">NEP 势函数的 C++ 实现，为许多 Python 包及 LAMMPS 提供接口。</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>GitHub 仓库</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>樊哲勇</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 2: Calorine -->
+                <a href="https://gitlab.com/materials-modeling/calorine" target="_blank" class="ecosystem-card group relative bg-white rounded-2xl lg:rounded-3xl p-6 lg:p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="calorine">
+                    <div class="absolute inset-0 bg-gradient-to-br from-brand-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-6 lg:mb-8 flex justify-center items-center h-24 lg:h-32 bg-white rounded-xl lg:rounded-2xl overflow-hidden border border-slate-100 group-hover:border-brand-500 transition-all duration-500">
+                        <img src="images/calorine_logo.png" alt="Calorine" class="h-20 lg:h-28 w-auto object-contain transform transition-transform duration-500 group-hover:scale-105 z-10">
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-brand-50 text-brand-600 text-[10px] font-bold rounded-lg border border-brand-100 uppercase tracking-wider z-10">Python</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-lg lg:text-xl font-bold text-slate-900 mb-2 lg:mb-3 flex items-center group-hover:text-brand-600 transition-colors">Calorine</h3>
+                        <p class="text-slate-500 text-xs lg:text-sm mb-4 lg:mb-6 leading-relaxed flex-grow">提供 NEP 的 Python 接口，用于各种性质的计算和分析。</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>Gitlab 仓库</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>Eric Lindgren</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 3: NepTrainKit -->
+                <a href="https://github.com/aboys-cb/NepTrainKit/" target="_blank" class="ecosystem-card group relative bg-white rounded-2xl lg:rounded-3xl p-6 lg:p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="neptrainkit">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-8 flex justify-center items-center h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-purple-500 transition-all duration-500">
+                        <img src="images/neptrainkit_logo.svg" alt="NepTrainKit" class="h-28 w-auto object-contain transform transition-transform duration-500 group-hover:scale-105 z-10">
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-purple-50 text-purple-600 text-[10px] font-bold rounded-lg border border-purple-100 uppercase tracking-wider z-10">GUI</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center group-hover:text-purple-600 transition-colors">NepTrainKit</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">专注于 NEP 训练数据集操作和可视化的工具包，提供直观的图形界面。</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>GitHub 仓库</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>陈成兵</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 4: GPUMDkit -->
+                <a href="https://github.com/zhyan0603/GPUMDkit" target="_blank" class="ecosystem-card group relative bg-white rounded-3xl p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="gpumdkit">
+                    <div class="absolute inset-0 bg-gradient-to-br from-brand-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-8 flex justify-center items-center h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-brand-500 transition-all duration-500">
+                        <img src="images/gpumdkit_logo.png" alt="GPUMDkit" class="h-28 w-auto object-contain transform transition-transform duration-500 group-hover:scale-105 z-10">
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-brand-50 text-brand-600 text-[10px] font-bold rounded-lg border border-brand-100 uppercase tracking-wider z-10">Toolkit</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center group-hover:text-brand-600 transition-colors">GPUMDkit</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">专为 GPUMD 设计的预处理和后处理工具箱，提供用户友好的命令行界面。</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>GitHub 仓库</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>严子韩</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 5: GPUMD-Wizard -->
+                <a href="https://github.com/Jonsnow-willow/GPUMD-Wizard" target="_blank" class="ecosystem-card group relative bg-white rounded-3xl p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="gpumd-wizard">
+                    <div class="absolute inset-0 bg-gradient-to-br from-orange-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-8 flex justify-center items-center h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-orange-500 transition-all duration-500">
+                        <img src="images/G-Wizard.png" alt="GPUMD-Wizard" class="h-28 w-auto object-contain transform transition-transform duration-500 group-hover:scale-105 z-10">
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-orange-50 text-orange-600 text-[10px] font-bold rounded-lg border border-orange-100 uppercase tracking-wider z-10">Python</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center group-hover:text-orange-600 transition-colors">GPUMD-Wizard</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">基于 ASE 的材料结构处理软件，能够自动化计算材料的多种性质并调用 GPUMD。</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>GitHub 仓库</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>柳佳晖</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 6: PySED -->
+                <a href="https://github.com/Tingliangstu/pySED" target="_blank" class="ecosystem-card group relative bg-white rounded-3xl p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="pysed">
+                    <div class="absolute inset-0 bg-gradient-to-br from-green-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-8 flex justify-center items-center h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-green-500 transition-all duration-500">
+                        <img src="images/pysed_logo.png" alt="PySED" class="h-28 w-auto object-contain transform transition-transform duration-500 group-hover:scale-105 z-10">
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-green-50 text-green-600 text-[10px] font-bold rounded-lg border border-green-100 uppercase tracking-wider z-10">Python</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center group-hover:text-green-600 transition-colors">PySED</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">分析声子动力学与热输运的高效工具，支持谱能量密度计算。</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>GitHub 仓库</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>梁挺</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 7: mdapy -->
+                <a href="https://github.com/mushroomfire/mdapy" target="_blank" class="ecosystem-card group relative bg-white rounded-3xl p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="mdapy">
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-8 flex justify-center items-center h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-cyan-500 transition-all duration-500">
+                        <img src="images/mdapy_logo.png" alt="mdapy" class="h-28 w-auto object-contain transform transition-transform duration-500 group-hover:scale-105 z-10">
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-cyan-100 text-cyan-600 text-[10px] font-bold rounded-lg border border-cyan-200 uppercase tracking-wider z-10">Python</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center group-hover:text-cyan-600 transition-colors">mdapy</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">简单高效的 Python 分子动力学分析库，支持多种格式及并行计算。</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>GitHub 仓库</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>吴永超</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 8: PyNEP -->
+                <a href="https://github.com/bigd4/PyNEP" target="_blank" class="ecosystem-card group relative bg-white rounded-3xl p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="pynep">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-8 flex justify-center items-center h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-blue-500 transition-all duration-500">
+                        <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 group-hover:rotate-6 z-10">
+                            <i data-lucide="terminal" class="w-10 h-10"></i>
+                        </div>
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-blue-100 text-blue-600 text-[10px] font-bold rounded-lg border border-blue-200 uppercase tracking-wider z-10">Python</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center group-hover:text-blue-600 transition-colors">PyNEP</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">NEP 势函数的 Python 接口，支持 ASE 计算器及各种分析。</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>GitHub 仓库</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>王俊杰</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 9: gpyumd -->
+                <a href="https://github.com/AlexGabourie/gpyumd" target="_blank" class="ecosystem-card group relative bg-white rounded-3xl p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="gpyumd">
+                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-8 flex justify-center items-center h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-emerald-500 transition-all duration-500">
+                        <div class="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 group-hover:rotate-6 z-10">
+                            <i data-lucide="file-code" class="w-10 h-10"></i>
+                        </div>
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-emerald-100 text-emerald-600 text-[10px] font-bold rounded-lg border border-emerald-200 uppercase tracking-wider z-10">Python</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center group-hover:text-emerald-600 transition-colors">gpyumd</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">GPUMD 的 Python 接口，辅助生成输入文件及处理输出数据。</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>GitHub 仓库</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>Alexander J. Gabourie</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 10: somd -->
+                <a href="https://github.com/initqp/somd" target="_blank" class="ecosystem-card group relative bg-white rounded-3xl p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="somd">
+                    <div class="absolute inset-0 bg-gradient-to-br from-slate-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-8 flex justify-center items-center h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-slate-500 transition-all duration-500">
+                        <div class="w-20 h-20 bg-slate-50 text-slate-600 rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-slate-600 group-hover:text-white transition-all duration-500 group-hover:rotate-6 z-10">
+                            <i data-lucide="box" class="w-10 h-10"></i>
+                        </div>
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-slate-100 text-slate-600 text-[10px] font-bold rounded-lg border border-slate-200 uppercase tracking-wider z-10">Python</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center group-hover:text-slate-600 transition-colors">somd</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">面向 SIESTA 的分子动力学软件包，集成 NEP 接口与主动学习。</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>GitHub 仓库</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>Jingtu Zhang</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 11: NepTrain -->
+                <a href="https://github.com/aboys-cb/NepTrain" target="_blank" class="ecosystem-card group relative bg-white rounded-3xl p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="neptrain">
+                    <div class="absolute inset-0 bg-gradient-to-br from-violet-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-8 flex justify-center items-center h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-violet-500 transition-all duration-500">
+                        <div class="w-20 h-20 bg-violet-50 text-violet-600 rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-violet-600 group-hover:text-white transition-all duration-500 group-hover:rotate-6 z-10">
+                            <i data-lucide="workflow" class="w-10 h-10"></i>
+                        </div>
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-violet-100 text-violet-600 text-[10px] font-bold rounded-lg border border-violet-200 uppercase tracking-wider z-10">Python</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center group-hover:text-violet-600 transition-colors">NepTrain</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">NEP 自动化训练工具包，集成 VASP/GPUMD 流程与主动学习。</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>GitHub 仓库</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>陈成兵</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 12: NEP_Active -->
+                <!-- <a href="https://github.com/psn417/NEP_Active" target="_blank" class="ecosystem-card group relative bg-white rounded-3xl p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="nep_active">
+                    <div class="absolute inset-0 bg-gradient-to-br from-rose-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-8 flex justify-center items-center h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-rose-500 transition-all duration-500">
+                        <div class="w-20 h-20 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-rose-600 group-hover:text-white transition-all duration-500 group-hover:rotate-6 z-10">
+                            <i data-lucide="target" class="w-10 h-10"></i>
+                        </div>
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-rose-100 text-rose-600 text-[10px] font-bold rounded-lg border border-rose-200 uppercase tracking-wider z-10">Python</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center group-hover:text-rose-600 transition-colors">NEP_Active</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">NEP 主动学习工具，支持 MaxVol 算法选择训练集。</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>GitHub 仓库</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>潘书宁</span>
+                            </div>
+                        </div>
+                    </div>
+                </a> -->
+
+                <!-- Card 13: nep_maker -->
+                <!-- <a href="https://github.com/psn417/nep_maker" target="_blank" class="ecosystem-card group relative bg-white rounded-3xl p-8 shadow-md border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden flex flex-col h-full" data-software-id="nep_maker">
+                    <div class="absolute inset-0 bg-gradient-to-br from-sky-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="relative mb-8 flex justify-center items-center h-32 bg-white rounded-2xl overflow-hidden border border-slate-100 group-hover:border-sky-500 transition-all duration-500">
+                        <div class="w-20 h-20 bg-sky-50 text-sky-600 rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-sky-600 group-hover:text-white transition-all duration-500 group-hover:rotate-6 z-10">
+                            <i data-lucide="hammer" class="w-10 h-10"></i>
+                        </div>
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-sky-100 text-sky-600 text-[10px] font-bold rounded-lg border border-sky-200 uppercase tracking-wider z-10">Python</div>
+                    </div>
+                    <div class="relative z-10 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-center group-hover:text-sky-600 transition-colors">nep_maker</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed flex-grow">简易的 NEP 势函数构建与训练辅助工具。</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-50 group-hover:border-brand-50 transition-colors">
+                            <div class="flex items-center text-brand-600 text-sm font-bold">
+                                <span>GitHub 仓库</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 flex items-center">
+                                <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                <span>潘书宁</span>
+                            </div>
+                        </div>
+                    </div>
+                </a> -->
+
+                <!-- Extension Placeholder -->
+                <div class="ecosystem-placeholder hidden"></div>
+
+            </div>
+
+            <!-- Developer Legend -->
+            <div class="mt-14 text-center">
+                <p class="text-xs text-slate-400">右下角标注为各项目核心开发者</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-8 lg:py-16 border-t border-slate-900 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-8 lg:gap-x-12 lg:gap-y-16 mb-8 lg:mb-16">
+                <!-- Column 1: Brand & Status -->
+                <div class="col-span-2 lg:col-span-2">
+                    <a href="home.html" class="flex items-center gap-2 mb-4 lg:mb-8 group">
+                        <img src="images/logo.png" alt="GPUMD Logo" class="h-8 lg:h-10 w-auto">
+                        <span class="text-xl lg:text-2xl font-black text-white tracking-tight">GPUMD</span>
+                    </a>
+                    <div class="space-y-4 lg:space-y-6">
+                        <p class="text-xs lg:text-sm leading-relaxed text-slate-400">
+                            高性能 CPU+GPU 异构并行的分子动力学模拟软件，致力于为复杂多体系统提供极致的计算效率与精度。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Column 2: Software -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">软件与数据库</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="features.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>主要功能</a></li>
+                        <li><a href="download.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>最新版本</a></li>
+                        <li><a href="database.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>NEP势函数库</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Resources -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">资源与文档</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="https://gpumd.org" target="_blank" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>官方手册</a></li>
+                        <li><a href="faq.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>常见问题</a></li>
+                        <li><a href="books.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>参考书籍</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Community -->
+                <div class="lg:pl-8">
+                    <h4 class="text-white font-bold mb-4 lg:mb-8 text-xs lg:text-sm uppercase tracking-widest opacity-60">社区与工具</h4>
+                    <ul class="space-y-3 lg:space-y-5 text-xs lg:text-sm">
+                        <li><a href="ecosystem.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>生态工具</a></li>
+                        <li><a href="support.html" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>用户支持</a></li>
+                        <li><a href="https://github.com/brucefan1983/GPUMD" target="_blank" class="hover:text-brand-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 opacity-30"></i>GitHub 仓库</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 5: Social & QR -->
+                <div class="col-span-2 lg:col-span-1 flex lg:justify-end">
+                    <div class="space-y-4 lg:space-y-8">
+                        <p class="text-white text-[10px] font-black mb-4 lg:mb-6 uppercase tracking-[0.2em] opacity-40 lg:text-right">交流讨论</p>
+                        <div class="flex gap-4 lg:gap-6 lg:justify-end">
+                            <div class="group relative">
+                                <div class="w-16 h-16 lg:w-20 lg:h-20 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center p-2 group-hover:border-brand-500/50 group-hover:bg-white/10 transition-all duration-500 shadow-2xl">
+                                    <img src="images/qr_qq.png" alt="QQ Group" class="w-full h-full object-contain">
+                                </div>
+                                <p class="text-[9px] mt-2 lg:mt-3 text-center font-bold opacity-40 group-hover:opacity-100 transition-opacity">QQ 群</p>
+                            </div>
+                            <div class="group relative">
+                                <div class="w-16 h-16 lg:w-20 lg:h-20 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center p-2 group-hover:border-brand-500/50 group-hover:bg-white/10 transition-all duration-500 shadow-2xl">
+                                    <img src="images/qr_wechat.png" alt="WeChat" class="w-full h-full object-contain">
+                                </div>
+                                <p class="text-[9px] mt-2 lg:mt-3 text-center font-bold opacity-40 group-hover:opacity-100 transition-opacity">微信公众号</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 lg:pt-12 border-t border-slate-900 flex flex-col md:flex-row items-center justify-between gap-6 text-[11px] font-medium tracking-wider">
+                <p class="opacity-40">© 2026 GPUMD TEAM. PROUDLY DEVELOPED FOR SCIENCE.</p>
+                <a href="https://beian.miit.gov.cn/" target="_blank" class="opacity-40 hover:opacity-100 transition-opacity">苏ICP备2025218443号-1</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

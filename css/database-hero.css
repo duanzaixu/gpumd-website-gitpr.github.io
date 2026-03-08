@@ -1,0 +1,105 @@
+/* Database Page Specific Styles - Hero & Layout Optimization */
+
+/* Hero Section - Compact Design */
+.database-hero-section {
+    position: relative;
+    overflow: hidden;
+    background-color: #f8fafc; /* slate-50 */
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    /* Ensure it doesn't take too much vertical space */
+    min-height: auto;
+}
+
+@media (min-width: 1024px) {
+    .database-hero-section {
+        padding-top: 2rem;
+        padding-bottom: 1.5rem;
+    }
+}
+
+/* Hero Title */
+.database-hero-section h1 {
+    font-size: 1.75rem; /* ~28px */
+    font-weight: 800;
+    color: #0f172a; /* slate-900 */
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+    .database-hero-section h1 {
+        font-size: 2.25rem; /* ~36px */
+    }
+}
+
+/* Hero Description */
+.database-hero-section p {
+    font-size: 0.925rem;
+    line-height: 1.5;
+    color: #475569; /* slate-600 */
+    max-width: 48rem; /* ~768px */
+    margin-left: auto;
+    margin-right: auto;
+    /* Clamp text to fewer lines if necessary, though full text is better if short */
+}
+
+/* Main Content Container - Reduce Top Spacing */
+.database-main-container {
+    padding-top: 0.5rem;
+    padding-bottom: 3rem;
+    flex-grow: 1;
+}
+
+@media (min-width: 1024px) {
+    .database-main-container {
+        padding-top: 1rem;
+    }
+}
+
+/* Periodic Table Section - Optimization */
+.periodic-table-section {
+    margin-bottom: 2rem;
+}
+
+.periodic-table-card {
+    border-radius: 1rem;
+    border: 1px solid #f1f5f9; /* slate-100 */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl equivalent but maybe lighter */
+    overflow: hidden;
+    background-color: white;
+}
+
+/* Adjust Periodic Table Header */
+.periodic-table-header {
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid #f1f5f9;
+    background-color: #f8fafc; /* slate-50 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Adjust Legend Padding */
+.periodic-table-legend {
+    padding: 0.75rem 1.5rem;
+    background-color: rgba(248, 250, 252, 0.5); /* slate-50/50 */
+    border-top: 1px solid #f1f5f9;
+}
+
+/* Ensure Element Cells are responsive but maintain minimum usability */
+.element-cell .symbol {
+    font-size: 13px; /* Slightly smaller for compact view if needed, but 14px is good */
+}
+
+@media (max-width: 640px) {
+    /* Mobile optimizations */
+    .database-hero-section h1 {
+        font-size: 1.5rem;
+    }
+    .database-hero-section p {
+        font-size: 0.875rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}

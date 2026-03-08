@@ -1,0 +1,47 @@
+/* General Hero Section Optimization for Generic Pages */
+
+.general-hero-section {
+    position: relative;
+    overflow: hidden;
+    background-color: #f8fafc; /* slate-50 */
+    padding-top: 5rem;       /* pt-20 to clear navbar on mobile */
+    padding-bottom: 2rem;    /* pb-8 */
+}
+
+@media (min-width: 1024px) {
+    .general-hero-section {
+        padding-top: 6rem;    /* lg:pt-24 */
+        padding-bottom: 2.5rem; /* lg:pb-10 */
+    }
+}
+
+.general-hero-title {
+    font-size: 1.875rem;      /* text-3xl */
+    line-height: 1.2;
+    font-weight: 700;         /* font-bold */
+    letter-spacing: -0.025em; /* tracking-tight */
+    color: #0f172a;           /* text-slate-900 */
+    margin-bottom: 0.75rem;   /* mb-3 */
+}
+
+@media (min-width: 768px) {
+    .general-hero-title {
+        font-size: 2.25rem;   /* text-4xl */
+    }
+}
+
+.general-hero-description {
+    margin-top: 1rem;         /* mt-4 */
+    font-size: 1rem;          /* text-base */
+    line-height: 1.625;
+    color: #475569;           /* text-slate-600 */
+    max-width: 42rem;         /* max-w-2xl */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 640px) {
+    .general-hero-description {
+        font-size: 1.125rem;  /* text-lg */
+    }
+}

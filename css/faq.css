@@ -1,0 +1,110 @@
+/* FAQ Page Styles */
+
+/* 
+ * FAQ Visual Standards - Minimalist Small Card Design
+ */
+
+.faq-search-container {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    position: relative;
+    overflow: hidden;
+    @apply py-24;
+}
+
+.faq-search-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Notice Bar */
+.faq-notice-bar {
+    @apply mb-12 p-6 rounded-2xl border-2 flex items-center gap-5 transition-all duration-500 bg-brand-50/50 border-brand-100/50 text-brand-800;
+}
+
+@media (prefers-color-scheme: dark) {
+    .faq-notice-bar {
+        background-color: rgba(7, 89, 133, 0.2);
+        border-color: rgba(14, 165, 233, 0.3);
+        color: #e0f2fe;
+    }
+}
+
+/* Category Buttons */
+.faq-category-btn {
+    @apply px-5 py-2.5 rounded-xl border-2 border-slate-200 text-sm font-bold text-slate-500 transition-all duration-300 bg-white;
+}
+
+.faq-category-btn:hover {
+    @apply border-brand-300 text-brand-600 -translate-y-0.5 shadow-sm;
+}
+
+.faq-category-btn.active {
+    @apply bg-brand-600 border-brand-600 text-white shadow-lg shadow-brand-500/30 scale-105;
+}
+
+/* FAQ Card */
+.faq-card {
+    @apply bg-white rounded-2xl border border-slate-100 shadow-sm transition-all duration-300 mb-4 overflow-hidden;
+}
+
+.faq-card:hover {
+    @apply shadow-md border-brand-100 -translate-y-0.5;
+}
+
+.faq-card.active {
+    @apply border-brand-200 shadow-lg shadow-brand-500/5;
+}
+
+.faq-question-trigger {
+    @apply transition-colors duration-300;
+}
+
+.faq-card.active .faq-question-trigger {
+    @apply bg-slate-50/30;
+}
+
+.faq-plus-icon {
+    @apply transition-all duration-300;
+}
+
+.icon-chevron {
+    @apply transition-transform duration-500 ease-in-out;
+}
+
+/* Highlighting */
+.highlight {
+    @apply bg-brand-50 text-brand-700 px-0.5 rounded font-bold;
+}
+
+/* Prose tweaks for FAQ */
+.prose-slate {
+    @apply text-[15px] leading-relaxed;
+}
+
+.faq-answer-wrap {
+    @apply opacity-0 translate-y-2 transition-all duration-500;
+}
+
+.faq-card.active .faq-answer-wrap {
+    @apply opacity-100 translate-y-0;
+}
+
+.no-results {
+    @apply py-32 text-center flex flex-col items-center gap-4;
+}
+
+/* Scroll adjustment for anchors */
+.faq-card[id] {
+    scroll-margin-top: 100px;
+}
